@@ -1,0 +1,25 @@
+#####################################
+#  Team 1073 Robot '17 Git Ignore   #
+#####################################
+
+#For Robot Builder Temporary Files
+*~
+~*
+
+#Other Various Files & Operating System
+*.xml
+sysProps.xml
+build/
+dist/
+bin/
+*.class
+.classpath
+
+#OS related
+.DS_STORE
+.Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.localized
+
+
