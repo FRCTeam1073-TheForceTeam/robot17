@@ -41,6 +41,19 @@ public class DriveTrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
+    private final double DEADZONE_VALUE = .05;
+    /**Deadzone code:
+     * Takes in joystick value
+     * If its between 0 and <code>deadzone</code> 
+     * set it to 0
+    **/
+    
+    public double deadzone(double input,double deadzoneVal)
+    {
+    	if(input <= deadzoneVal) input = 0;
+    	return input;
+    }
+    
     /**Basic drive code:
      * 	-Makes sure left side is inverted and right side isn't
      * 	-Sets non-Motor1 motors as followers
@@ -65,8 +78,8 @@ public class DriveTrain extends Subsystem {
     	rightMotor2.set(rightMotor1.getDeviceID());
     	rightMotor3.set(rightMotor1.getDeviceID());
     	
-    	leftMotor1.set(left);
-    	rightMotor1.set(right);
+    	leftMotor1.set(deadzone(left,DEADZONE_VALUE));
+    	rightMotor1.set(deadzone(right,DEADZONE_VALUE));
     }
 
     public void initDefaultCommand() {
