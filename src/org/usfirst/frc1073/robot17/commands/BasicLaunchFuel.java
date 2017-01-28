@@ -41,8 +41,8 @@ public class BasicLaunchFuel extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double conveyorSpeed = 0.5;
-    	double launcherSpeed = 0.5;
+    	double conveyorSpeed = 0.8;
+    	double launcherSpeed = 0.8;
     	
     	Robot.launcher.spinMotor(conveyorSpeed, launcherSpeed);
     }
