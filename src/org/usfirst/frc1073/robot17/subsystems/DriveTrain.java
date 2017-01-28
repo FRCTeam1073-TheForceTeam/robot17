@@ -41,12 +41,12 @@ public class DriveTrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
+    private final double DEADZONE_VALUE = .05;
     /**Deadzone code:
      * Takes in joystick value
-     * If its between 0 and /code deadzone /code 
+     * If its between 0 and <code>deadzone</code> 
      * set it to 0
     **/
-    private final double DEADZONE_VALUE = .05;
     
     public double deadzone(double input,double deadzoneVal)
     {
