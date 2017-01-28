@@ -22,7 +22,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
-          value: '3'
+          value: '8'
       Base: CAN Talon
       Name: leftMotor2
     - Children: []
@@ -88,7 +88,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
-          value: '0'
+          value: '3'
       Base: CAN Talon
       Name: launcherMotor1
     - Children: []

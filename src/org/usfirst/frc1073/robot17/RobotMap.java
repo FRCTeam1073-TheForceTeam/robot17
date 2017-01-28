@@ -49,7 +49,7 @@ public class RobotMap {
         driveTrainleftMotor1 = new CANTalon(2);
         LiveWindow.addActuator("DriveTrain", "leftMotor1", driveTrainleftMotor1);
         
-        driveTrainleftMotor2 = new CANTalon(3);
+        driveTrainleftMotor2 = new CANTalon(8);
         LiveWindow.addActuator("DriveTrain", "leftMotor2", driveTrainleftMotor2);
         
         driveTrainleftMotor3 = new CANTalon(4);
@@ -64,7 +64,7 @@ public class RobotMap {
         driveTrainrightMotor3 = new CANTalon(7);
         LiveWindow.addActuator("DriveTrain", "rightMotor3", driveTrainrightMotor3);
         
-        launcherlauncherMotor1 = new CANTalon(0);
+        launcherlauncherMotor1 = new CANTalon(3);
         LiveWindow.addActuator("Launcher", "launcherMotor1", launcherlauncherMotor1);
         
         launcherconveyorMotor = new Victor(0);
