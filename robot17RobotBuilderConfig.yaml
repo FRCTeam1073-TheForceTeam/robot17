@@ -3,68 +3,7 @@ Version 2.0
 ---
 Children:
 - Children:
-  - Children:
-    - Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id001 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
-          default: '2'
-          name: CAN ID
-          validators: &id002 [CANID]
-          value: '2'
-      Base: CAN Talon
-      Name: leftMotor1
-    - Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '3'
-      Base: CAN Talon
-      Name: leftMotor2
-    - Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '4'
-      Base: CAN Talon
-      Name: leftMotor3
-    - Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '5'
-      Base: CAN Talon
-      Name: rightMotor1
-    - Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '6'
-      Base: CAN Talon
-      Name: rightMotor2
-    - Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '7'
-      Base: CAN Talon
-      Name: rightMotor3
+  - Children: []
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
@@ -83,28 +22,18 @@ Children:
   - Children:
     - Children: []
       Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '0'
-      Base: CAN Talon
-      Name: launcherMotor1
-    - Children: []
-      Properties:
         Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id003 [Victor, Jaguar, Talon, VictorSP, TalonSRX, Spark, SD540]
+          choices: &id001 [Victor, Jaguar, Talon, VictorSP, TalonSRX, Spark, SD540]
           default: Talon
           name: Type
           validators: null
           value: Victor
         Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id004 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+          choices: &id002 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
             '11', '12', '13', '14', '15', '16', '17', '18', '19']
           default: '0'
           name: Output Channel (PWM)
-          validators: &id005 [PWMOutput]
+          validators: &id003 [PWMOutput]
           value: '0'
       Base: Speed Controller
       Name: conveyorMotor
@@ -120,23 +49,23 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: &id006 []
+        value: &id004 []
     Base: Subsystem
     Name: Launcher
   - Children:
     - Children: []
       Properties:
         Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id001
           default: Talon
           name: Type
           validators: null
           value: Victor
         Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id002
           default: '0'
           name: Output Channel (PWM)
-          validators: *id005
+          validators: *id003
           value: '1'
       Base: Speed Controller
       Name: collectorMotor
@@ -152,39 +81,39 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: *id006
+        value: *id004
     Base: Subsystem
     Name: Collector
   - Children:
     - Children: []
       Properties:
         Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id001
           default: Talon
           name: Type
           validators: null
           value: Victor
         Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id002
           default: '0'
           name: Output Channel (PWM)
-          validators: *id005
+          validators: *id003
           value: '3'
       Base: Speed Controller
       Name: climber2
     - Children: []
       Properties:
         Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id001
           default: Talon
           name: Type
           validators: null
           value: Victor
         Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id002
           default: '0'
           name: Output Channel (PWM)
-          validators: *id005
+          validators: *id003
           value: '2'
       Base: Speed Controller
       Name: climber1
@@ -202,27 +131,27 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: *id006
+        value: *id004
     Base: Subsystem
     Name: Climber
   - Children:
     - Children: []
       Properties:
         Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id007 ['0', '1', '2', '3']
+          choices: &id005 ['0', '1', '2', '3']
           default: '0'
           name: Output Channel (Relay)
-          validators: &id008 [RelayOutput]
+          validators: &id006 [RelayOutput]
           value: '0'
       Base: Spike
       Name: spike1
     - Children: []
       Properties:
         Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id007
+          choices: *id005
           default: '0'
           name: Output Channel (Relay)
-          validators: *id008
+          validators: *id006
           value: '1'
       Base: Spike
       Name: spike2
@@ -238,7 +167,7 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: &id009 []
+        value: &id007 []
     Base: Subsystem
     Name: LEDs
   - Children: []
@@ -254,7 +183,7 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: *id009
+        value: *id007
     Base: Subsystem
     Name: Vision
   Properties: {}
@@ -264,30 +193,30 @@ Children:
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: &id010 ['0', '1', '2', '3', '4', '5']
+        choices: &id008 ['0', '1', '2', '3', '4', '5']
         default: 1
         name: Number
-        validators: &id011 [Joystick]
+        validators: &id009 [Joystick]
         value: '0'
     Base: Joystick
     Name: driverLeftStick
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id010
+        choices: *id008
         default: 1
         name: Number
-        validators: *id011
+        validators: *id009
         value: '1'
     Base: Joystick
     Name: driverRightStick
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id010
+        choices: *id008
         default: 1
         name: Number
-        validators: *id011
+        validators: *id009
         value: '2'
     Base: Joystick
     Name: operatorStick
