@@ -61,6 +61,7 @@ public class DriveTrain extends Subsystem {
      * 	-Makes sure left side is inverted and right side isn't
      * 	-Sets non-Motor1 motors as followers
      * 	-Sets non-Motor1 motors to follow their respective side's Motor1
+     * 	-Sets Motor1 motors to PercentVbus
      * 	-Sets Motor1 motors to double left and double right, respectively
      **/
     public void basicDrive(double left, double right) {
@@ -80,6 +81,9 @@ public class DriveTrain extends Subsystem {
     	leftMotor3.set(leftMotor1.getDeviceID());
     	rightMotor2.set(rightMotor1.getDeviceID());
     	rightMotor3.set(rightMotor1.getDeviceID());
+    	
+    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	
     	leftMotor1.set(deadzone(left,DEADZONE_VALUE));
     	rightMotor1.set(deadzone(right,DEADZONE_VALUE));
