@@ -48,6 +48,7 @@ public class AutonomousCrossBaseline extends Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	Robot.driveTrain.basicDrive(0,0);
     }
 
     // Called repeatedly when this Command is scheduled to run
