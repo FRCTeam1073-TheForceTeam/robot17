@@ -88,8 +88,37 @@ public class DriveTrain extends Subsystem {
     	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	
-    	leftMotor1.set(deadzone(left,DEADZONE_VALUE));
-    	rightMotor1.set(deadzone(right,DEADZONE_VALUE));
+    	double tempLeft = deadzone(left,DEADZONE_VALUE)-deadzone(left,DEADZONE_VALUE);
+    	double tempRight = deadzone(left,DEADZONE_VALUE)+deadzone(left,DEADZONE_VALUE);
+    	double difL,difR;
+    	
+    	if(tempLeft > 1)
+    	{
+    		difL = tempLeft-1;
+    		tempRight -= difL;
+    		tempLeft = 1;
+    	}
+    	if(tempRight > 1)
+    	{
+    		difR = tempRight-1;
+    		tempLeft -= difR;
+    		tempRight = 1;
+    	}
+    	if(tempLeft < -1)
+    	{
+    		difL = tempLeft+1;
+    		tempRight -= difL;
+    		tempLeft = -1;
+    	}
+    	if(tempRight < -1)
+    	{
+    		difR = tempRight+1;
+    		tempLeft -= difR;
+    		tempRight = -1;
+    	}
+    	
+    	leftMotor1.set(tempLeft);
+    	rightMotor1.set(tempRight);
     }
     
     /**Left/right raw speed, distance, etc.:
