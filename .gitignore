@@ -22,3 +22,5 @@ CTRLib.jar
 Desktop.ini
 $RECYCLE.BIN/
 .localized
+.classpath
+*.classpath
