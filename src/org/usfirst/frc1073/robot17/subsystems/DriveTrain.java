@@ -42,9 +42,11 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
     
     private final double DEADZONE_VALUE = .05;
+    private final double WHEEL_RADIUS = 4.0;
+    
     /**Deadzone code:
      * Takes in joystick value
-     * If its between 0 and <code>deadzone</code> 
+     * If it falls between 0 and <code>deadzone</code> 
      * set it to 0
     **/
     
@@ -80,6 +82,34 @@ public class DriveTrain extends Subsystem {
     	
     	leftMotor1.set(deadzone(left,DEADZONE_VALUE));
     	rightMotor1.set(deadzone(right,DEADZONE_VALUE));
+    }
+    
+    /**Left/right raw speed, distance, etc.:
+     * getSpeed gives the speed
+     * getPosition measures the radians passed
+     */
+    public double getLeftRawSpeed() {
+    	return leftMotor1.getSpeed();
+    }
+    
+    public double getLeftRawDistance() {
+    	return leftMotor1.getPosition();
+    }
+    
+    public double getLeftDistanceInches() {
+    	return getLeftRawDistance() * (WHEEL_RADIUS * 2 * Math.PI);
+    }
+    
+    public double getRightRawSpeed() {
+    	return rightMotor1.getSpeed();
+    }
+    
+    public double getRightRawDistance() {
+    	return rightMotor1.getPosition();
+    }
+    
+    public double getRightDistanceInches() {
+    	return getRightRawDistance() * (WHEEL_RADIUS * 2 * Math.PI);
     }
 
     public void initDefaultCommand() {
