@@ -39,9 +39,14 @@ public class Launcher extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    public void spinMotor(double conveyorSpeed, double launcherSpeed) {
+    public void startLauncher(double conveyorSpeed, double launcherSpeed) {
     	conveyorMotor.set(conveyorSpeed);
     	launcherMotor1.set(launcherSpeed);
+    }
+    
+    public void stopLauncher() {
+    	conveyorMotor.set(0.0);
+    	launcherMotor1.set(0.0);
     }
 
     public void initDefaultCommand() 
