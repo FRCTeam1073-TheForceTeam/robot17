@@ -10,7 +10,11 @@
 
 
 package org.usfirst.frc1073.robot17.commands;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+
+import java.sql.Time;
+
 import org.usfirst.frc1073.robot17.Robot;
 
 /**
@@ -41,12 +45,16 @@ public class AutoFuelLaunch extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double conveyorSpeed = 0.8;
+    	double launcherSpeed = 0.8;
     	
+    	Robot.launcher.startLauncher(conveyorSpeed, launcherSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        Timer.delay(2.25);
+    	return true;
     }
 
     // Called once after isFinished returns true
@@ -56,5 +64,6 @@ public class AutoFuelLaunch extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.launcher.stopLauncher();
     }
 }
