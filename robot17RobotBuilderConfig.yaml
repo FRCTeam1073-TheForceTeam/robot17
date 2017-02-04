@@ -296,19 +296,26 @@ Children:
   Name: Operator Interface
 - Children:
   - Children: []
-    Properties:
+    Properties: &id018
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
         validators: null
-        value: []
+        value:
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: Distance, type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: Speed, type: double}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: DriveTrain}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []
         name: Parameter presets
         validators: null
-        value: []
+        value:
+        - !!robotbuilder.data.properties.ParameterSet
+          name: GearDrive
+          parameters:
+          - {name: Distance, type: double, value: '114.3'}
+          - {name: Speed, type: double, value: '.5'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
@@ -401,35 +408,35 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: &id012 [List]
+        validators: &id014 [List]
         value:
-        - &id016 !!robotbuilder.data.CommandGroupEntry
+        - &id023 !!robotbuilder.data.CommandGroupEntry
           command:
-            base: &id015
+            base: &id016
               help: A group of commands set to run together in a prescribed way.
               name: Command Group
               properties:
               - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
                 validators: null, value: true}
               - !!robotbuilder.data.properties.ListProperty
-                default: &id013 []
+                default: &id012 []
                 name: Commands
-                validators: *id012
-                value: *id013
+                validators: [List]
+                value: *id012
               - !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
                 validators: null
                 value: []
               - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id014 []
+                default: &id013 []
                 name: Parameter presets
                 validators: null
-                value: *id014
+                value: *id013
               supports: {}
               type: Command
             name: AutoGearDrive
-            properties: &id019
+            properties: &id026
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -443,8 +450,69 @@ Children:
               Commands: !!robotbuilder.data.properties.ListProperty
                 default: []
                 name: Commands
-                validators: *id012
-                value: []
+                validators: *id014
+                value:
+                - !!robotbuilder.data.CommandGroupEntry
+                  command:
+                    base:
+                      help: A command specifies an action that the robot can perform.
+                      name: Command
+                      properties:
+                      - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                        name: Requires, type: Subsystem, validators: null, value: None}
+                      - !!robotbuilder.data.properties.BooleanProperty {default: true,
+                        name: Button on SmartDashboard, validators: null, value: true}
+                      - !!robotbuilder.data.properties.ParametersProperty
+                        default: []
+                        name: Parameters
+                        validators: null
+                        value: []
+                      - !!robotbuilder.data.properties.ParameterSetProperty
+                        default: &id015 []
+                        name: Parameter presets
+                        validators: null
+                        value: *id015
+                      supports: {}
+                      type: Command
+                    name: AutoDrive
+                    properties:
+                      Parameters: !!robotbuilder.data.properties.ParametersProperty
+                        default: []
+                        name: Parameters
+                        validators: null
+                        value:
+                        - !!robotbuilder.data.properties.ParameterDescriptor {name: Distance,
+                          type: double}
+                        - !!robotbuilder.data.properties.ParameterDescriptor {name: Speed,
+                          type: double}
+                      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {
+                        default: None, name: Requires, type: Subsystem, validators: null,
+                        value: DriveTrain}
+                      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                        default: []
+                        name: Parameter presets
+                        validators: null
+                        value:
+                        - !!robotbuilder.data.properties.ParameterSet
+                          name: GearDrive
+                          parameters:
+                          - {name: Distance, type: double, value: '114.3'}
+                          - {name: Speed, type: double, value: '.5'}
+                      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                        default: true, name: Button on SmartDashboard, validators: null,
+                        value: false}
+                  hasMatch: true
+                  order: Sequential
+                  parameters:
+                    default: []
+                    name: ParametersProperty
+                    validators: null
+                    value:
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Distance,
+                      type: double, value: '0'}
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Speed,
+                      type: double, value: '0'}
+                  previous: null
               Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
                 default: true, name: Button on SmartDashboard, validators: null, value: false}
           hasMatch: true
@@ -455,11 +523,11 @@ Children:
             validators: null
             value: []
           previous: null
-        - &id018 !!robotbuilder.data.CommandGroupEntry
+        - &id025 !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id015
-            name: AutoFuelDrive
-            properties: &id020
+            base: *id016
+            name: AutoFuelDriveG2
+            properties: &id027
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -473,8 +541,99 @@ Children:
               Commands: !!robotbuilder.data.properties.ListProperty
                 default: []
                 name: Commands
-                validators: *id012
-                value: []
+                validators: *id014
+                value:
+                - &id020 !!robotbuilder.data.CommandGroupEntry
+                  command: &id021
+                    base: &id019
+                      help: A command specifies an action that the robot can perform.
+                      name: Command
+                      properties:
+                      - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                        name: Requires, type: Subsystem, validators: null, value: None}
+                      - !!robotbuilder.data.properties.BooleanProperty {default: true,
+                        name: Button on SmartDashboard, validators: null, value: true}
+                      - !!robotbuilder.data.properties.ParametersProperty
+                        default: []
+                        name: Parameters
+                        validators: null
+                        value: []
+                      - !!robotbuilder.data.properties.ParameterSetProperty
+                        default: &id017 []
+                        name: Parameter presets
+                        validators: null
+                        value: *id017
+                      supports: {}
+                      type: Command
+                    name: AutoDrive
+                    properties: *id018
+                  hasMatch: true
+                  order: Sequential
+                  parameters:
+                    default: []
+                    name: ParametersProperty
+                    validators: null
+                    value:
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Distance,
+                      type: double, value: '0'}
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Speed,
+                      type: double, value: '0'}
+                  previous: null
+                - &id022 !!robotbuilder.data.CommandGroupEntry
+                  command:
+                    base: *id019
+                    name: AutoTurn
+                    properties: &id029
+                      Parameters: !!robotbuilder.data.properties.ParametersProperty
+                        default: []
+                        name: Parameters
+                        validators: null
+                        value:
+                        - !!robotbuilder.data.properties.ParameterDescriptor {name: Degrees,
+                          type: double}
+                        - !!robotbuilder.data.properties.ParameterDescriptor {name: Speed,
+                          type: double}
+                        - !!robotbuilder.data.properties.ParameterDescriptor {name: Direction,
+                          type: String}
+                      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {
+                        default: None, name: Requires, type: Subsystem, validators: null,
+                        value: DriveTrain}
+                      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                        default: []
+                        name: Parameter presets
+                        validators: null
+                        value: []
+                      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                        default: true, name: Button on SmartDashboard, validators: null,
+                        value: false}
+                  hasMatch: true
+                  order: Sequential
+                  parameters:
+                    default: []
+                    name: ParametersProperty
+                    validators: null
+                    value:
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Degrees,
+                      type: double, value: '0'}
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Speed,
+                      type: double, value: '0'}
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Direction,
+                      type: String, value: ''}
+                  previous: *id020
+                - !!robotbuilder.data.CommandGroupEntry
+                  command: *id021
+                  hasMatch: true
+                  order: Sequential
+                  parameters:
+                    default: []
+                    name: ParametersProperty
+                    validators: null
+                    value:
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Distance,
+                      type: double, value: '0'}
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Speed,
+                      type: double, value: '0'}
+                  previous: *id022
               Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
                 default: true, name: Button on SmartDashboard, validators: null, value: false}
           hasMatch: true
@@ -484,7 +643,7 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id016
+          previous: *id023
         - !!robotbuilder.data.CommandGroupEntry
           command:
             base:
@@ -501,14 +660,14 @@ Children:
                 validators: null
                 value: []
               - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id017 []
+                default: &id024 []
                 name: Parameter presets
                 validators: null
-                value: *id017
+                value: *id024
               supports: {}
               type: Command
             name: AutoFuelLaunch
-            properties: &id021
+            properties: &id028
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default: []
                 name: Parameters
@@ -530,39 +689,25 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id018
+          previous: *id025
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
     Name: AutonomousGearFuelHighCross
   - Children: []
-    Properties: *id019
+    Properties: *id026
     Base: Command Group
     Name: AutoGearDrive
   - Children: []
-    Properties: *id020
+    Properties: *id027
     Base: Command Group
-    Name: AutoFuelDrive
+    Name: AutoFuelDriveG2
   - Children: []
-    Properties: *id021
+    Properties: *id028
     Base: Command
     Name: AutoFuelLaunch
   - Children: []
-    Properties:
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value: []
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
+    Properties: *id029
     Base: Command
     Name: AutoTurn
   Properties: {}
