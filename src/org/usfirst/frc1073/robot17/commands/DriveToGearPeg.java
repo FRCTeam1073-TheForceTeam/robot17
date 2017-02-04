@@ -49,6 +49,9 @@ public class DriveToGearPeg extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	// Get the numbers and print them on the smart dashboard
+    	double pixToInch = ((3.53497*Math.pow(10,(-6* Math.pow(xDelta, 4))))-(8.87729*Math.pow(10,(-4 * Math.pow(xDelta, 3))))+(0.0772* Math.pow(xDelta, 2))-(3.161183*xDelta)+64.26833);
+    	SmartDashboard.putNumber("inches away", pixToInch);
+    	SmartDashboard.putNumber("feet away", pixToInch / 1);
         xDelta =  netTable.getNumber("centerDist", 0);
         SmartDashboard.putNumber("DriveToGearPeg xDelta", xDelta);
         xWidth =  netTable.getNumber("AverageWidth", 0);
