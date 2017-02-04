@@ -51,7 +51,7 @@ public class AutoDrive extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.driveTrain.getLeftRawDistance() >= autoDriveDistance || Robot.driveTrain.getRightRawDistance() >= autoDriveDistance;
+        return Robot.driveTrain.getLeftDistanceInches() >= autoDriveDistance || Robot.driveTrain.getRightDistanceInches() >= autoDriveDistance;
     }
 
     // Called once after isFinished returns true

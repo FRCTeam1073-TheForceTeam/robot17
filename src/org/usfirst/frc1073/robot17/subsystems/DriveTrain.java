@@ -41,7 +41,7 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
     
     private final double DEADZONE_VALUE = .05;
-    private final double WHEEL_RADIUS = 4.0;
+    private final double WHEEL_RADIUS = 2.0;
     
     /**Deadzone code:
      * Takes in joystick value
@@ -106,7 +106,6 @@ public class DriveTrain extends Subsystem {
     public double getRightRawDistance() {
     	return rightMotor1.getPosition();
     }
-    
     public double getRightDistanceInches() {
     	return getRightRawDistance() * (WHEEL_RADIUS * 2 * Math.PI);
     }
