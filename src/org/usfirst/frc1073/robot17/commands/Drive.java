@@ -45,6 +45,7 @@ public class Drive extends Command {
     	double right = Robot.oi.driverRightStick.getY();
     	
     	Robot.driveTrain.basicDrive(left, right);
+    	//Robot.driveTrain.arcadeDrive(left, right);
     }
 
     // Make this return true when this Command no longer needs to run execute()
