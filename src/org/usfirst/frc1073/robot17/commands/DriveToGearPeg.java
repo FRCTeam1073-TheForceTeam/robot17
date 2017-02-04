@@ -53,28 +53,36 @@ public class DriveToGearPeg extends Command {
         SmartDashboard.putNumber("DriveToGearPeg xDelta", xDelta);
         xWidth =  netTable.getNumber("AverageWidth", 0);
         SmartDashboard.putNumber("DriveToGearPeg widthAvg", xWidth);
-
+        double initialMultiplier = 4;
         double left = 0;
         double right = 0;
         //This is the basic speed - start slow
 		double driveSpeed = 0.1;
+		double driveSpeedMultiplier = 0;
 		//Image width - 280 pixels
         double imageWidth = 280;
-		
+        if (xWidth > 50 / initialMultiplier) {
+        	driveSpeedMultiplier = 1;
+        }
+        else {
+        	driveSpeedMultiplier = initialMultiplier;
+        }
+        left = driveSpeed*driveSpeedMultiplier;
+        right = driveSpeed*driveSpeedMultiplier;
         //Test 1 - simple left right control
         if (xDelta > 10) {
-        	left = driveSpeed + 0.1;
-        	right = driveSpeed;
+        	left = left + 0.15;
+        	right = right - 0.05;
         	SmartDashboard.putString("Direction", "Left");
         }
         else if (xDelta < -10) {
-        	left = driveSpeed;
-        	right = driveSpeed + 0.1;
+        	left = left -0.05;
+        	right = right + 0.15;
         	SmartDashboard.putString("Direction", "Right");
         }
         else {
-        	left = driveSpeed;
-        	right = driveSpeed;
+        	left = left;
+        	right = right;
         	SmartDashboard.putString("Direction", "Center");
         }
 
@@ -97,7 +105,7 @@ public class DriveToGearPeg extends Command {
         right = driveSpeed + (xDelta * scaleFactor); 
         left = driveSpeed - (xDelta * scaleFactor); 
         */
-
+        
         Robot.driveTrain.basicDrive(left, right);
         SmartDashboard.putNumber("left", left);
         SmartDashboard.putNumber("right", right);
@@ -108,7 +116,7 @@ public class DriveToGearPeg extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//test 1 - known width
-    	if (xWidth > 40) {
+    	if (xWidth > 38) {
     		Robot.driveTrain.basicDrive(0, 0);
     	
     		return true;
