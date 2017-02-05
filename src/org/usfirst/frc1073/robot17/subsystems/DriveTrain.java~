@@ -68,12 +68,12 @@ public class DriveTrain extends Subsystem {
      * 	-Sets Motor1 motors to double left and double right, respectively
      **/
     public void basicDrive(double left, double right) {
-    	leftMotor1.setInverted(true);
-    	leftMotor2.setInverted(true);
-    	leftMotor3.setInverted(true);
-    	rightMotor1.setInverted(false);
-    	rightMotor2.setInverted(false);
-    	rightMotor3.setInverted(false);
+    	leftMotor1.setInverted(false);
+    	leftMotor2.setInverted(false);
+    	leftMotor3.setInverted(false);
+    	rightMotor1.setInverted(true);
+    	rightMotor2.setInverted(true);
+    	rightMotor3.setInverted(true);
     	
     	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
     	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
