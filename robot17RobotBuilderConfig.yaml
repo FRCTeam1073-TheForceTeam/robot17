@@ -380,7 +380,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: &id013 []
         name: Commands
-        validators: [List]
+        validators: &id016 [List]
         value: *id013
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
@@ -404,6 +404,27 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: AutoLaunch
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id015 []
+        name: Parameter presets
+        validators: null
+        value: *id015
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: &id017 []
+        name: Commands
+        validators: *id016
+        value: *id017
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command Group
+    Name: AutonomousCross
   Properties: {}
   Base: Commands
   Name: Commands
