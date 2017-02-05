@@ -167,25 +167,9 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: &id007 []
+        value: []
     Base: Subsystem
     Name: LEDs
-  - Children: []
-    Properties:
-      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Default command parameters
-        validators: null
-        value: []
-      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
-      Constants: !!robotbuilder.data.properties.ConstantsProperty
-        default: []
-        name: Constants
-        validators: null
-        value: *id007
-    Base: Subsystem
-    Name: Vision
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -193,30 +177,30 @@ Children:
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: &id008 ['0', '1', '2', '3', '4', '5']
+        choices: &id007 ['0', '1', '2', '3', '4', '5']
         default: 1
         name: Number
-        validators: &id009 [Joystick]
+        validators: &id008 [Joystick]
         value: '0'
     Base: Joystick
     Name: driverLeftStick
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id008
+        choices: *id007
         default: 1
         name: Number
-        validators: *id009
+        validators: *id008
         value: '1'
     Base: Joystick
     Name: driverRightStick
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id008
+        choices: *id007
         default: 1
         name: Number
-        validators: *id009
+        validators: *id008
         value: '2'
     Base: Joystick
     Name: operatorStick
@@ -380,7 +364,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: &id010 [List]
+        validators: &id009 [List]
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
@@ -419,7 +403,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: *id010
+        validators: *id009
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
@@ -440,7 +424,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: *id010
+        validators: *id009
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
