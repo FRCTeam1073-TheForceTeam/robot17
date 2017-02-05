@@ -44,6 +44,7 @@ public class DriveTrain extends Subsystem {
     
     private final double DEADZONE_VALUE = .05;
     private final double WHEEL_RADIUS = 4.0;
+    private final double CUBIC_SCALE = .07;
     
     /**Deadzone code:
      * Takes in joystick value
@@ -58,6 +59,11 @@ public class DriveTrain extends Subsystem {
     	if(input >= -deadzoneVal && input < 0) input = 0;
     	
     	return input;
+    }
+    
+    public double cubicScale(double in)
+    {
+    	return CUBIC_SCALE*in + (1 - CUBIC_SCALE) * Math.pow(in, 3);
     }
     
     /**Basic drive code:
@@ -88,8 +94,8 @@ public class DriveTrain extends Subsystem {
     	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	
-    	rightMotor1.set(deadzone(right,DEADZONE_VALUE));
-    	leftMotor1.set(deadzone(left,DEADZONE_VALUE));
+    	rightMotor1.set(cubicScale(deadzone(right,DEADZONE_VALUE)));
+    	leftMotor1.set(cubicScale(deadzone(left,DEADZONE_VALUE)));
     }
     
     public void arcadeDrive(double left, double right) {
@@ -113,8 +119,8 @@ public class DriveTrain extends Subsystem {
     	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	
-    	double tempLeft = deadzone(left,DEADZONE_VALUE)-deadzone(left,DEADZONE_VALUE);
-    	double tempRight = deadzone(left,DEADZONE_VALUE)+deadzone(left,DEADZONE_VALUE);
+    	double tempLeft = cubicScale(deadzone(left,DEADZONE_VALUE)-deadzone(left,DEADZONE_VALUE));
+    	double tempRight = cubicScale(deadzone(left,DEADZONE_VALUE)+deadzone(left,DEADZONE_VALUE));
     	double difL,difR;
     	
     	if(tempLeft > 1)
