@@ -55,11 +55,11 @@ public class forward extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Math.round(RobotMap.sensorsgyro.getAngle()) <= startAngle-5)
-    		Robot.driveTrain.basicDrive(correctionSpeed, speed);
+    		Robot.driveTrain.basicAutoDrive(correctionSpeed, speed);
     	else if(Math.round(RobotMap.sensorsgyro.getAngle()) >= startAngle+5)
-    		Robot.driveTrain.basicDrive(speed, correctionSpeed);
+    		Robot.driveTrain.basicAutoDrive(speed, correctionSpeed);
     	else 
-    		Robot.driveTrain.basicDrive(speed, speed);
+    		Robot.driveTrain.basicAutoDrive(speed, speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -70,12 +70,12 @@ public class forward extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrain.basicDrive(0, 0);
+    	Robot.driveTrain.basicAutoDrive(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.driveTrain.basicDrive(0, 0);
+    	Robot.driveTrain.basicAutoDrive(0, 0);
     }
 }
