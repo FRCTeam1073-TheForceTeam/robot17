@@ -46,7 +46,7 @@ public class Drive extends Command {
     	//double left = Robot.oi.driverLeftStick.getY();
     	//double right = Robot.oi.driverRightStick.getX();
     	
-    	Robot.driveTrain.basicDrive(left, right);
+    	Robot.driveTrain.cubicDrive(left, right);
     	//Robot.driveTrain.arcadeDrive(left, right);
     }
 
