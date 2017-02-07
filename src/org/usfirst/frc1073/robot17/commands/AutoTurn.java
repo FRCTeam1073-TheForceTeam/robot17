@@ -11,6 +11,8 @@
 
 package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc1073.robot17.Robot;
 
 /**
@@ -44,11 +46,12 @@ public class AutoTurn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putString("AutoTurnPhase", "initialize");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(turnDirection != null) {
+    	if(turnDirection == "right") {
     		double right = turnSpeed * -1;
     		double left = turnSpeed;
     		Robot.driveTrain.basicDrive(left, right);
@@ -57,13 +60,16 @@ public class AutoTurn extends Command {
     		double left = turnSpeed * -1;
     		Robot.driveTrain.basicDrive(left, right);
     	}
+    	SmartDashboard.putString("AutoTurnPhase", "execute");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(turnDirection != null) {
+    	if(turnDirection == "right") {
+        	SmartDashboard.putString("AutoTurnPhase", "finishing");
     		return Robot.driveTrain.getRightDistanceInches() >= turnDistance || Robot.driveTrain.getLeftDistanceInches() >= (turnDistance * -1);
     	} else {
+        	SmartDashboard.putString("AutoTurnPhase", "finishing");
     		return Robot.driveTrain.getRightDistanceInches() >= (turnDistance * -1) || Robot.driveTrain.getLeftDistanceInches() >= turnDistance;
     	}
     }
@@ -71,6 +77,8 @@ public class AutoTurn extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.basicDrive(0, 0);
+    	SmartDashboard.putBoolean("AutoTurnFinished", true);
+    	SmartDashboard.putString("AutoTurnPhase", "end");
     }
 
     // Called when another command which requires one or more of the same
