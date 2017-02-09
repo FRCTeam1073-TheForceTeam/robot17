@@ -48,6 +48,7 @@ public class AutonomousGearFuelHighCross extends CommandGroup {
     	 * TODO add values
     	 **/
     	addSequential(new AutoDrive(0, 0));
+    	addSequential(new DriveToGearPeg());
     	
     	/**Drive to Boiler
     	 * TODO add values
