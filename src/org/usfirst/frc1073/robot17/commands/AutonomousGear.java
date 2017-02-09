@@ -46,17 +46,13 @@ gearNumber = GearNumber;
     	if (gearNumber == 1){
     		addSequential(new AutoDrive(0, 0));
     		addSequential(new AutoTurn(0, 0, "right"));
-    	}else{
-    		if(gearNumber == 2){
+    	}else if(gearNumber == 2){
     	    	addSequential(new AutoDrive(.5, 114.3));	
-    		}else{
-    			if(gearNumber == 3){
+    		}else if(gearNumber == 3){
         			addSequential(new AutoDrive(0, 0));
         			addSequential(new AutoTurn(0, 0, "right"));
     			}else{
-    				5
-    			}
-    		}
+    				
     	}
     } 
 }
