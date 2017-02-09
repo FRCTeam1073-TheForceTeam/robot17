@@ -11,7 +11,7 @@ Children:
         validators: null
         value: []
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: Drive}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
@@ -167,24 +167,9 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: &id007 []
-    Base: Subsystem
-    Name: LEDs
-  - Children: []
-    Properties:
-      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Default command parameters
-        validators: null
         value: []
-      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
-      Constants: !!robotbuilder.data.properties.ConstantsProperty
-        default: []
-        name: Constants
-        validators: null
-        value: *id007
     Base: Subsystem
+<<<<<<< HEAD
     Name: Vision
   - Children:
     - Children: []
@@ -321,6 +306,9 @@ Children:
         validators: null, value: 5.0}
     Base: PID Subsystem
     Name: PIDDrive
+=======
+    Name: LEDs
+>>>>>>> refs/remotes/origin/master
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -328,30 +316,51 @@ Children:
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
+<<<<<<< HEAD
         choices: &id010 ['0', '1', '2', '3', '4', '5']
         default: 1
         name: Number
         validators: &id011 [Joystick]
+=======
+        choices: &id007 ['0', '1', '2', '3', '4', '5']
+        default: 1
+        name: Number
+        validators: &id008 [Joystick]
+>>>>>>> refs/remotes/origin/master
         value: '0'
     Base: Joystick
     Name: driverLeftStick
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
+<<<<<<< HEAD
         choices: *id010
         default: 1
         name: Number
         validators: *id011
+=======
+        choices: *id007
+        default: 1
+        name: Number
+        validators: *id008
+>>>>>>> refs/remotes/origin/master
         value: '1'
     Base: Joystick
     Name: driverRightStick
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
+<<<<<<< HEAD
         choices: *id010
         default: 1
         name: Number
         validators: *id011
+=======
+        choices: *id007
+        default: 1
+        name: Number
+        validators: *id008
+>>>>>>> refs/remotes/origin/master
         value: '2'
     Base: Joystick
     Name: operatorStick
@@ -456,18 +465,37 @@ Children:
         default: []
         name: Parameters
         validators: null
+<<<<<<< HEAD
         value: []
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: PIDDrive}
+=======
+        value:
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: autoDriveSpeed,
+          type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: autoDriveDistance,
+          type: double}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []
         name: Parameter presets
         validators: null
-        value: []
+        value:
+        - !!robotbuilder.data.properties.ParameterSet
+          name: dedth
+          parameters:
+          - {name: autoDriveSpeed, type: double, value: '0'}
+          - {name: autoDriveDistance, type: double, value: '0'}
+        - !!robotbuilder.data.properties.ParameterSet
+          name: djf
+          parameters:
+          - {name: autoDriveSpeed, type: double, value: '0'}
+          - {name: autoDriveDistance, type: double, value: '0'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
-    Name: PIDTurn
+    Name: AutoDrive
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -476,6 +504,53 @@ Children:
         validators: null
         value: []
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
+>>>>>>> refs/remotes/origin/master
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+<<<<<<< HEAD
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: PIDTurn
+=======
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: AutoTurn
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: &id009 [List]
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command Group
+    Name: AutonomousGearFuelHighCross
+>>>>>>> refs/remotes/origin/master
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+<<<<<<< HEAD
         name: Requires, type: Subsystem, validators: null, value: PIDDrive}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: &id012 []
@@ -486,11 +561,90 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: moveTo
+=======
+        name: Requires, type: Subsystem, validators: null, value: Launcher}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: AutoLaunch
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id009
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command Group
+    Name: AutonomousCross
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id009
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command Group
+    Name: AutonomousGear
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id009
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: AutoTest
+>>>>>>> refs/remotes/origin/master
   Properties: {}
   Base: Commands
   Name: Commands
 Properties:
+<<<<<<< HEAD
   Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\vijay\workspace',
+=======
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Fractal\workspace',
+>>>>>>> refs/remotes/origin/master
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\FRCWorkspace'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
@@ -509,8 +663,13 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
+<<<<<<< HEAD
   Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\vijay\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\FRCWorkspace\robot17'}
+=======
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Fractal\',
+    extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\FRCWorkspace'}
+>>>>>>> refs/remotes/origin/master
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: None}
 Base: Robot

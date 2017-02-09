@@ -43,8 +43,15 @@ public class Drive extends Command {
     protected void execute() {
     	double left = Robot.oi.driverLeftStick.getY();
     	double right = Robot.oi.driverRightStick.getY();
+    	//double left = Robot.oi.driverLeftStick.getY();
+    	//double right = Robot.oi.driverRightStick.getX();
     	
+<<<<<<< HEAD
     	Robot.pIDDrive.basicDrive(left, right);
+=======
+    	Robot.driveTrain.cubicDrive(left, right);
+    	//Robot.driveTrain.arcadeDrive(left, right);
+>>>>>>> refs/remotes/origin/master
     }
 
     // Make this return true when this Command no longer needs to run execute()
