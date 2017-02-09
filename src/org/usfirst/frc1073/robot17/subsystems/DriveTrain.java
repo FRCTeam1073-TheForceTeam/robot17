@@ -176,6 +176,61 @@ public class DriveTrain extends Subsystem {
     	leftMotor1.set(tempLeft);
     	rightMotor1.set(tempRight);
     }
+    /**Split arcade drive code:
+     */
+    public void arcadeDrive(double left, double right) {
+    	leftMotor1.setInverted(true);
+    	leftMotor2.setInverted(true);
+    	leftMotor3.setInverted(true);
+    	rightMotor1.setInverted(false);
+    	rightMotor2.setInverted(false);
+    	rightMotor3.setInverted(false);
+    	
+    	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	
+    	leftMotor2.set(leftMotor1.getDeviceID());
+    	leftMotor3.set(leftMotor1.getDeviceID());
+    	rightMotor2.set(rightMotor1.getDeviceID());
+    	rightMotor3.set(rightMotor1.getDeviceID());
+    	
+    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	
+    	double tempLeft = deadzone(left,DEADZONE_VALUE)-deadzone(left,DEADZONE_VALUE);
+    	double tempRight = deadzone(left,DEADZONE_VALUE)+deadzone(left,DEADZONE_VALUE);
+    	double difL,difR;
+    	
+    	if(tempLeft > 1)
+    	{
+    		difL = tempLeft-1;
+    		tempRight -= difL;
+    		tempLeft = 1;
+    	}
+    	if(tempRight > 1)
+    	{
+    		difR = tempRight-1;
+    		tempLeft -= difR;
+    		tempRight = 1;
+    	}
+    	if(tempLeft < -1)
+    	{
+    		difL = tempLeft+1;
+    		tempRight -= difL;
+    		tempLeft = -1;
+    	}
+    	if(tempRight < -1)
+    	{
+    		difR = tempRight+1;
+    		tempLeft -= difR;
+    		tempRight = -1;
+    	}
+    	
+    	leftMotor1.set(tempLeft);
+    	rightMotor1.set(tempRight);
+    }
     
     /**Left/right raw speed, distance, etc.:
      * getSpeed gives the speed
