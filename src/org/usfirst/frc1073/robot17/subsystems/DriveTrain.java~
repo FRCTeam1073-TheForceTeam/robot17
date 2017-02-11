@@ -44,7 +44,6 @@ public class DriveTrain extends Subsystem {
     
     private final double DEADZONE_VALUE = .05;
     private final double WHEEL_RADIUS = 4.0;
-    private final double CUBIC_SCALE = .07;
     
     /**Deadzone code:
      * Takes in joystick value
@@ -61,11 +60,6 @@ public class DriveTrain extends Subsystem {
     	return input;
     }
     
-    public double cubicScale(double in)
-    {
-    	return CUBIC_SCALE*in + (1 - CUBIC_SCALE) * Math.pow(in, 3);
-    }
-    
     /**Basic drive code:
      * 	-Makes sure left side is inverted and right side isn't
      * 	-Sets non-Motor1 motors as followers
@@ -73,9 +67,7 @@ public class DriveTrain extends Subsystem {
      * 	-Sets Motor1 motors to PercentVbus
      * 	-Sets Motor1 motors to double left and double right, respectively
      **/
-    
     public void basicDrive(double left, double right) {
-<<<<<<< HEAD
 //    	leftMotor1.setInverted(false);
 //    	leftMotor2.setInverted(false);
 //    	leftMotor3.setInverted(false);
@@ -98,109 +90,6 @@ public class DriveTrain extends Subsystem {
 //    	
 //    	leftMotor1.set(deadzone(left,DEADZONE_VALUE));
 //    	rightMotor1.set(deadzone(right,DEADZONE_VALUE));
-=======
-    	leftMotor1.setInverted(true);
-    	leftMotor2.setInverted(true);
-    	leftMotor3.setInverted(true);
-    	rightMotor1.setInverted(false);
-    	rightMotor2.setInverted(false);
-    	rightMotor3.setInverted(false);
-    	
-    	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	
-    	leftMotor2.set(leftMotor1.getDeviceID());
-    	leftMotor3.set(leftMotor1.getDeviceID());
-    	rightMotor2.set(rightMotor1.getDeviceID());
-    	rightMotor3.set(rightMotor1.getDeviceID());
-    	
-    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	
-    	rightMotor1.set(right);
-    	leftMotor1.set(left);
-    }
-    
-    public void cubicDrive(double left, double right) {
-    	leftMotor1.setInverted(true);
-    	leftMotor2.setInverted(true);
-    	leftMotor3.setInverted(true);
-    	rightMotor1.setInverted(false);
-    	rightMotor2.setInverted(false);
-    	rightMotor3.setInverted(false);
-    	
-    	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	
-    	leftMotor2.set(leftMotor1.getDeviceID());
-    	leftMotor3.set(leftMotor1.getDeviceID());
-    	rightMotor2.set(rightMotor1.getDeviceID());
-    	rightMotor3.set(rightMotor1.getDeviceID());
-    	
-    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	
-    	rightMotor1.set(cubicScale(deadzone(right,DEADZONE_VALUE)));
-    	leftMotor1.set(cubicScale(deadzone(left,DEADZONE_VALUE)));
-    }
-    
-    public void arcadeDrive(double left, double right) {
-    	leftMotor1.setInverted(true);
-    	leftMotor2.setInverted(true);
-    	leftMotor3.setInverted(true);
-    	rightMotor1.setInverted(false);
-    	rightMotor2.setInverted(false);
-    	rightMotor3.setInverted(false);
-    	
-    	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	
-    	leftMotor2.set(leftMotor1.getDeviceID());
-    	leftMotor3.set(leftMotor1.getDeviceID());
-    	rightMotor2.set(rightMotor1.getDeviceID());
-    	rightMotor3.set(rightMotor1.getDeviceID());
-    	
-    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	
-    	double tempLeft = cubicScale(deadzone(left,DEADZONE_VALUE)-deadzone(left,DEADZONE_VALUE));
-    	double tempRight = cubicScale(deadzone(left,DEADZONE_VALUE)+deadzone(left,DEADZONE_VALUE));
-    	double difL,difR;
-    	
-    	if(tempLeft > 1)
-    	{
-    		difL = tempLeft-1;
-    		tempRight -= difL;
-    		tempLeft = 1;
-    	}
-    	if(tempRight > 1)
-    	{
-    		difR = tempRight-1;
-    		tempLeft -= difR;
-    		tempRight = 1;
-    	}
-    	if(tempLeft < -1)
-    	{
-    		difL = tempLeft+1;
-    		tempRight -= difL;
-    		tempLeft = -1;
-    	}
-    	if(tempRight < -1)
-    	{
-    		difR = tempRight+1;
-    		tempLeft -= difR;
-    		tempRight = -1;
-    	}
-    	
-    	leftMotor1.set(tempLeft);
-    	rightMotor1.set(tempRight);
->>>>>>> refs/remotes/origin/master
     }
     
     /**Left/right raw speed, distance, etc.:
@@ -234,9 +123,10 @@ public class DriveTrain extends Subsystem {
     public void initDefaultCommand() {
         // BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DEFAULT_COMMAND
 
-        setDefaultCommand(new Drive());
 
     // END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DEFAULT_COMMAND
+    	
+    	setDefaultCommand(new Drive());
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
