@@ -61,12 +61,12 @@ protected void execute() {
     double leftHG = 0;
     double rightHG = 0;
     //This is the basic speed - start slow
-	double driveSpeedHG = 0.1;
+	double driveSpeedHG = 0.0;
 	double driveSpeedMultiplierHG = 0;
 	//Image width - 320 pixels
     double imageWidthHG = 320;
     if (xWidthHG > 50 / initialMultiplierHG) {
-    	driveSpeedMultiplierHG = 1;
+    	driveSpeedMultiplierHG = 0;
     }
     else {
     	driveSpeedMultiplierHG = initialMultiplierHG;
@@ -76,11 +76,11 @@ protected void execute() {
     //Test 1 - simple left right control
     if (xDeltaHG > 10) {
     	leftHG = leftHG + 0.15;
-    	rightHG = rightHG - 0.05;
+    	rightHG = rightHG - 0.00;
     	SmartDashboard.putString("DirectionHG", "LeftHG");
     }
     else if (xDeltaHG < -10) {
-    	leftHG = leftHG -0.05;
+    	leftHG = leftHG -0.00;
     	rightHG = rightHG + 0.15;
     	SmartDashboard.putString("DirectionHG", "RightHG");
     }
