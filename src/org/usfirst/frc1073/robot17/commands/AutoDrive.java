@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc1073.robot17.Robot;
+import org.usfirst.frc1073.robot17.RobotMap;
 
 import com.ctre.CANTalon.FeedbackDevice;
 
@@ -48,7 +49,14 @@ public class AutoDrive extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {    
     	SmartDashboard.putString("Drive1Finished", "Initialized");
-    	//Reset the encoders beofre using them
+    	RobotMap.driveTrainleftMotor1.setPosition(0);
+    	RobotMap.driveTrainleftMotor2.setPosition(0);
+    	RobotMap.driveTrainleftMotor3.setPosition(0);
+    	RobotMap.driveTrainrightMotor1.setPosition(0);
+    	RobotMap.driveTrainrightMotor2.setPosition(0);
+    	RobotMap.driveTrainrightMotor3.setPosition(0);
+    	//Resets encoder positions to 0
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run

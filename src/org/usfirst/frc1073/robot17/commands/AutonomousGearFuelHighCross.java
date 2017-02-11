@@ -47,17 +47,17 @@ public class AutonomousGearFuelHighCross extends CommandGroup {
     	/**Drive and drop off gear
     	 * TODO add values
     	 **/
-    	addSequential(new AutoDrive(0, 0));
+    	addSequential(new AutoDrive(0.5, -50));
     	addSequential(new DriveToGearPeg());
     	
     	/**Drive to Boiler
     	 * TODO add values
     	 **/
-    	addSequential(new AutoDrive(0, 0));
-    	addSequential(new AutoTurn(0, 0, ""));
-    	addSequential(new AutoDrive(0, 0));
+    	addSequential(new AutoDrive(0.5, 0));
+    	addSequential(new AutoTurn(0.5, 0, ""));
+    	addSequential(new AutoDrive(0.5, 0));
     	
     	/**Launch fuel**/
-    	addSequential(new AutoLaunch(.5, .5));
+    	addSequential(new AutoLaunch(0.5, 0.5));
     } 
 }

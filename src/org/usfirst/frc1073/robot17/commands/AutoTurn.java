@@ -52,7 +52,7 @@ public class AutoTurn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(turnDirection == "right") {
+    	if(turnDirection == "clockwise") {
     		double right = turnSpeed * -1;
     		double left = turnSpeed;
     		Robot.driveTrain.basicDrive(left, right);
@@ -66,22 +66,14 @@ public class AutoTurn extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	/*if(turnDirection == "right") {
+    	if(turnDirection == "clockwise") {
         	SmartDashboard.putString("AutoTurnPhase", "finishing");
     		return (Robot.driveTrain.getRightRawDistance() >= turnDegrees) || (Robot.driveTrain.getLeftRawDistance() >= (turnDegrees * -1));
     	} else {
         	SmartDashboard.putString("AutoTurnPhase", "finishing");
     		return (Robot.driveTrain.getRightRawDistance() >= (turnDegrees * -1)) || (Robot.driveTrain.getLeftRawDistance() >= turnDegrees);
-    	}*/
-    	try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	return true;
+    	}
     }
-
     // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.basicDrive(0, 0);
