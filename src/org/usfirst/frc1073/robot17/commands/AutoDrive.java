@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc1073.robot17.Robot;
 
+import com.ctre.CANTalon.FeedbackDevice;
+
 /**
  *
  */
@@ -45,8 +47,8 @@ public class AutoDrive extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-    	runTime = 0;
+    protected void initialize() {    
+    	SmartDashboard.putString("Drive1Finished", "Initialized");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -54,17 +56,11 @@ public class AutoDrive extends Command {
     	Robot.driveTrain.basicDrive(autoDriveSpeed, autoDriveSpeed);
     	SmartDashboard.putNumber("LeftInches", Robot.driveTrain.getLeftDistanceInches());
     	SmartDashboard.putNumber("RightInches", Robot.driveTrain.getRightDistanceInches());
-    	runTime = runTime + 1;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        //return Robot.driveTrain.getLeftDistanceInches() >= autoDriveDistance || Robot.driveTrain.getRightDistanceInches() >= autoDriveDistance;
-    	if(runTime/20 >= autoDriveDistance){
-    		return true;
-    	} else{
-    		return false;
-    	}
+        return Robot.driveTrain.getLeftDistanceInches() >= autoDriveDistance || Robot.driveTrain.getRightDistanceInches() >= autoDriveDistance;
     }
 
     // Called once after isFinished returns true
