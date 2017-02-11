@@ -48,6 +48,7 @@ public class RobotMap {
 
     public static void init() {
     	
+    	/**Manually adding CANTalons**/
     	driveTrainleftMotor1 = new CANTalon(1);
         LiveWindow.addActuator("DriveTrain", "leftMotor1", driveTrainleftMotor1);
         
