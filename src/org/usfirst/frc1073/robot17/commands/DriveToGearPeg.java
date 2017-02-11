@@ -62,8 +62,8 @@ public class DriveToGearPeg extends Command {
         //This is the basic speed - start slow
 		double driveSpeed = 0.1;
 		double driveSpeedMultiplier = 0;
-		//Image width - 280 pixels
-        double imageWidth = 280;
+		//Image width - 320 pixels
+        double imageWidth = 320;
         if (xWidth > 50 / initialMultiplier) {
         	driveSpeedMultiplier = 1;
         }
