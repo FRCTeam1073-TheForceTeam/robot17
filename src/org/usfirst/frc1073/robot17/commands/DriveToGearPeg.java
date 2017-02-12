@@ -76,17 +76,17 @@ public class DriveToGearPeg extends Command {
         if (xDelta > 10) {
         	left = left + 0.15;
         	right = right - 0.05;
-        	SmartDashboard.putString("Direction", "Left");
+        	SmartDashboard.putString("Peg Direction", "Left");
         }
         else if (xDelta < -10) {
         	left = left -0.05;
         	right = right + 0.15;
-        	SmartDashboard.putString("Direction", "Right");
+        	SmartDashboard.putString("Peg Direction", "Right");
         }
         else {
         	left = left;
         	right = right;
-        	SmartDashboard.putString("Direction", "Center");
+        	SmartDashboard.putString("Peg Direction", "Center");
         }
 
         //Test 2 - left right based on how far off we are 
@@ -109,17 +109,17 @@ public class DriveToGearPeg extends Command {
         left = driveSpeed - (xDelta * scaleFactor); 
         */
         
-        Robot.driveTrain.basicDrive(left, right);
-        SmartDashboard.putNumber("left", left);
-        SmartDashboard.putNumber("right", right);
-        SmartDashboard.putNumber("distance", distance);
+        Robot.driveTrain.basicDrive(right, left);
+        SmartDashboard.putNumber("peg left", left);
+        SmartDashboard.putNumber("peg right", right);
+        SmartDashboard.putNumber("peg distance", distance);
         
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//test 1 - known width
-    	if (xWidth > 38) {
+    	if (xWidth > 33) {
     		Robot.driveTrain.basicDrive(0, 0);
     	
     		return true;
