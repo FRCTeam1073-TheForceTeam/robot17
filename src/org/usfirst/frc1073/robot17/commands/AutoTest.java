@@ -48,9 +48,9 @@ public class AutoTest extends CommandGroup {
     	//This is just a little test for all of the Auto functions. Use if you want to experience the true majesty of .5 power.
 SmartDashboard.putString("AutoTurnPhase", "null");
 SmartDashboard.putBoolean("Drive1Finished", false);
-addSequential(new AutoDrive(.5, 5));
-addSequential(new AutoTurn(.5, 500, "left"));
+//addSequential(new AutoDrive(.5, 5));
+addSequential(new AutoTurn(.5, 360, "clockwise"));
 //addSequential(new AutoLaunch (.5, .5));
-addSequential(new AutoDrive(.5, 5));
+//addSequential(new AutoDrive(.5, 10));
     } 
 }
