@@ -49,7 +49,7 @@ public class AutoTest extends CommandGroup {
 SmartDashboard.putString("AutoTurnPhase", "null");
 SmartDashboard.putBoolean("Drive1Finished", false);
 //addSequential(new AutoDrive(.5, 5));
-addSequential(new AutoTurn(.5, 360, "clockwise"));
+addSequential(new AutoTurn(.2, 180, "clockwise"));
 //addSequential(new AutoLaunch (.5, .5));
 //addSequential(new AutoDrive(.5, 10));
     } 
