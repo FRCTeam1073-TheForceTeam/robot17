@@ -50,5 +50,6 @@ public class AutonomousRedGear1Fuel extends CommandGroup {
 		addSequential(new AutoDrive(.5, 100));
 		addSequential(new DriveToBoiler());
 		//Drives near boiler and auto-drives into alignment
+		addSequential(new AutoLaunch(0.5, 0.5));
     } 
 }
