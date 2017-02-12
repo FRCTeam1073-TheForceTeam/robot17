@@ -49,6 +49,14 @@ public class Launcher extends Subsystem {
     	conveyorMotor.set(0.0);
     	launcherMotor1.set(0.0);
     }
+    
+    public void upLauncher() {
+    	//TODO Fill in
+    }
+    
+    public void downLauncher() {
+    	//TODO Fill in
+    }
 
     public void initDefaultCommand() 
     {
