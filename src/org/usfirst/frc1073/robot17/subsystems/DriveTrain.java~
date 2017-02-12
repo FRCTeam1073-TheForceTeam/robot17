@@ -98,31 +98,6 @@ public class DriveTrain extends Subsystem {
     	leftMotor1.set(cubicScale(deadzone(left,DEADZONE_VALUE)));
     }
     
-    public void basicAutoDrive(double left, double right) {
-    	leftMotor1.setInverted(true);
-    	leftMotor2.setInverted(true);
-    	leftMotor3.setInverted(true);
-    	rightMotor1.setInverted(false);
-    	rightMotor2.setInverted(false);
-    	rightMotor3.setInverted(false);
-    	
-    	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	
-    	leftMotor2.set(leftMotor1.getDeviceID());
-    	leftMotor3.set(leftMotor1.getDeviceID());
-    	rightMotor2.set(rightMotor1.getDeviceID());
-    	rightMotor3.set(rightMotor1.getDeviceID());
-    	
-    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	
-    	rightMotor1.set(right);
-    	leftMotor1.set(left);
-    }
-    
     public void arcadeDrive(double left, double right) {
     	leftMotor1.setInverted(true);
     	leftMotor2.setInverted(true);

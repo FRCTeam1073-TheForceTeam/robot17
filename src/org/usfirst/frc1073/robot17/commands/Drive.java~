@@ -41,13 +41,11 @@ public class Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double left = -Robot.oi.driverLeftStick.getY();		//Invert joystick input
-    	double right = -Robot.oi.driverRightStick.getY();	//Invert joystick input
-//    	double left = -Robot.oi.driverLeftStick.getY();		//Invert joystick input
-//    	double right = -Robot.oi.driverRightStick.getX();	//Invert joystick input
+    	double left = Robot.oi.driverLeftStick.getY();
+    	double right = Robot.oi.driverRightStick.getY();
     	
     	Robot.driveTrain.basicDrive(left, right);
-//    	Robot.driveTrain.arcadeDrive(left, right);
+    	//Robot.driveTrain.arcadeDrive(left, right);
     }
 
     // Make this return true when this Command no longer needs to run execute()
