@@ -78,11 +78,14 @@ public class DriveTrain extends Subsystem {
     	leftMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
     	rightMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
     	
-    	leftMotor1.configNominalOutputVoltage(+0f, -0f);
-    	rightMotor1.configNominalOutputVoltage(+0f, -0f);
+//    	leftMotor1.configNominalOutputVoltage(+0f, -0f);
+//    	rightMotor1.configNominalOutputVoltage(+0f, -0f);
+//    	
+//    	leftMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
+//    	rightMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
     	
-    	leftMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
-    	rightMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
+    	leftMotor1.configEncoderCodesPerRev(360);
+    	rightMotor1.configEncoderCodesPerRev(360);
     }
     
     public double deadzone(double input,double deadzoneVal)
