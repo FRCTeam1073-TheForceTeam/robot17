@@ -39,6 +39,9 @@ public class Drive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.driveTrain.setPosLeft(1073.0);
+    	SmartDashboard.putNumber("Position set", Robot.driveTrain.getLeftPos());
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -48,13 +51,15 @@ public class Drive extends Command {
 //    	double left = -Robot.oi.driverLeftStick.getY();		//Invert joystick input
 //    	double right = -Robot.oi.driverRightStick.getX();	//Invert joystick input
     	
-    	Robot.driveTrain.basicDrive(left, right);
+    	Robot.driveTrain.basicDrive(right, left);
 //    	Robot.driveTrain.arcadeDrive(left, right);
     	
     	SmartDashboard.putNumber("Left Rate", Robot.driveTrain.getLeftRate());
     	SmartDashboard.putNumber("Right Rate", Robot.driveTrain.getRightRate());
     	SmartDashboard.putNumber("Left Pos", Robot.driveTrain.getLeftPos());
     	SmartDashboard.putNumber("Right Pos", Robot.driveTrain.getRightPos());
+    	System.out.println(Robot.driveTrain.getLeftPos());
+    	System.out.println(Robot.driveTrain.getRightPos());
     }
 
     // Make this return true when this Command no longer needs to run execute()

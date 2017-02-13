@@ -75,8 +75,8 @@ public class DriveTrain extends Subsystem {
     	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	
-    	leftMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-    	rightMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	leftMotor3.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	rightMotor3.setFeedbackDevice(FeedbackDevice.QuadEncoder);
     	
 //    	leftMotor1.configNominalOutputVoltage(+0f, -0f);
 //    	rightMotor1.configNominalOutputVoltage(+0f, -0f);
@@ -84,8 +84,8 @@ public class DriveTrain extends Subsystem {
 //    	leftMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
 //    	rightMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
     	
-    	leftMotor1.configEncoderCodesPerRev(360);
-    	rightMotor1.configEncoderCodesPerRev(360);
+    	leftMotor3.configEncoderCodesPerRev(360);
+    	rightMotor3.configEncoderCodesPerRev(360);
     }
     
     public double deadzone(double input,double deadzoneVal)
@@ -187,22 +187,27 @@ public class DriveTrain extends Subsystem {
     
     public double getLeftRate()
     {
-    	return leftMotor1.getEncVelocity();
+    	return leftMotor3.getEncVelocity();
     }
     
     public double getRightRate()
     {
-    	return rightMotor1.getEncVelocity();
+    	return rightMotor3.getEncVelocity();
     }
     
-    public int getLeftPos()
+    public double getLeftPos()
     {
-    	return leftMotor1.getEncPosition();
+    	return leftMotor3.getPosition();
     }
     
-    public int getRightPos()
+    public double getRightPos()
     {
-    	return rightMotor1.getEncPosition();
+    	return rightMotor3.getPosition();
+    }
+    
+    public void setPosLeft(double pos)
+    {
+    	leftMotor3.setPosition(pos);
     }
 
     public void initDefaultCommand() {

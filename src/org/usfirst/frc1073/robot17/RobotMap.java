@@ -92,9 +92,9 @@ public class RobotMap {
         lEDsspike2 = new Relay(1);
         LiveWindow.addActuator("LEDs", "spike2", lEDsspike2);
         
-        sensorsgryo = new AnalogGyro(0);
-        LiveWindow.addSensor("Sensors", "gryo", sensorsgryo);
-        sensorsgryo.setSensitivity(0.007);
+        //sensorsgryo = new AnalogGyro(0);
+        //LiveWindow.addSensor("Sensors", "gryo", sensorsgryo);
+        //sensorsgryo.setSensitivity(0.007);
         sensorsproximitySensor = new AnalogInput(1);
         LiveWindow.addSensor("Sensors", "proximitySensor", sensorsproximitySensor);
         
