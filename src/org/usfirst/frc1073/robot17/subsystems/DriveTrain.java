@@ -14,6 +14,7 @@ package org.usfirst.frc1073.robot17.subsystems;
 import org.usfirst.frc1073.robot17.RobotMap;
 import org.usfirst.frc1073.robot17.commands.*;
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.FeedbackDevice;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -52,6 +53,38 @@ public class DriveTrain extends Subsystem {
      * set it to 0
     **/
     
+    public DriveTrain()
+    {
+    	leftMotor1.setInverted(true);
+    	leftMotor2.setInverted(true);
+    	leftMotor3.setInverted(true);
+    	rightMotor1.setInverted(false);
+    	rightMotor2.setInverted(false);
+    	rightMotor3.setInverted(false);
+    	
+    	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	
+    	leftMotor2.set(leftMotor1.getDeviceID());
+    	leftMotor3.set(leftMotor1.getDeviceID());
+    	rightMotor2.set(rightMotor1.getDeviceID());
+    	rightMotor3.set(rightMotor1.getDeviceID());
+    	
+    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	
+    	leftMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	rightMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	
+    	leftMotor1.configNominalOutputVoltage(+0f, -0f);
+    	rightMotor1.configNominalOutputVoltage(+0f, -0f);
+    	
+    	leftMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
+    	rightMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
+    }
+    
     public double deadzone(double input,double deadzoneVal)
     {
     	if(input <= deadzoneVal && input > 0) input = 0;
@@ -74,75 +107,19 @@ public class DriveTrain extends Subsystem {
      * 	-Sets Motor1 motors to double left and double right, respectively
      **/
     public void basicDrive(double left, double right) {
-    	leftMotor1.setInverted(true);
-    	leftMotor2.setInverted(true);
-    	leftMotor3.setInverted(true);
-    	rightMotor1.setInverted(false);
-    	rightMotor2.setInverted(false);
-    	rightMotor3.setInverted(false);
     	
-    	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	
-    	leftMotor2.set(leftMotor1.getDeviceID());
-    	leftMotor3.set(leftMotor1.getDeviceID());
-    	rightMotor2.set(rightMotor1.getDeviceID());
-    	rightMotor3.set(rightMotor1.getDeviceID());
-    	
-    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	
     	rightMotor1.set(cubicScale(deadzone(right,DEADZONE_VALUE)));
     	leftMotor1.set(cubicScale(deadzone(left,DEADZONE_VALUE)));
     }
     
     public void basicAutoDrive(double left, double right) {
-    	leftMotor1.setInverted(true);
-    	leftMotor2.setInverted(true);
-    	leftMotor3.setInverted(true);
-    	rightMotor1.setInverted(false);
-    	rightMotor2.setInverted(false);
-    	rightMotor3.setInverted(false);
-    	
-    	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	
-    	leftMotor2.set(leftMotor1.getDeviceID());
-    	leftMotor3.set(leftMotor1.getDeviceID());
-    	rightMotor2.set(rightMotor1.getDeviceID());
-    	rightMotor3.set(rightMotor1.getDeviceID());
-    	
-    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	
     	rightMotor1.set(right);
     	leftMotor1.set(left);
     }
     
     public void arcadeDrive(double left, double right) {
-    	leftMotor1.setInverted(true);
-    	leftMotor2.setInverted(true);
-    	leftMotor3.setInverted(true);
-    	rightMotor1.setInverted(false);
-    	rightMotor2.setInverted(false);
-    	rightMotor3.setInverted(false);
-    	
-    	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	
-    	leftMotor2.set(leftMotor1.getDeviceID());
-    	leftMotor3.set(leftMotor1.getDeviceID());
-    	rightMotor2.set(rightMotor1.getDeviceID());
-    	rightMotor3.set(rightMotor1.getDeviceID());
-    	
-    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	
     	double tempLeft = cubicScale(deadzone(left,DEADZONE_VALUE)-deadzone(left,DEADZONE_VALUE));
     	double tempRight = cubicScale(deadzone(left,DEADZONE_VALUE)+deadzone(left,DEADZONE_VALUE));
@@ -212,7 +189,17 @@ public class DriveTrain extends Subsystem {
     
     public double getRightRate()
     {
-    	return leftMotor2.getEncVelocity();
+    	return rightMotor1.getEncVelocity();
+    }
+    
+    public int getLeftPos()
+    {
+    	return leftMotor1.getEncPosition();
+    }
+    
+    public int getRightPos()
+    {
+    	return rightMotor1.getEncPosition();
     }
 
     public void initDefaultCommand() {

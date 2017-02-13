@@ -53,6 +53,8 @@ public class Drive extends Command {
     	
     	SmartDashboard.putNumber("Left Rate", Robot.driveTrain.getLeftRate());
     	SmartDashboard.putNumber("Right Rate", Robot.driveTrain.getRightRate());
+    	SmartDashboard.putNumber("Left Pos", Robot.driveTrain.getLeftPos());
+    	SmartDashboard.putNumber("Right Pos", Robot.driveTrain.getRightPos());
     }
 
     // Make this return true when this Command no longer needs to run execute()
