@@ -51,7 +51,7 @@ public class move extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if((Robot.driveTrain.getLeftPos()*(4*Math.PI*2) >= m_dist) | (Robot.driveTrain.getRightPos()*(4*Math.PI*2) >= m_dist)) return true;
+        if((Robot.driveTrain.getLeftPos()*(4*Math.PI) >= m_dist) | (Robot.driveTrain.getRightPos()*(4*Math.PI) >= m_dist)) return true;
         else return false;
     }
 
