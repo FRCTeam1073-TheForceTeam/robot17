@@ -187,12 +187,12 @@ public class DriveTrain extends Subsystem {
     
     public double getLeftPos()
     {
-    	return leftMotor3.getPosition();
+    	return leftMotor3.getEncPosition();
     }
     
     public double getRightPos()
     {
-    	return rightMotor3.getPosition();
+    	return rightMotor3.getEncPosition();
     }
     
     public void setPosLeft(double pos)
