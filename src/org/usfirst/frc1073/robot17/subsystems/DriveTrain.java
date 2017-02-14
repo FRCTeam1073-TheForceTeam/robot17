@@ -185,16 +185,6 @@ public class DriveTrain extends Subsystem {
     	return getRightRawDistance() * (WHEEL_RADIUS * 2 * Math.PI);
     }
     
-    public double getLeftRate()
-    {
-    	return leftMotor3.getEncVelocity();
-    }
-    
-    public double getRightRate()
-    {
-    	return rightMotor3.getEncVelocity();
-    }
-    
     public double getLeftPos()
     {
     	return leftMotor3.getPosition();
@@ -208,6 +198,11 @@ public class DriveTrain extends Subsystem {
     public void setPosLeft(double pos)
     {
     	leftMotor3.setPosition(pos);
+    }
+    
+    public void setPosRight(double pos)
+    {
+    	rightMotor3.setPosition(pos);
     }
 
     public void initDefaultCommand() {

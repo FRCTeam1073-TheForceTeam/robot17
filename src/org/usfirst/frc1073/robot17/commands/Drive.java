@@ -39,8 +39,6 @@ public class Drive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.setPosLeft(1073.0);
-    	SmartDashboard.putNumber("Position set", Robot.driveTrain.getLeftPos());
     	
     }
 
@@ -53,11 +51,6 @@ public class Drive extends Command {
     	
     	Robot.driveTrain.basicDrive(right, left);
 //    	Robot.driveTrain.arcadeDrive(left, right);
-    	
-    	SmartDashboard.putNumber("Left Rate", Robot.driveTrain.getLeftRate());
-    	SmartDashboard.putNumber("Right Rate", Robot.driveTrain.getRightRate());
-    	SmartDashboard.putNumber("Left Pos", Robot.driveTrain.getLeftPos());
-    	SmartDashboard.putNumber("Right Pos", Robot.driveTrain.getRightPos());
     	System.out.println(Robot.driveTrain.getLeftPos());
     	System.out.println(Robot.driveTrain.getRightPos());
     }
