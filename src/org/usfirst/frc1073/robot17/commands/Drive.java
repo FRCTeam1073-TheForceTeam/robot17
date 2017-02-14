@@ -51,8 +51,6 @@ public class Drive extends Command {
     	
     	Robot.driveTrain.basicDrive(right, left);
 //    	Robot.driveTrain.arcadeDrive(left, right);
-    	System.out.println(Robot.driveTrain.getLeftPos());
-    	System.out.println(Robot.driveTrain.getRightPos());
     }
 
     // Make this return true when this Command no longer needs to run execute()
