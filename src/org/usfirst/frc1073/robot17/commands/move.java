@@ -67,6 +67,7 @@ public class move extends Command {
     protected boolean isFinished() {
         //if((Robot.driveTrain.getLeftPos()*4*Math.PI >= destination | (Robot.driveTrain.getRightPos()*-1*4*Math.PI >= destination))) return true;
     	if(currentLeft >= destination | currentRight >= destination) return true;
+        //if((Robot.driveTrain.getLeftPos()*(4*Math.PI) >= m_dist) | (Robot.driveTrain.getRightPos()*(4*Math.PI) >= m_dist)) return true;
         else return false;
     }
 
