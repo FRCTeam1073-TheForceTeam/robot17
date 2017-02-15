@@ -41,10 +41,11 @@ public class BasicLaunchFuel extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double conveyorSpeed = 0.8;
     	double launcherSpeed = 0.8;
+    	double conveyorSpeed = 0.8;
+    	double rightTriggerAxis = Robot.oi.operatorControl.getRawAxis(3);
     	
-    	Robot.launcher.startLauncher(conveyorSpeed, launcherSpeed);
+    	if(rightTriggerAxis >= 0.75) Robot.launcher.startLauncher(launcherSpeed, conveyorSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

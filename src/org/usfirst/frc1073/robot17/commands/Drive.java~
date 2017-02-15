@@ -41,10 +41,19 @@ public class Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double left = Robot.oi.driverLeftStick.getY();
-    	double right = Robot.oi.driverRightStick.getY();
-    	//double left = Robot.oi.driverLeftStick.getY();
-    	//double right = Robot.oi.driverRightStick.getX();
+    	/**RAWAXIS LIST
+    	 * 1 - Left X
+    	 * 2 - Left Y
+    	 * 3 - Triggers
+    	 * 4 - Right X
+    	 * 5 - Right Y
+    	 * 6 - DPad left/right
+    	 **/
+    	
+    	double left = Robot.oi.driverControl.getRawAxis(2);
+    	double right = Robot.oi.driverControl.getRawAxis(5);
+    	//double left = Robot.oi.driverControl.getRawAxis(2);
+    	//double right = Robot.oi.driverControl.getRawAxis(4);
     	
     	Robot.driveTrain.cubicDrive(left, right);
     	//Robot.driveTrain.arcadeDrive(left, right);
