@@ -32,4 +32,15 @@ public class Logger {
 			} catch (IOException e) {}
 		
 	}
+	
+	public void clear(){
+		try{
+		    PrintWriter writer = new PrintWriter("/home/lvuser/Logger.txt", "UTF-8");
+		    writer.println("");
+		    writer.close();
+		} catch (IOException e) {
+		   // do something
+		}
+	}
+	
 }
