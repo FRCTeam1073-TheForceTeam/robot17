@@ -43,8 +43,9 @@ public class BasicLaunchFuel extends Command {
     protected void execute() {
     	double launcherSpeed = 0.8;
     	double conveyorSpeed = 0.8;
+    	double rightTriggerAxis = Robot.oi.operatorControl.getRawAxis(3);
     	
-    	Robot.launcher.startLauncher(launcherSpeed, conveyorSpeed);
+    	if(rightTriggerAxis >= 0.75) Robot.launcher.startLauncher(launcherSpeed, conveyorSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
