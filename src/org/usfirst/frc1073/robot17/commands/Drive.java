@@ -50,13 +50,13 @@ public class Drive extends Command {
     	 * 6 - DPad left/right
     	 **/
     	
-    	double left = Robot.oi.driverControl.getRawAxis(2);
-    	double right = Robot.oi.driverControl.getRawAxis(5);
+    	double left = Robot.oi.driverControl.getRawAxis(1);
+    	double right = Robot.oi.driverControl.getRawAxis(4);
     	//double left = Robot.oi.driverControl.getRawAxis(2);
     	//double right = Robot.oi.driverControl.getRawAxis(4);
     	
-    	Robot.driveTrain.cubicDrive(left, right);
-    	//Robot.driveTrain.arcadeDrive(left, right);
+    	//Robot.driveTrain.cubicDrive(left, right);
+    	Robot.driveTrain.arcadeDrive(left*-1, right*-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

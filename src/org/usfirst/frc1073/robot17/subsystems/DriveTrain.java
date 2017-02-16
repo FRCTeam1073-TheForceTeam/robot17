@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -136,9 +137,9 @@ public class DriveTrain extends Subsystem {
     
     public void arcadeDrive(double left, double right) {
          
-    	double tempLeft = cubicScale(deadzone(left,DEADZONE_VALUE)-deadzone(left,DEADZONE_VALUE));
-    	double tempRight = cubicScale(deadzone(left,DEADZONE_VALUE)+deadzone(left,DEADZONE_VALUE));
-    	double difL,difR;
+    	double tempLeft = cubicScale(deadzone(left,DEADZONE_VALUE)-deadzone(right,DEADZONE_VALUE*3));
+    	double tempRight = cubicScale(deadzone(left,DEADZONE_VALUE)+deadzone(right,DEADZONE_VALUE*3));
+    	double difL,difR = 0;
     	
     	if(tempLeft > 1)
     	{
@@ -164,6 +165,9 @@ public class DriveTrain extends Subsystem {
     		tempLeft -= difR;
     		tempRight = -1;
     	}
+    	
+    	SmartDashboard.putNumber("tempLeft", tempLeft);
+    	SmartDashboard.putNumber("tempRight", tempRight);
     	
     	leftMotor1.set(tempLeft);
     	rightMotor1.set(tempRight);
