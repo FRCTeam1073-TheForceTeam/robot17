@@ -180,11 +180,9 @@ Children:
         default: []
         name: Default command parameters
         validators: null
-        value:
-        - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: speed, type: double,
-          value: '0'}
+        value: []
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: Climb}
+        name: Default Command, type: Command, validators: null, value: None}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
@@ -1077,7 +1075,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\maxit\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Errica\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\FRCWorkspace'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
@@ -1096,7 +1094,7 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\maxit\',
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Errica\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\FRCWorkspace'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: None}
