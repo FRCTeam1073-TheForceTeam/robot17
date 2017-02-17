@@ -169,8 +169,8 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber("tempLeft", tempLeft);
     	SmartDashboard.putNumber("tempRight", tempRight);
     	
-    	leftMotor1.set(tempLeft);
-    	rightMotor1.set(tempRight);
+    	leftMotor1.set(-1*tempLeft/2);
+    	rightMotor1.set(-1*tempRight/2);
     }
     
     /**Left/right raw speed, distance, etc.:
