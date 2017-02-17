@@ -124,7 +124,7 @@ Children:
           default: '0'
           name: Output Channel (PWM)
           validators: &id009 [PWMOutput]
-          value: '0'
+          value: '8'
       Base: Speed Controller
       Name: conveyorMotor
     Properties:
@@ -156,7 +156,7 @@ Children:
           default: '0'
           name: Output Channel (PWM)
           validators: *id009
-          value: '1'
+          value: '9'
       Base: Speed Controller
       Name: collectorMotor
     Properties:
@@ -1109,7 +1109,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Fractal\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\maxit\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\FRCWorkspace'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
@@ -1128,7 +1128,7 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Fractal\',
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\maxit\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\FRCWorkspace'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: None}
