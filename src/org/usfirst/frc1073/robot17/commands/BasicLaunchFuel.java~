@@ -45,7 +45,12 @@ public class BasicLaunchFuel extends Command {
     	double conveyorSpeed = 0.8;
     	double rightTriggerAxis = Robot.oi.operatorControl.getRawAxis(3);
     	
-    	if(rightTriggerAxis >= 0.75) Robot.launcher.startLauncher(launcherSpeed, conveyorSpeed);
+    	if(rightTriggerAxis >= 0.75) {
+    		Robot.launcher.startLauncher(launcherSpeed, conveyorSpeed);
+    	} else {
+    		Robot.launcher.stopLauncher();
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -60,6 +65,5 @@ public class BasicLaunchFuel extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.launcher.stopLauncher();
     }
 }
