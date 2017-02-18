@@ -90,6 +90,7 @@ public class XboxController extends Joystick {
 	 * Makes the controller rumble.
 	 * @param left The left rumble value.
 	 * @param right The right rumble value.
+	 * 
 	 */
 	public void rumble(double left, double right) {
 		setRumble(RumbleType.kLeftRumble, left);
@@ -107,6 +108,7 @@ public class XboxController extends Joystick {
 	
 	/**
 	 * Makes the controller rumble for a period of time
+	 * (Precondition: <code>milis</code> should be < 500)
 	 * @param mag The rumble value.
 	 * @param milis The duration of the rumble
 	 */
