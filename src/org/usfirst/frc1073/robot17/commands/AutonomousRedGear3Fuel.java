@@ -49,7 +49,7 @@ public class AutonomousRedGear3Fuel extends CommandGroup {
 		addSequential(new AutoTurn(.5, 147.75, "clockwise"));
 		addSequential(new moveWithPID(231.75));
 		addSequential(new AutoTurn(.5, 57.3, "counterclockwise"));
-		addSequential(new DriveToBoiler());
+		//addSequential(new DriveToBoiler());
 		//Drives near boiler and auto-drives into alignment
 		addSequential(new AutoLaunch(0.5, 0.5));
     } 

@@ -49,7 +49,7 @@ public class AutonomousBlueGear1Fuel extends CommandGroup {
 		addSequential(new AutoTurn(.5, 147.75, "counterclockwise"));
 		addSequential(new moveWithPID(231.75));
 		addSequential(new AutoTurn(.5, 57.3, "clockwise"));
-		addSequential(new DriveToBoiler());
+		//addSequential(new DriveToBoiler());
 		//Drives near boiler and auto-drives into alignment
 		addSequential(new AutoLaunch(.5, .5));
     } 
