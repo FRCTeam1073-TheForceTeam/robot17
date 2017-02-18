@@ -48,6 +48,9 @@ public class moveWithPID extends Command {
     // Called just before this Command runs the first time
 
 protected void initialize() {
+		
+		Robot.bling.sendAutoDrive();
+	
 		RobotMap.driveTrainleftMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
 		RobotMap.driveTrainleftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
 		RobotMap.driveTrainrightMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
