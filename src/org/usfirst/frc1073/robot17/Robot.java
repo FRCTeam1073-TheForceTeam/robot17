@@ -122,7 +122,12 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-
+    	//Notify the Driver and operator that the match has finished
+    	for(int i = 0; i < 5; i++)
+    	{
+    		Robot.oi.driverControl.rumbleTime(1, 200);
+        	Robot.oi.operatorControl.rumbleTime(1, 200);
+    	}
     }
 
     public void disabledPeriodic() {
