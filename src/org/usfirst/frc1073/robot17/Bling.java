@@ -94,7 +94,7 @@ public class Bling
 			
 	public void sendFinishedClimbing()
 	{
-	    setPattern("colorPattern", "teamcolors", "all", "medium", 0, 100);
+	    setPattern("Alternates", "teamcolors", "all", "medium", 0, 100);
 		send();
 	}
 			
