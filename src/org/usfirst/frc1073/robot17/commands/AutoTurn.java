@@ -47,6 +47,11 @@ public class AutoTurn extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	SmartDashboard.putString("AutoTurnPhase", "initialize");
+    	if(turnDirection == "clockwise") {
+    		Robot.bling.sendAutoTurnRight();
+    	} else if(turnDirection == "counterclockwise") {
+    		Robot.bling.sendAutoTurnLeft();
+    	}
     	RobotMap.driveTrainHeadingGyro.reset();
     	originalDegrees = RobotMap.driveTrainHeadingGyro.getAngle();
     	SmartDashboard.putNumber("OrginalDegrees", RobotMap.driveTrainHeadingGyro.getAngle());
