@@ -66,8 +66,8 @@ public class DriveToGearPeg extends Command {
 		double driveSpeedMultiplier = 0;
 		//Image width - 280 pixels
         double imageWidth = 280;
-        if (xWidth > 50 / initialMultiplier) {
-        	driveSpeedMultiplier = 1;
+        if (xWidth > 15) {
+        	driveSpeedMultiplier = 1.25;
         }
         else {
         	driveSpeedMultiplier = initialMultiplier;
@@ -75,9 +75,9 @@ public class DriveToGearPeg extends Command {
         left = driveSpeed*driveSpeedMultiplier;
         right = driveSpeed*driveSpeedMultiplier;
         //Test 1 - simple left right control
-        if (xDelta > 5) {
+        if (xDelta > 2) {
         	left = left + 0.1;
-        	right = right - 0.05;
+        	right = right - 0.1;
         	SmartDashboard.putString("Peg Direction", "Left");
         }
         else if (xDelta < -5) {
@@ -137,7 +137,7 @@ public class DriveToGearPeg extends Command {
     	Robot.driveTrain.basicDrive(0, 0);
     }
 
-    // Called when another command which requires one or more of the same
+    // Called when another command which req0uires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     	Robot.driveTrain.basicDrive(0, 0);
