@@ -136,7 +136,13 @@ public class Bling
 	}
 	public void sendAutoDrive()
 	{
-		setPattern("wave", "green", "all", "medium", 0, 100);
+		setPattern("wave", "green", "all", "slow", 0, 100);
+		send();
+	}
+	
+	public void sendRemoveGear()
+	{
+		setPattern("solid", "green", "all", "slow", 0, 100);
 		send();
 	}
 	public void sendAutoTurnRight()
@@ -162,6 +168,12 @@ public class Bling
 	public void sendFuelLaunchReady()
 	{
 		setPattern("solid", "Green", "all", "medium", 0, 100);
+		send();
+	}
+	
+	public void sendFuelLaunching()
+	{
+		setPattern("RainbowHalves", "rainbow", "all", "medium", 0, 100);
 		send();
 	}
 	

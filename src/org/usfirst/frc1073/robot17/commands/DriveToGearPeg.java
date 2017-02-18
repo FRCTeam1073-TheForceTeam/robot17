@@ -135,6 +135,7 @@ public class DriveToGearPeg extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.basicDrive(0, 0);
+    	Robot.bling.sendRemoveGear();
     }
 
     // Called when another command which req0uires one or more of the same
