@@ -170,7 +170,7 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber("tempLeft", tempLeft);
     	SmartDashboard.putNumber("tempRight", tempRight);
     	
-    	Robot.oi.driverControl.rumble(Math.abs(tempLeft));
+    	//Robot.oi.driverControl.rumble(Math.abs(tempLeft));
     	leftMotor1.set(-1*tempLeft/1.5);
     	rightMotor1.set(-1*tempRight/1.5);
     }
