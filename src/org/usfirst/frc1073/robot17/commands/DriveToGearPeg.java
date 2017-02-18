@@ -123,7 +123,9 @@ public class DriveToGearPeg extends Command {
     	//test 1 - known width
     	if (xWidth > 28) {
     		Robot.driveTrain.basicDrive(0, 0);
-    	
+    		Robot.oi.driverControl.rumbleTime(1, 100);
+    		Robot.oi.driverControl.rumbleTime(0, 10);
+    		Robot.oi.driverControl.rumbleTime(1, 100);
     		return true;
     	}
     	else {
