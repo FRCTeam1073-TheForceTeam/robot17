@@ -32,6 +32,7 @@ public class moveWithPID extends Command {
 
     double distinInches;
     double errorleft;
+    double errorright;
     
 	public moveWithPID(double distInInches) {
 		distinInches = distInInches;
@@ -48,7 +49,6 @@ public class moveWithPID extends Command {
     // Called just before this Command runs the first time
 
 protected void initialize() {
-		
 		Robot.bling.sendAutoDrive();
 	
 		RobotMap.driveTrainleftMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
@@ -70,12 +70,12 @@ protected void initialize() {
     	RobotMap.driveTrainleftMotor3.setP(1); //ideal p value from testing 0.485
     	RobotMap.driveTrainleftMotor3.setI(0); 
     	RobotMap.driveTrainleftMotor3.setD(0);
-    	RobotMap.driveTrainleftMotor3.setAllowableClosedLoopErr(100);
+    	RobotMap.driveTrainleftMotor3.setAllowableClosedLoopErr(20);
     	RobotMap.driveTrainleftMotor3.reverseOutput(true);
 
     	RobotMap.driveTrainleftMotor3.configMaxOutputVoltage(4);
     	RobotMap.driveTrainleftMotor3.changeControlMode(TalonControlMode.Position);
-    	RobotMap.driveTrainleftMotor3.set(-(distinInches/(4*Math.PI))); /* one rotation is 12.566 inches */
+    	RobotMap.driveTrainleftMotor3.set(-(distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
     	
     	
     	
@@ -88,22 +88,25 @@ protected void initialize() {
     	RobotMap.driveTrainrightMotor3.setP(1); //ideal p value from testing 0.485
     	RobotMap.driveTrainrightMotor3.setI(0); 
     	RobotMap.driveTrainrightMotor3.setD(0);
-    	RobotMap.driveTrainrightMotor3.setAllowableClosedLoopErr(100);
+    	RobotMap.driveTrainrightMotor3.setAllowableClosedLoopErr(20);
     	RobotMap.driveTrainrightMotor3.reverseOutput(true);
 
     	RobotMap.driveTrainrightMotor3.configMaxOutputVoltage(4);
     	RobotMap.driveTrainrightMotor3.changeControlMode(TalonControlMode.Position);
-    	RobotMap.driveTrainrightMotor3.set((distinInches/(4*Math.PI))); /* one rotation is 12.566 inches */
+    	RobotMap.driveTrainrightMotor3.set((distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
  
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	errorleft = RobotMap.driveTrainleftMotor3.getClosedLoopError();
+    	errorright = RobotMap.driveTrainrightMotor3.getClosedLoopError();
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-		if(errorleft > -100){
+		if(errorright < 5 && errorright > -5){
     		System.out.println("Exiting");
     		return true;
     	}
