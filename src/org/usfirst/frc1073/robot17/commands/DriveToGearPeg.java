@@ -73,14 +73,14 @@ public class DriveToGearPeg extends Command {
         left = driveSpeed*driveSpeedMultiplier;
         right = driveSpeed*driveSpeedMultiplier;
         //Test 1 - simple left right control
-        if (xDelta > 10) {
-        	left = left + 0.15;
+        if (xDelta > 5) {
+        	left = left + 0.1;
         	right = right - 0.05;
         	SmartDashboard.putString("Peg Direction", "Left");
         }
-        else if (xDelta < -10) {
+        else if (xDelta < -5) {
         	left = left -0.05;
-        	right = right + 0.15;
+        	right = right + 0.1;
         	SmartDashboard.putString("Peg Direction", "Right");
         }
         else {
@@ -119,7 +119,7 @@ public class DriveToGearPeg extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//test 1 - known width
-    	if (xWidth > 33) {
+    	if (xWidth > 28) {
     		Robot.driveTrain.basicDrive(0, 0);
     	
     		return true;
@@ -132,10 +132,12 @@ public class DriveToGearPeg extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.basicDrive(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.driveTrain.basicDrive(0, 0);
     }
 }
