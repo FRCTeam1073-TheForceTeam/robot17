@@ -80,8 +80,8 @@ public class DriveToGearPeg extends Command {
         	right = right - 0.1;
         	SmartDashboard.putString("Peg Direction", "Left");
         }
-        else if (xDelta < -5) {
-        	left = left -0.05;
+        else if (xDelta < -2) {
+        	left = left -0.1;
         	right = right + 0.1;
         	SmartDashboard.putString("Peg Direction", "Right");
         }
