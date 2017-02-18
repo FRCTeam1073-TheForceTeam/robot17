@@ -56,7 +56,7 @@ public class DriveToGearPeg extends Command {
         SmartDashboard.putNumber("DriveToGearPeg xDelta", xDelta);
         xWidth =  netTable.getNumber("AverageWidth", 0);
         SmartDashboard.putNumber("DriveToGearPeg widthAvg", xWidth);
-        double initialMultiplier = 5;
+        double initialMultiplier = 4;
         double left = 0;
         double right = 0;
         //This is the basic speed - start slow
@@ -65,7 +65,7 @@ public class DriveToGearPeg extends Command {
 		//Image width - 280 pixels
         double imageWidth = 280;
         if (xWidth > 50 / initialMultiplier) {
-        	driveSpeedMultiplier = 2;
+        	driveSpeedMultiplier = 1;
         }
         else {
         	driveSpeedMultiplier = initialMultiplier;
@@ -73,17 +73,19 @@ public class DriveToGearPeg extends Command {
         left = driveSpeed*driveSpeedMultiplier;
         right = driveSpeed*driveSpeedMultiplier;
         //Test 1 - simple left right control
-        if (xDelta > 5) {
+        if (xDelta > 10) {
         	left = left + 0.15;
-        	right = right - 0.1;
+        	right = right - 0.05;
         	SmartDashboard.putString("Peg Direction", "Left");
         }
-        else if (xDelta < -5) {
-        	left = left -0.1;
+        else if (xDelta < -10) {
+        	left = left -0.05;
         	right = right + 0.15;
         	SmartDashboard.putString("Peg Direction", "Right");
         }
         else {
+        	left = left;
+        	right = right;
         	SmartDashboard.putString("Peg Direction", "Center");
         }
 
@@ -117,7 +119,7 @@ public class DriveToGearPeg extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//test 1 - known width
-    	if (xWidth > 29) {
+    	if (xWidth > 33) {
     		Robot.driveTrain.basicDrive(0, 0);
     	
     		return true;
