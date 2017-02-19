@@ -65,6 +65,7 @@ public class OI {
     public JoystickButton purgeBut;
     public JoystickButton collectBut;
     public XboxController operatorControl;
+    public JoystickButton cancelAny;
     
     public OI() {
         
@@ -81,7 +82,7 @@ public class OI {
         
         driverControl = new XboxController(0);
         
-        launchAlignBut = driverControl.a;
+        launchAlignBut = driverControl.x;
         launchAlignBut.whenPressed(new LaunchAlign());
         gearAlignBut = driverControl.b;
         gearAlignBut.whenPressed(new DriveToGearPeg());
@@ -89,6 +90,9 @@ public class OI {
         cameraSwitchBut.whenPressed(new CameraSwitch());
         driveOrientationToggleBut = driverControl.leftJoyButton;
         driveOrientationToggleBut.whileHeld(new DriveOrientationToggle());
+        cancelAny = driverControl.a;
+        
+        
         
 
 

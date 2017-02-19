@@ -123,17 +123,17 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     	//Notify the Driver and operator that the match has finished
-    	for(int i = 0; i < 5; i++)
+    	for(int i = 0; i < 2; i++)
     	{
     		Robot.oi.driverControl.rumbleTime(1, 200);
         	Robot.oi.operatorControl.rumbleTime(1, 200);
     	}
     }
-
+    
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
     }
-
+    
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	if (blueAlliance == true) autonomousCommand = (Command) blueAutonomousChooser.getSelected();
