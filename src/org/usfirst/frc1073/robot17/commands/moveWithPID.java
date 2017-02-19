@@ -49,18 +49,10 @@ public class moveWithPID extends Command {
     // Called just before this Command runs the first time
 
 protected void initialize() {
-		Robot.bling.sendAutoDrive();
 	
-		RobotMap.driveTrainleftMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
-		RobotMap.driveTrainleftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-		RobotMap.driveTrainrightMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
-		RobotMap.driveTrainrightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
+		Robot.bling.sendAutoDrive();
 		
-		RobotMap.driveTrainrightMotor1.set(RobotMap.driveTrainrightMotor3.getDeviceID());
-		RobotMap.driveTrainrightMotor2.set(RobotMap.driveTrainrightMotor3.getDeviceID());
-		RobotMap.driveTrainleftMotor1.set(RobotMap.driveTrainleftMotor3.getDeviceID());
-		RobotMap.driveTrainleftMotor2.set(RobotMap.driveTrainleftMotor3.getDeviceID());
-		
+		//setting PID for the left side
 		RobotMap.driveTrainleftMotor3.enable();
 		RobotMap.driveTrainleftMotor3.setEncPosition(0);
     	RobotMap.driveTrainleftMotor3.setFeedbackDevice(FeedbackDevice.QuadEncoder);
@@ -77,8 +69,7 @@ protected void initialize() {
     	RobotMap.driveTrainleftMotor3.changeControlMode(TalonControlMode.Position);
     	RobotMap.driveTrainleftMotor3.set(-(distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
     	
-    	
-    	
+    	//setting PID for the right side
     	RobotMap.driveTrainrightMotor3.enable();
 		RobotMap.driveTrainrightMotor3.setEncPosition(0);
     	RobotMap.driveTrainrightMotor3.setFeedbackDevice(FeedbackDevice.QuadEncoder);
@@ -94,20 +85,30 @@ protected void initialize() {
     	RobotMap.driveTrainrightMotor3.configMaxOutputVoltage(4);
     	RobotMap.driveTrainrightMotor3.changeControlMode(TalonControlMode.Position);
     	RobotMap.driveTrainrightMotor3.set((distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
+    	
+    	//waiting 60 milliseconds
+    	try {
+			Thread.sleep(60);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
  
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	errorleft = RobotMap.driveTrainleftMotor3.getClosedLoopError();
-    	errorright = RobotMap.driveTrainrightMotor3.getClosedLoopError();
-
+    	errorleft = Math.abs(RobotMap.driveTrainleftMotor3.getClosedLoopError());
+    	errorright = Math.abs(RobotMap.driveTrainrightMotor3.getClosedLoopError());
+    	Logger.setLog("RIGHT ERROR:   "+ Double.toString(errorright));
+    	Logger.setLog("LEFT ERROR:   "+ Double.toString(errorleft));
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-		if(errorright < 5 && errorright > -5){
+		if(Math.abs(errorright) < 60){
     		System.out.println("Exiting");
+    		Logger.setLog("-----END OF PROGRAM-----");
     		return true;
     	}
     	else
@@ -115,26 +116,15 @@ protected void initialize() {
     }
 
     // Called once after isFinished returns true
-    protected void end() {
-    	RobotMap.driveTrainleftMotor3.reset();
-    	RobotMap.driveTrainleftMotor3.disable();
-    	RobotMap.driveTrainleftMotor3.set(0);
-    	
-    	RobotMap.driveTrainrightMotor3.reset();
-    	RobotMap.driveTrainrightMotor3.disable();
-    	RobotMap.driveTrainrightMotor3.set(0);
+    protected void end() {    	
+    	RobotMap.driveTrainleftMotor3.changeControlMode(TalonControlMode.PercentVbus);
+    	RobotMap.driveTrainrightMotor3.changeControlMode(TalonControlMode.PercentVbus);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
-    	
-    	RobotMap.driveTrainleftMotor3.reset();
-    	RobotMap.driveTrainleftMotor3.disable();
-    	RobotMap.driveTrainleftMotor3.set(0);
-    	
-    	RobotMap.driveTrainrightMotor3.reset();
-    	RobotMap.driveTrainrightMotor3.disable();
-    	RobotMap.driveTrainrightMotor3.set(0);
+    protected void interrupted() {    	
+    	RobotMap.driveTrainleftMotor3.changeControlMode(TalonControlMode.PercentVbus);
+    	RobotMap.driveTrainrightMotor3.changeControlMode(TalonControlMode.PercentVbus);
     }
 }

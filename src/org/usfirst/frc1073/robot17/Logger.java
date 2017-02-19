@@ -18,7 +18,7 @@ public class Logger {
 	}
 	
 // just output user string with time and function name
-	public void setLog(String content) {
+	public static void setLog(String content) {
 
 		String timeStamp = new SimpleDateFormat("HH:mm:ss:ms").format(Calendar.getInstance().getTime());
 		String nameOfClass = Thread.currentThread().getStackTrace()[2].getClassName();
@@ -33,7 +33,7 @@ public class Logger {
 		
 	}
 	
-	public void clear(){
+	public static void clear(){
 		try{
 		    PrintWriter writer = new PrintWriter("/home/lvuser/Logger.txt", "UTF-8");
 		    writer.println("");
