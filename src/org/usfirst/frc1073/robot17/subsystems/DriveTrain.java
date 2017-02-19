@@ -54,8 +54,8 @@ public class DriveTrain extends Subsystem {
     
     private final double DEADZONE_VALUE = .05;
     private final double WHEEL_RADIUS = 4.0;
-    private final double CUBIC_SCALE = .14;
-    private final double CUB = CUBIC_SCALE*2;
+    private final double CUBIC_SCALE = .02;
+    private final double CUB = CUBIC_SCALE/2;
     /**Deadzone code:
      * Takes in joystick value
      * If it falls between 0 and <code>deadzone</code> 
@@ -71,17 +71,17 @@ public class DriveTrain extends Subsystem {
     	rightMotor3.setInverted(false);
     	
     	leftMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
     	rightMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
     	
-    	leftMotor2.set(leftMotor1.getDeviceID());
-    	leftMotor3.set(leftMotor1.getDeviceID());
-    	rightMotor2.set(rightMotor1.getDeviceID());
-    	rightMotor3.set(rightMotor1.getDeviceID());
+    	leftMotor2.set(leftMotor3.getDeviceID());
+    	leftMotor1.set(leftMotor3.getDeviceID());
+    	rightMotor2.set(rightMotor3.getDeviceID());
+    	rightMotor1.set(rightMotor3.getDeviceID());
     	
-    	leftMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	rightMotor1.changeControlMode(CANTalon.TalonControlMode.PercentVbus); 
+    	leftMotor3.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	rightMotor3.changeControlMode(CANTalon.TalonControlMode.PercentVbus); 
     	
 //    	  leftMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 //        rightMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
@@ -117,23 +117,23 @@ public class DriveTrain extends Subsystem {
     
     public void basicDrive(double left, double right) {
     	
-        leftMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-        rightMotor1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+        leftMotor3.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+        rightMotor3.setFeedbackDevice(FeedbackDevice.QuadEncoder);
         	
-        leftMotor1.configNominalOutputVoltage(+0f, -0f);
-        rightMotor1.configNominalOutputVoltage(+0f, -0f);
+        leftMotor3.configNominalOutputVoltage(+0f, -0f);
+        rightMotor3.configNominalOutputVoltage(+0f, -0f);
         	
-        leftMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
-        rightMotor1.configPeakOutputVoltage(+12.0f, -12.0f);
+        leftMotor3.configPeakOutputVoltage(+12.0f, -12.0f);
+        rightMotor3.configPeakOutputVoltage(+12.0f, -12.0f);
             	
-    	rightMotor1.set(right);
-    	leftMotor1.set(left);
+    	rightMotor3.set(right);
+    	leftMotor3.set(left);
     }
     
     public void cubicDrive(double left, double right) {
          
-    	rightMotor1.set(cubicScale(deadzone(right,DEADZONE_VALUE),CUBIC_SCALE));
-    	leftMotor1.set(cubicScale(deadzone(left,DEADZONE_VALUE),CUBIC_SCALE));
+    	rightMotor3.set(cubicScale(deadzone(right,DEADZONE_VALUE),CUBIC_SCALE));
+    	leftMotor3.set(cubicScale(deadzone(left,DEADZONE_VALUE),CUBIC_SCALE));
     }
     
     public void arcadeDrive(double left, double right) {
@@ -171,8 +171,8 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber("tempRight", tempRight);
     	
     	//Robot.oi.driverControl.rumble(Math.abs(tempLeft));
-    	leftMotor1.set(-1*tempLeft/1.5);
-    	rightMotor1.set(-1*tempRight/1.5);
+    	leftMotor3.set(-1*tempLeft);
+    	rightMotor3.set(-1*tempRight);
     }
     
     /**Left/right raw speed, distance, etc.:
@@ -180,11 +180,11 @@ public class DriveTrain extends Subsystem {
      * getPosition measures the radians passed
      */
     public double getLeftRawSpeed() {
-    	return leftMotor1.getSpeed();
+    	return leftMotor3.getSpeed();
     }
     
     public double getLeftRawDistance() {
-    	return leftMotor1.getPosition();
+    	return leftMotor3.getPosition();
     }
     
     public double getLeftDistanceInches() {
@@ -192,11 +192,11 @@ public class DriveTrain extends Subsystem {
     }
     
     public double getRightRawSpeed() {
-    	return rightMotor1.getSpeed();
+    	return rightMotor3.getSpeed();
     }
     
     public double getRightRawDistance() {
-    	return rightMotor1.getPosition();
+    	return rightMotor3.getPosition();
     }
     
     public double getRightDistanceInches() {
