@@ -37,6 +37,7 @@ public class RobotMap {
     public static Encoder driveTrainrightEnc;
     public static AnalogGyro driveTrainHeadingGyro;
     public static AnalogInput driveTrainProximitySensorFront;
+    public static AnalogInput driveTrainProximitySensorBack;
     public static SpeedController launcherconveyorMotor;
     public static SpeedController collectorcollectorMotor;
     public static Relay lEDsspike1;
@@ -68,8 +69,11 @@ public class RobotMap {
         driveTrainHeadingGyro = new AnalogGyro(0);
         LiveWindow.addSensor("DriveTrain", "HeadingGyro", driveTrainHeadingGyro);
         driveTrainHeadingGyro.setSensitivity(0.007);
-        driveTrainProximitySensorFront = new AnalogInput(1);
+        driveTrainProximitySensorFront = new AnalogInput(2);
         LiveWindow.addSensor("DriveTrain", "ProximitySensorFront", driveTrainProximitySensorFront);
+        
+        driveTrainProximitySensorBack = new AnalogInput(3);
+        LiveWindow.addSensor("DriveTrain", "ProximitySensorBack", driveTrainProximitySensorBack);
         
         launcherconveyorMotor = new Victor(9);
         LiveWindow.addActuator("Launcher", "conveyorMotor", (Victor) launcherconveyorMotor);
