@@ -37,8 +37,9 @@ public class BasicLaunchFuel extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.bling.sendFuelLaunching();
     }
-
+    
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double launcherSpeed = 0.8;
@@ -47,8 +48,10 @@ public class BasicLaunchFuel extends Command {
     	
     	if(rightTriggerAxis >= 0.75) {
     		Robot.launcher.startLauncher(launcherSpeed, conveyorSpeed);
+    		Robot.oi.operatorControl.rumble(0.75);
     	} else {
     		Robot.launcher.stopLauncher();
+    		Robot.oi.operatorControl.rumble(0);
     	}
     	
     }
