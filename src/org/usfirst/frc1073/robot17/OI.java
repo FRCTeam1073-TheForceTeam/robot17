@@ -79,7 +79,7 @@ public class OI {
         climbBut.whileHeld(new Climb(0));
         agitateBut = operatorControl.b;
         agitateBut.whileHeld(new Agitate());
-        operatorControl.y.whenPressed(new DriveInches(24));
+        
         
         driverControl = new XboxController(0);
         
