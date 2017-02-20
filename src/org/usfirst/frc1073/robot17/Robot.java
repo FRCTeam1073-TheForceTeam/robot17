@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     boolean blueAlliance = false;
     boolean redAlliance = false;
+    boolean pickedNoAlliance = false;
     public static DriveModes driveMode = DriveModes.PID;
     
     public static OI oi;
@@ -113,7 +114,7 @@ public class Robot extends IterativeRobot {
         allianceChooser = new SendableChooser<Boolean>();
         allianceChooser.addDefault("None", pickedNoAlliance = true);
         allianceChooser.addDefault("Blue Alliance", blueAlliance = true);
-        allianceChooser.addObject("Red Alliance", blueAlliance = false);
+        allianceChooser.addObject("Red Alliance", redAlliance = true);
         SmartDashboard.putData("Alliance Chooser", allianceChooser);
         
         /**Determines which autonomous set to put on the dashboard**/
@@ -125,6 +126,8 @@ public class Robot extends IterativeRobot {
         	//puts redAutonomousChooser on and sets blueAlliance to false
         	SmartDashboard.putData("Red Alliance Autonomous Chooser", redAutonomousChooser);
         	blueAlliance = false;
+        } else if (pickedNoAlliance == true){
+        	//do nothing
         } else {
         	//do nothing
         }
