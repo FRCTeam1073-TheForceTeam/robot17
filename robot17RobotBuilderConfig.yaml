@@ -109,24 +109,7 @@ Children:
         value: []
     Base: Subsystem
     Name: DriveTrain
-  - Children:
-    - Children: []
-      Properties:
-        Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id007 [Victor, Jaguar, Talon, VictorSP, TalonSRX, Spark, SD540]
-          default: Talon
-          name: Type
-          validators: null
-          value: Victor
-        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id008 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-            '11', '12', '13', '14', '15', '16', '17', '18', '19']
-          default: '0'
-          name: Output Channel (PWM)
-          validators: &id009 [PWMOutput]
-          value: '9'
-      Base: Speed Controller
-      Name: conveyorMotor
+  - Children: []
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
@@ -134,28 +117,29 @@ Children:
         validators: null
         value: []
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: BasicLaunchFuel}
+        name: Default Command, type: Command, validators: null, value: SpinLauncher}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
         validators: null
-        value: &id010 []
+        value: &id007 []
     Base: Subsystem
     Name: Launcher
   - Children:
     - Children: []
       Properties:
         Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id007
+          choices: &id010 [Victor, Jaguar, Talon, VictorSP, TalonSRX, Spark, SD540]
           default: Talon
           name: Type
           validators: null
           value: Victor
         Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id008
+          choices: &id011 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+            '11', '12', '13', '14', '15', '16', '17', '18', '19']
           default: '0'
           name: Output Channel (PWM)
-          validators: *id009
+          validators: &id012 [PWMOutput]
           value: '8'
       Base: Speed Controller
       Name: collectorMotor
@@ -171,7 +155,7 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: *id010
+        value: *id007
     Base: Subsystem
     Name: Collector
   - Children: []
@@ -187,27 +171,27 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: *id010
+        value: *id007
     Base: Subsystem
     Name: Climber
   - Children:
     - Children: []
       Properties:
         Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id011 ['0', '1', '2', '3']
+          choices: &id008 ['0', '1', '2', '3']
           default: '0'
           name: Output Channel (Relay)
-          validators: &id012 [RelayOutput]
+          validators: &id009 [RelayOutput]
           value: '0'
       Base: Spike
       Name: spike1
     - Children: []
       Properties:
         Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id011
+          choices: *id008
           default: '0'
           name: Output Channel (Relay)
-          validators: *id012
+          validators: *id009
           value: '1'
       Base: Spike
       Name: spike2
@@ -242,6 +226,38 @@ Children:
         value: []
     Base: Subsystem
     Name: Agitator
+  - Children:
+    - Children: []
+      Properties:
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id010
+          default: Talon
+          name: Type
+          validators: null
+          value: Victor
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id011
+          default: '0'
+          name: Output Channel (PWM)
+          validators: *id012
+          value: '9'
+      Base: Speed Controller
+      Name: conveyorMotor
+    Properties:
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: SpinConveyor}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: []
+    Base: Subsystem
+    Name: Conveyor
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -261,10 +277,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: DriveTrain}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id013 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id013
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
@@ -322,7 +338,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
-    Name: BasicLaunchFuel
+    Name: SpinLauncher
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -341,6 +357,24 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: CollectFuel
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Conveyor}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id013 []
+        name: Parameter presets
+        validators: null
+        value: *id013
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: SpinConveyor
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -838,7 +872,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\maxit\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Nathaniel\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\FRCWorkspace'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
@@ -857,7 +891,7 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\maxit\',
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Nathaniel\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\FRCWorkspace'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: None}
