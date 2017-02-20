@@ -48,7 +48,7 @@ public class AutonomousBlueGear3 extends CommandGroup {
     	switch(Robot.driveMode)
 		{
 			case PID:
-				addSequential(new moveWithPID(-86.425));
+				addSequential(new moveWithPID(-55));
 				break;
 			case ROTATIONS:
 				addSequential(new DriveInches(-86.425));
@@ -58,7 +58,7 @@ public class AutonomousBlueGear3 extends CommandGroup {
 			default:
 				break;
 		}
-		addSequential(new AutoTurn(.5, 60, "counterclockwise"));
+		addSequential(new AutoTurn(.3, 42, "counterclockwise"));
 		addSequential(new DriveToGearPeg());
 		//Drives near peg and auto-drives onto it
     } 
