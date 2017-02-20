@@ -49,6 +49,8 @@ public class SpinConveyor extends Command {
     	
     	//Checks Axis and starts or stops the conveyor based on it
     	if(leftTriggerAxis >= 0.25) {
+    		
+    		//Actually Doing The Spinning
     		RobotMap.conveyorconveyorMotor.set(-15);
     	} 
     	else {
