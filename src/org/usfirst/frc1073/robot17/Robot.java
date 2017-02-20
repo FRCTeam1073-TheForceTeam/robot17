@@ -121,11 +121,11 @@ public class Robot extends IterativeRobot {
         
         /**Alliance chooser**/
         //TODO If the default alliance always shows up, set default to null
-        allianceChooser = new SendableChooser<Boolean>();
-        allianceChooser.addDefault("None", pickedNoAlliance = true);
-        allianceChooser.addDefault("Blue Alliance", blueAlliance = true);
-        allianceChooser.addObject("Red Alliance", redAlliance = true);
-        SmartDashboard.putData("Alliance Chooser", allianceChooser);
+//        allianceChooser = new SendableChooser<Boolean>();
+//        allianceChooser.addDefault("None", pickedNoAlliance = true);
+//        allianceChooser.addDefault("Blue Alliance", blueAlliance = true);
+//        allianceChooser.addObject("Red Alliance", redAlliance = true);
+//        SmartDashboard.putData("Alliance Chooser", allianceChooser);
         
         /**Determines which autonomous set to put on the dashboard**/
         if (blueAlliance == true) {
@@ -237,8 +237,9 @@ public class Robot extends IterativeRobot {
     
     public void autonomousInit() {
         // schedule the autonomous command (example)
-    	if (blueAlliance == true) autonomousCommand = (Command) blueAutonomousChooser.getSelected();
-        if (redAlliance == true) autonomousCommand = (Command) redAutonomousChooser.getSelected();
+//    	if (blueAlliance == true) autonomousCommand = (Command) blueAutonomousChooser.getSelected();
+//        if (redAlliance == true) autonomousCommand = (Command) redAutonomousChooser.getSelected();
+    	autonomousCommand = (Command) new AutonomousBlueGear1();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
