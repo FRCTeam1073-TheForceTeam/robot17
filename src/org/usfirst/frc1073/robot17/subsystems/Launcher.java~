@@ -41,11 +41,9 @@ public class Launcher extends Subsystem {
     
     public void startLauncher(double launcherSpeed, double conveyorSpeed) {
     	launcherMotor1.set(launcherSpeed);
-    	conveyorMotor.set(conveyorSpeed);
     }
     
     public void stopLauncher() {
-    	conveyorMotor.set(0.0);
     	launcherMotor1.set(0.0);
     }
     
