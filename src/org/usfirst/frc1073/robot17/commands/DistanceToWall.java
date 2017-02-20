@@ -48,7 +48,10 @@ double reciprocal;
     protected void execute() {
     	x = RobotMap.driveTrainProximitySensorFront.getVoltage() * 9.8;
     	SmartDashboard.putNumber("FrontDistance", x);
-    	reciprocal = RobotMap.driveTrainProximitySensorBack.getVoltage() * .0465 - .0079;
+    	
+    	// TODO: Need to add the proximity sensor
+    	//reciprocal = RobotMap.driveTrainProximitySensorBack.getVoltage() * .0465 - .0079;
+    	
     	y = 1 / reciprocal;
     	y = y / 2.54;
     	SmartDashboard.putNumber("BackDistance", y);
