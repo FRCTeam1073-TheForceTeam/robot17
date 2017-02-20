@@ -11,6 +11,7 @@
 
 package org.usfirst.frc1073.robot17;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -18,6 +19,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
+import org.opencv.core.Mat;
 
 import org.usfirst.frc1073.robot17.commands.*;
 import org.usfirst.frc1073.robot17.subsystems.*;
@@ -36,6 +42,8 @@ public class Robot extends IterativeRobot {
     boolean redAlliance = false;
     boolean pickedNoAlliance = false;
     public static DriveModes driveMode = DriveModes.PID;
+    
+    public static boolean selectedCamera = false;
     
     public static OI oi;
     public static Bling bling;
@@ -133,6 +141,81 @@ public class Robot extends IterativeRobot {
         } else {
         	//do nothing
         }
+        
+        // //////////////////////////////////////////////////////////////////////////////// //
+        // helper thread to cause the camera to switch from front to back to front
+        // every 5 seconds. This thread will be removed once we have integrated it with
+        // the robot joystick controls
+        Thread switchCamera = new Thread(() -> 
+        {
+			while(true)
+			{
+				if ( selectedCamera == true ) {
+					selectedCamera = false;
+    				SmartDashboard.putString("Selected Camera: ", "Camera 1");
+				}
+				else {
+					selectedCamera = true;
+    				SmartDashboard.putString("Selected Camera: ", "Camera 2");
+				}
+				
+				try {
+					Thread.sleep(5000); //Sleep for 5 seconds
+				} catch(Exception e) { }
+			}
+		});
+                
+        /** Instantiate a the camera server for both USB webcams in a separate thread **/
+        Thread cameraThread = new Thread(() ->
+        {        	
+            // 640, 480
+            // 320, 240
+            // 160, 120
+        	
+            UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);            
+            camera1.setResolution(320, 240);
+            camera1.setFPS(20);
+            
+            UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+            camera2.setResolution(320, 240);
+            camera2.setFPS(20);
+            
+            CvSink cvSink = CameraServer.getInstance().getVideo(camera1);
+            CvSource outputStream = CameraServer.getInstance().putVideo("Video", 320, 240);
+            Mat source = new Mat();
+            
+            // TODO: remove the camera switcher thread start when we integrate the camera
+            //       with the button to toggle the camera feed.
+            switchCamera.start();        
+
+            while(!Thread.interrupted()) {
+            	// We support two cameras, so the selectedCamera is a boolean to toggle
+            	// between camera1 and camera2
+            	if(selectedCamera == false)
+            	{
+            		// Set the source to camera1
+            		cvSink.setSource(camera1);            		
+            	}
+            	else 
+            	{
+            		// Set the source to camera2
+            		cvSink.setSource(camera2);
+            	}
+ 
+            	//Grab image from the source camera
+            	cvSink.grabFrame(source);
+            	
+            	// if there was an image collected, then send it to the dashboard via
+            	// the output stream
+            	if ( source.empty() == false ) {
+            		outputStream.putFrame(source);
+            	}
+            }
+        });
+        
+        cameraThread.start();       
+        // /////////////////////////////////////////////////////////////////////////////// //
+        
     }
 
     /**
