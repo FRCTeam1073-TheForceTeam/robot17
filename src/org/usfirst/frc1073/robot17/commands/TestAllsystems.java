@@ -14,8 +14,11 @@ import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc1073.robot17.Bling;
 import org.usfirst.frc1073.robot17.Robot;
 import org.usfirst.frc1073.robot17.RobotMap;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+
 
 /**
  *
@@ -106,6 +109,7 @@ public class TestAllsystems extends Command {
     	RobotMap.driveTrainrightMotor3.set(resetMotor);
     	RobotMap.launcherlauncherMotor1.set(resetMotor);
     	RobotMap.climberclimber.set(resetMotor);
+    	Robot.bling.disableLeds();
     	//reset motors
     	
     	//reset all motors and encoders so that they are at a state of rest. No motors are moving and no encoders are holding a value.
@@ -738,6 +742,14 @@ public class TestAllsystems extends Command {
 								        			// TODO Auto-generated catch block
 								        			e1.printStackTrace();
 								        		}
+								        		Robot.bling.sendClimbing();
+								        		try {
+								        			Thread.sleep(testTime);
+								        		} catch (InterruptedException e1) {
+								        			// TODO Auto-generated catch block
+								        			e1.printStackTrace();
+								       
+								        	
 		    		}
 		    		}
     		}
