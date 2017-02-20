@@ -15,6 +15,7 @@ package org.usfirst.frc1073.robot17;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder.IndexingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Relay;
@@ -38,7 +39,9 @@ public class RobotMap {
     public static AnalogGyro driveTrainHeadingGyro;
     public static AnalogInput driveTrainProximitySensorFront;
     public static SpeedController launcherconveyorMotor;
+    public static Encoder launcherlauncherEncoder;
     public static SpeedController collectorcollectorMotor;
+    public static Encoder climberclimberEncoder;
     public static Relay lEDsspike1;
     public static Relay lEDsspike2;
 
@@ -74,9 +77,19 @@ public class RobotMap {
         launcherconveyorMotor = new Victor(9);
         LiveWindow.addActuator("Launcher", "conveyorMotor", (Victor) launcherconveyorMotor);
         
+        launcherlauncherEncoder = new Encoder(4, 5, false);
+        LiveWindow.addSensor("Launcher", "launcherEncoder", launcherlauncherEncoder);
+        launcherlauncherEncoder.setDistancePerPulse(1.0);
+        launcherlauncherEncoder.setPIDSourceType(PIDSourceType.kRate);
+        launcherlauncherEncoder.setIndexSource(6, IndexingType.kResetOnRisingEdge);
         collectorcollectorMotor = new Victor(8);
         LiveWindow.addActuator("Collector", "collectorMotor", (Victor) collectorcollectorMotor);
         
+        climberclimberEncoder = new Encoder(7, 8, false);
+        LiveWindow.addSensor("Climber", "climberEncoder", climberclimberEncoder);
+        climberclimberEncoder.setDistancePerPulse(1.0);
+        climberclimberEncoder.setPIDSourceType(PIDSourceType.kRate);
+        climberclimberEncoder.setIndexSource(9, IndexingType.kResetOnRisingEdge);
         lEDsspike1 = new Relay(0);
         LiveWindow.addActuator("LEDs", "spike1", lEDsspike1);
         

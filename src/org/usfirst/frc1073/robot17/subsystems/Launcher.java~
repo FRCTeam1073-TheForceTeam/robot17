@@ -42,12 +42,6 @@ public class Launcher extends Subsystem {
     
     public void startLauncher(double launcherSpeed, double conveyorSpeed) {
     	launcherMotor1.set(launcherSpeed);
-    	try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     	conveyorMotor.set(conveyorSpeed);
     }
     
