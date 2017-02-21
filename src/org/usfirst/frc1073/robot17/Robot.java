@@ -104,15 +104,15 @@ public class Robot extends IterativeRobot {
         autonomousChooser.addObject("Blue Gear 1", new AutonomousBlueGear1());
         autonomousChooser.addObject("Blue Gear 2", new AutonomousBlueGear2());
         autonomousChooser.addObject("Blue Gear 3", new AutonomousBlueGear3());
-        autonomousChooser.addObject("Blue Gear 1 Fuel", new AutonomousBlueGear1Fuel());
-        autonomousChooser.addObject("Blue Gear 2 Fuel", new AutonomousBlueGear2Fuel());
-        autonomousChooser.addObject("Blue Gear 3 Fuel", new AutonomousBlueGear3Fuel());
+        //autonomousChooser.addObject("Blue Gear 1 Fuel", new AutonomousBlueGear1Fuel());
+        //autonomousChooser.addObject("Blue Gear 2 Fuel", new AutonomousBlueGear2Fuel());
+        //autonomousChooser.addObject("Blue Gear 3 Fuel", new AutonomousBlueGear3Fuel());
         autonomousChooser.addObject("Red Gear 1", new AutonomousRedGear1());
         autonomousChooser.addObject("Red Gear 2", new AutonomousRedGear2());
         autonomousChooser.addObject("Red Gear 3", new AutonomousRedGear3());
-        autonomousChooser.addObject("Red Gear 1 Fuel", new AutonomousRedGear1Fuel());
-        autonomousChooser.addObject("Red Gear 2 Fuel", new AutonomousRedGear2Fuel());
-        autonomousChooser.addObject("Red Gear 3 Fuel", new AutonomousRedGear3Fuel());
+        //autonomousChooser.addObject("Red Gear 1 Fuel", new AutonomousRedGear1Fuel());
+        //autonomousChooser.addObject("Red Gear 2 Fuel", new AutonomousRedGear2Fuel());
+        //autonomousChooser.addObject("Red Gear 3 Fuel", new AutonomousRedGear3Fuel());
         SmartDashboard.putData("Alliance Chooser", autonomousChooser);
         
         /**Alliance chooser**/
