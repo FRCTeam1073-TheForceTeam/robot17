@@ -51,14 +51,14 @@ public class AutonomousRedGear1 extends CommandGroup {
 				addSequential(new moveWithPID(-55));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(-60));
+				addSequential(new DriveInches(-86.425));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(-60, 0));
+				addSequential(new TimedDrive(-86.425, 0));
 			default:
 				break;
 		}
-		addSequential(new AutoTurn(.5, 60, "clockwise"));
+		addSequential(new AutoTurn(.3, 42, "counterclockwise"));
 		addSequential(new DriveToGearPeg());
 		//Drives near peg and auto-drives onto it
     } 
