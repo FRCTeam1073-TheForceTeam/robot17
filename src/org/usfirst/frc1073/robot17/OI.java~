@@ -84,7 +84,7 @@ public class OI {
         driverControl = new XboxController(0);
         
         launchAlignBut = driverControl.x;
-        launchAlignBut.whenPressed(new LaunchAlign());
+        launchAlignBut.whenPressed(new AutonomousBlueGear3());
         gearAlignBut = driverControl.b;
         gearAlignBut.whenPressed(new DriveToGearPeg());
         cameraSwitchBut = driverControl.rightJoyButton;
