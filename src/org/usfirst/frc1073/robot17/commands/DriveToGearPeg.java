@@ -132,7 +132,16 @@ public class DriveToGearPeg extends Command {
     	isPressed = Robot.oi.cancelAny.get();
     	
     	//Stops the robot if:
-    	if (xWidth > 29 || isPressed) {
+    	/*
+    	 * Change this to affect how close the robot gets. Bigger means closer and smaller means farther.
+    	 * 27 should be ok to start.
+    	 * 			|
+    	 * 			|
+    	 * 			|
+    	 *			|
+    	 *		   \ /
+    	 */
+    	if (xWidth > 27 || isPressed) {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTime(1, 150);
     		Robot.oi.driverControl.rumbleTime(0, 10);
