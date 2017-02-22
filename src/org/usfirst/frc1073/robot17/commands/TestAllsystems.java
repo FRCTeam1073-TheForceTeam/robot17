@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc1073.robot17.Bling;
 import org.usfirst.frc1073.robot17.Robot;
 import org.usfirst.frc1073.robot17.RobotMap;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
+
 
 
 /**
@@ -760,7 +760,7 @@ public class TestAllsystems extends Command {
 	    		}
     		}
     		}
-    		
+    		}
     		
     		
     		
