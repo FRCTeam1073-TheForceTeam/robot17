@@ -42,6 +42,7 @@ public class Climber extends Subsystem {
     // here. Call these from Commands.
 
     private final double CLIMB_SPEED = .8;
+    private final double UNCLIMB_SPEED = -.8;
     
     public void basicClimb() {
     	climber.set(CLIMB_SPEED);
@@ -49,6 +50,10 @@ public class Climber extends Subsystem {
     
     public void stopClimb() {
     	climber.set(0.0);
+    }
+    
+    public void reverseClimb() {
+    	climber.set(UNCLIMB_SPEED);
     }
     
     public void initDefaultCommand() {
