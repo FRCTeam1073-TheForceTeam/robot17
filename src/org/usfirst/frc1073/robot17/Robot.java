@@ -115,12 +115,12 @@ public class Robot extends IterativeRobot {
         //autonomousChooser.addObject("Red Gear 1 Fuel", new AutonomousRedGear1Fuel());
         //autonomousChooser.addObject("Red Gear 2 Fuel", new AutonomousRedGear2Fuel());
         //autonomousChooser.addObject("Red Gear 3 Fuel", new AutonomousRedGear3Fuel());
-        SmartDashboard.putData("Alliance Chooser", autonomousChooser);
+        SmartDashboard.putData("Autonomous Chooser", autonomousChooser);
         
         /**Alliance chooser**/
         allianceChooser = new SendableChooser<Boolean>();
         allianceChooser.addDefault("No Alliance", null);
-        allianceChooser.addDefault("Blue Alliance", blueAlliance = true);
+        allianceChooser.addObject("Blue Alliance", blueAlliance = true);
         allianceChooser.addObject("Red Alliance", blueAlliance = false);
         SmartDashboard.putData("Alliance Chooser", allianceChooser);
         
@@ -203,7 +203,8 @@ public class Robot extends IterativeRobot {
     
     public void autonomousInit() {
         // schedule the autonomous command (example)
-    	autonomousCommand = autonomousChooser.getSelected();
+    	//autonomousCommand = autonomousChooser.getSelected();
+    	autonomousCommand = new AutonomousBlueGear3();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 

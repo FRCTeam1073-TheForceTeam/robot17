@@ -32,6 +32,7 @@ public class DriveToGearPeg extends Command {
 	NetworkTable netTable;
     double xDelta;
     double xWidth;
+    Logger log = new Logger();
     
     //Variable for button used in isFinished
     boolean isPressed = false;
@@ -108,21 +109,24 @@ public class DriveToGearPeg extends Command {
         	finalRight = forwardsRight - changeRight;
         	finalLeft = forwardsLeft + changeLeft;
         	SmartDashboard.putString("Peg Direction", "Left");
+        	log.setLog("Peg Direction is Left");
         }
         else if (xDelta < -side) {
         	finalRight = forwardsRight + changeRight;
         	finalLeft = forwardsLeft - changeLeft;
         	SmartDashboard.putString("Peg Direction", "Right");
+        	log.setLog("Peg Direction is Right");
         }
         else {
         	finalRight = forwardsRight;
         	finalLeft = forwardsLeft;
         	SmartDashboard.putString("Peg Direction", "Center");
+        	log.setLog("Peg Direction is Center");
         }
         
         //This sends the final numbers to the drivetrain
         Robot.driveTrain.basicDrive(finalRight, finalLeft);
-        
+        log.setLog("xWidth: "+ Double.toString(xWidth));
        
     }
     

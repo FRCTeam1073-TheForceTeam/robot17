@@ -27,8 +27,7 @@ public class Logger {
 		try(FileWriter fw = new FileWriter("/home/lvuser/Logger.txt", true)){
 			    BufferedWriter bw = new BufferedWriter(fw);
 			    PrintWriter out = new PrintWriter(bw);
-			    //fw.write(timeStamp + "::" + nameOfClass + "." + nameOfFunction + ": " + content + "\n");
-			    fw.write(System.currentTimeMillis() + "," + content+"\n");
+			    fw.write(timeStamp + "::" + nameOfClass + "." + nameOfFunction + ": " + content + "\n");
 			    fw.close();
 			} catch (IOException e) {}
 		
