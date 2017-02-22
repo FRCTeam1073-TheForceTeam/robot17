@@ -58,7 +58,8 @@ public class OI {
     public JoystickButton driveOrientationToggleBut;
     public JoystickButton cameraSwitchBut;
     public JoystickButton gearAlignBut;
-    public JoystickButton launchAlignBut;
+    //Change this back to launchAlignBut later
+    public JoystickButton autonomousTestButton;
     public XboxController driverControl;
     public JoystickButton agitateBut;
     public JoystickButton climbBut;
@@ -83,8 +84,11 @@ public class OI {
         
         driverControl = new XboxController(0);
         
-        launchAlignBut = driverControl.x;
-        launchAlignBut.whenPressed(new LaunchAlign());
+        //Change this back to launchAlignBut later
+        autonomousTestButton = driverControl.x;
+        //Use AutonomousBlueGear3() and AutomousBlueGear1() only!
+        autonomousTestButton.whenPressed(new AutonomousBlueGear3());
+        
         gearAlignBut = driverControl.b;
         gearAlignBut.whenPressed(new DriveToGearPeg());
         cameraSwitchBut = driverControl.rightJoyButton;
