@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
     boolean pickedNoAlliance = false;
     public static DriveModes driveMode = DriveModes.PID;
     
-    public static boolean selectedCamera = false;
+    private static boolean selectedCamera = false;
     
     public static OI oi;
     public static Bling bling;
@@ -188,18 +188,22 @@ public class Robot extends IterativeRobot {
             //       with the button to toggle the camera feed.
             switchCamera.start();        
 
+            boolean currentCamera = selectedCamera;
             while(!Thread.interrupted()) {
             	// We support two cameras, so the selectedCamera is a boolean to toggle
             	// between camera1 and camera2
-            	if(selectedCamera == false)
-            	{
-            		// Set the source to camera1
-            		cvSink.setSource(camera1);            		
-            	}
-            	else 
-            	{
-            		// Set the source to camera2
-            		cvSink.setSource(camera2);
+            	if ( currentCamera != selectedCamera ) {
+            		currentCamera = selectedCamera;
+	            	if(selectedCamera == false)
+	            	{
+	            		// Set the source to camera1
+	            		cvSink.setSource(camera1);            		
+	            	}
+	            	else 
+	            	{
+	            		// Set the source to camera2
+	            		cvSink.setSource(camera2);
+	            	}
             	}
  
             	//Grab image from the source camera
@@ -269,5 +273,16 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+    }
+ 
+    /**
+     * Public function that will switch the camera from camera1 to camera2 based on some
+     * external input
+     */
+    public void switchCamera() {
+    	if ( selectedCamera == true )
+    		selectedCamera = false;
+    	else
+    		selectedCamera = true;
     }
 }
