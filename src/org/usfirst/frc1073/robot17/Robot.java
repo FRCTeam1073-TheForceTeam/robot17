@@ -41,7 +41,7 @@ public class Robot extends IterativeRobot {
     boolean blueAlliance = false;
     public static DriveModes driveMode = DriveModes.PID;
     
-    private static boolean selectedCamera = false;
+    public static boolean selectedCamera = false;
     
     public static OI oi;
     public static Bling bling;
@@ -152,20 +152,19 @@ public class Robot extends IterativeRobot {
             Mat source = new Mat();     
 
             boolean currentCamera = selectedCamera;
-            while(!Thread.interrupted()) {
+            while( !Thread.interrupted() ) {
             	// We support two cameras, so the selectedCamera is a boolean to toggle
             	// between camera1 and camera2
             	if ( currentCamera != selectedCamera ) {
             		currentCamera = selectedCamera;
-	            	if(selectedCamera == false)
-	            	{
+	            	if ( selectedCamera == false ) {
 	            		// Set the source to camera1
 	            		cvSink.setSource(camera1);            		
-	            	}
-	            	else 
-	            	{
+	                	SmartDashboard.putString("Camera", "Camera 1");
+	            	} else {
 	            		// Set the source to camera2
 	            		cvSink.setSource(camera2);
+	                	SmartDashboard.putString("Camera", "Camera 2");
 	            	}
             	}
  
@@ -236,4 +235,5 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
+    
 }
