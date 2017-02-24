@@ -39,6 +39,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     boolean blueAlliance = false;
+    boolean redAlliance = false;
     public static DriveModes driveMode = DriveModes.PID;
     
     public static boolean selectedCamera = false;
@@ -121,16 +122,18 @@ public class Robot extends IterativeRobot {
         allianceChooser = new SendableChooser<Boolean>();
         allianceChooser.addDefault("No Alliance", null);
         allianceChooser.addObject("Blue Alliance", blueAlliance = true);
-        allianceChooser.addObject("Red Alliance", blueAlliance = false);
+        allianceChooser.addObject("Red Alliance", redAlliance = true);
         SmartDashboard.putData("Alliance Chooser", allianceChooser);
         
         /**Display what's on which side**/
         if (blueAlliance == true) {
-        	SmartDashboard.putString("Right Side","Boiler");
-        	SmartDashboard.putString("Left Side", "Human Player Station");
-        } else if (blueAlliance == false) {
-        	SmartDashboard.putString("Right Side","Human Player Station");
+        	SmartDashboard.putString("Right Side", "Human Player Station");
         	SmartDashboard.putString("Left Side", "Boiler");
+        	redAlliance = false;
+        } else if (redAlliance == true) {
+        	SmartDashboard.putString("Right Side", "Boiler");
+        	SmartDashboard.putString("Left Side", "Human Player Station");
+        	blueAlliance = false;
         }
         
         /** Instantiate a the camera server for both USB webcams in a separate thread **/
