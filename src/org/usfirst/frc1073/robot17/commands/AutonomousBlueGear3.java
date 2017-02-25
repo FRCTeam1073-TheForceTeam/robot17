@@ -55,6 +55,7 @@ public class AutonomousBlueGear3 extends CommandGroup {
 				break;
 			case TIME:
 				addSequential(new TimedDrive(-86.425, 0));
+				break;
 			default:
 				break;
 		}
