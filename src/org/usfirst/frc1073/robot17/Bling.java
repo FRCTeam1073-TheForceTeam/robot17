@@ -160,4 +160,8 @@ public class Bling {
 		setPattern("RainbowHalves", "rainbow", "all", "medium", 0, 100);
 		send();
 	}
+	public void sendEndgame() {
+		setPattern("blinking", "yellow", "all", "fast", 0, 100);
+		send();
+	}
 }

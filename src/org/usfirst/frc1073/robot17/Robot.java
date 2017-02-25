@@ -13,9 +13,11 @@ package org.usfirst.frc1073.robot17;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.internal.HardwareTimer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -138,6 +140,7 @@ public class Robot extends IterativeRobot {
             // 640, 480
             // 320, 240
             // 160, 120
+      
         	
             UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);            
             camera1.setResolution(320, 240);
@@ -220,6 +223,18 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+
+    	/* Commented out until we can test it
+        Thread timerThread = new Thread(() -> { 
+        	HardwareTimer matchTimer = new HardwareTimer();
+        	matchTimer.delay(120);
+        	bling.sendEndgame();
+        	matchTimer.delay(3);
+        	bling.sendOff();
+       	
+        });
+        timerThread.start();
+        */
     }
 
     /**
