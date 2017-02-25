@@ -225,19 +225,37 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
         Robot.oi.driverControl.rumbleTimeRep(1, 100, 3);
         Robot.oi.operatorControl.rumbleTimeRep(1, 100, 3);
+        
+        if (autonomousCommand != null) autonomousCommand.cancel();
+        
+        Thread timerThread = new Thread(() -> {
+         	//HardwareTimer matchTimer = new HardwareTimer();
+         	//matchTimer.delay(120);
+    		 System.out.println("PrintRRRRRRRRRRRR");
+         	try {
+ 				Thread.sleep(120000);
+ 			} catch (InterruptedException e) {
+ 				// TODO Auto-generated catch block
+ 				e.printStackTrace();
+ 			}
+         	//}catch(InterruptedException e)
+         	System.out.println("PrintYYYYYYYYYYYYYYYYYY");
+         	bling.sendEndgame();
+         	try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+         	System.out.println("PrintXXXXXXXXXXX");
+         	
+         	//matchTimer.delay(3);
+         	bling.sendOff();
+         });
+         timerThread.start();
 
-    	/* Commented out until we can test it
-        Thread timerThread = new Thread(() -> { 
-        	HardwareTimer matchTimer = new HardwareTimer();
-        	matchTimer.delay(120);
-        	bling.sendEndgame();
-        	matchTimer.delay(3);
-        	bling.sendOff();
-       	
-        });
-        timerThread.start();
-        */
     }
+
 
     /**
      * This function is called periodically during operator control
