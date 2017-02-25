@@ -13,6 +13,7 @@ package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
 import org.usfirst.frc1073.robot17.RobotMap;
 
@@ -47,7 +48,7 @@ double reciprocal;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	x = RobotMap.driveTrainProximitySensorFront.getVoltage() * 9.8;
-    	SmartDashboard.putNumber("FrontDistance", x);
+    	Logger.setLog("Front Distance: "+Double.toString(x));
     	
     	// TODO: Need to add the proximity sensor
     	//reciprocal = RobotMap.driveTrainProximitySensorBack.getVoltage() * .0465 - .0079;

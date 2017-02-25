@@ -13,6 +13,7 @@ package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
 import org.usfirst.frc1073.robot17.RobotMap;
 
@@ -55,6 +56,7 @@ public class AutoTurn extends Command {
     	RobotMap.headingGyro.reset();
     	originalDegrees = RobotMap.headingGyro.getAngle();
     	SmartDashboard.putNumber("OrginalDegrees", RobotMap.headingGyro.getAngle());
+    	Logger.setLog("Original Degrees: "+Double.toString(RobotMap.headingGyro.getAngle()));
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -69,18 +71,18 @@ public class AutoTurn extends Command {
     		Robot.driveTrain.basicDrive(left, right);
     	}
     	SmartDashboard.putString("AutoTurnPhase", "execute");
-    	SmartDashboard.putNumber("ConstantDegrees", RobotMap.headingGyro.getAngle());
+    	Logger.setLog("Constant Degrees: "+Double.toString(RobotMap.headingGyro.getAngle()));
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(turnDirection == "clockwise") {
         	SmartDashboard.putString("AutoTurnPhase", "finishing");
-        	SmartDashboard.putNumber("TurnMath", (turnDegrees - originalDegrees));
+        	Logger.setLog("Turn Math: "+Double.toString(turnDegrees - originalDegrees));
     		return (RobotMap.headingGyro.getAngle() >= (turnDegrees - originalDegrees));
     	} else if(turnDirection == "counterclockwise") {
         	SmartDashboard.putString("AutoTurnPhase", "finishing");
-        	SmartDashboard.putNumber("TurnMath", ((turnDegrees * -1) - originalDegrees));
+        	Logger.setLog("Turn Math: "+Double.toString(turnDegrees - originalDegrees));
     		return (RobotMap.headingGyro.getAngle() <= ((turnDegrees * -1) - originalDegrees));
     	} else {
     		return false;
