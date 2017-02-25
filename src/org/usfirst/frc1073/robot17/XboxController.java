@@ -35,26 +35,23 @@ public class XboxController extends Joystick {
 	 * Gets the X axis of the left Xbox joystick.
 	 * @return The X axis of the left Xbox joystick.
 	 */
-	public double getX1()
-	{
-	return getRawAxis(1);
+	public double getX1() {
+		return getRawAxis(1);
 	}
 	
 	/**
 	 * Gets the Y axis of the left Xbox joystick.
 	 * @return The Y axis of the left Xbox joystick.
 	 */
-	public double getY1()
-	{
-	return getRawAxis(2);
+	public double getY1() {
+		return getRawAxis(2);
 	}
 	
 	/**
 	 * Gets the X axis of the right Xbox joystick.
 	 * @return The X axis of the right Xbox joystick.
 	 */
-	public double getX2() 
-	{
+	public double getX2() {
 		return getRawAxis(4);
 	}
 	
@@ -62,8 +59,7 @@ public class XboxController extends Joystick {
 	 * Gets the Y axis of the right Xbox joystick.
 	 * @return The Y axis of the right Xbox joystick.
 	 */
-	public double getY2() 
-	{
+	public double getY2() {
 		return getRawAxis(5);
 	}
 
@@ -72,8 +68,7 @@ public class XboxController extends Joystick {
 	 * Gets the value of the left trigger.
 	 * @return The value of the left trigger.
 	 */
-	public double getLeftTrigger() 
-	{
+	public double getLeftTrigger() {
 		return getRawAxis(2);
 	}
 	
@@ -81,8 +76,7 @@ public class XboxController extends Joystick {
 	 * Gets the value of the right trigger.
 	 * @return The value of the right trigger.
 	 */
-	public double getRightTrigger() 
-	{
+	public double getRightTrigger() {
 		return getRawAxis(3);
 	}
 	
@@ -112,8 +106,7 @@ public class XboxController extends Joystick {
 	 * @param mag The rumble value.
 	 * @param milis The duration of the rumble
 	 */
-	public void rumbleTime(double mag, double milis)
-	{
+	public void rumbleTime(double mag, double milis){
 		setRumble(RumbleType.kLeftRumble,mag);
 		setRumble(RumbleType.kRightRumble,mag);
 		try {
