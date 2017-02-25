@@ -118,4 +118,28 @@ public class XboxController extends Joystick {
 		setRumble(RumbleType.kLeftRumble,0);
 		setRumble(RumbleType.kRightRumble,0);
 	}
+	
+	/**
+	 * Makes the controller rumble for a period of time repeated <code>times</code> times
+	 * (Precondition: <code>milis</code> should be < 500)
+	 * @param mag The rumble value.
+	 * @param milis The duration of the rumble
+	 * @param times The amount of repeats before end
+	 */
+	public void rumbleTimeRep(double mag, double milis, double times)
+	{
+		for(int i = 0; i < times; i++)
+		{
+			setRumble(RumbleType.kLeftRumble,mag);
+			setRumble(RumbleType.kRightRumble,mag);
+			try {
+				Thread.sleep((long) milis);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			setRumble(RumbleType.kLeftRumble,0);
+			setRumble(RumbleType.kRightRumble,0);
+		}
+	}
 }

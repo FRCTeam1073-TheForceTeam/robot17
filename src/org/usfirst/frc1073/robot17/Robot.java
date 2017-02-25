@@ -197,8 +197,8 @@ public class Robot extends IterativeRobot {
     	//Notify the Driver and operator that the match has finished
     	for(int i = 0; i < 2; i++)
     	{
-    		Robot.oi.driverControl.rumbleTime(1, 200);
-        	Robot.oi.operatorControl.rumbleTime(1, 200);
+    		Robot.oi.driverControl.rumbleTimeRep(1, 200, 2);
+        	Robot.oi.operatorControl.rumbleTimeRep(1, 200, 2);
     	}
     }
     
@@ -226,6 +226,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        Robot.oi.driverControl.rumbleTimeRep(1, 100, 3);
+        Robot.oi.operatorControl.rumbleTimeRep(1, 100, 3);
 
     	/* Commented out until we can test it
         Thread timerThread = new Thread(() -> { 

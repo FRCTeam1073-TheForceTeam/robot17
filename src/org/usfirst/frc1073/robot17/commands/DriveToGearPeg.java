@@ -147,8 +147,7 @@ public class DriveToGearPeg extends Command {
     	 */
     	if (xWidth > 27 || isPressed) {
     		Robot.driveTrain.basicDrive(0, 0);
-    		Robot.oi.driverControl.rumbleTime(1, 150);
-    		Robot.oi.driverControl.rumbleTime(0, 10);
+    		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
     		return true;
     	}
     	else {
