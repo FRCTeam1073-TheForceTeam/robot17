@@ -52,9 +52,9 @@ public class AutoTurn extends Command {
     	} else if(turnDirection == "counterclockwise") {
     		Robot.bling.sendAutoTurnLeft();
     	}
-    	RobotMap.driveTrainHeadingGyro.reset();
-    	originalDegrees = RobotMap.driveTrainHeadingGyro.getAngle();
-    	SmartDashboard.putNumber("OrginalDegrees", RobotMap.driveTrainHeadingGyro.getAngle());
+    	RobotMap.headingGyro.reset();
+    	originalDegrees = RobotMap.headingGyro.getAngle();
+    	SmartDashboard.putNumber("OrginalDegrees", RobotMap.headingGyro.getAngle());
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -69,7 +69,7 @@ public class AutoTurn extends Command {
     		Robot.driveTrain.basicDrive(left, right);
     	}
     	SmartDashboard.putString("AutoTurnPhase", "execute");
-    	SmartDashboard.putNumber("ConstantDegrees", RobotMap.driveTrainHeadingGyro.getAngle());
+    	SmartDashboard.putNumber("ConstantDegrees", RobotMap.headingGyro.getAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -77,11 +77,11 @@ public class AutoTurn extends Command {
     	if(turnDirection == "clockwise") {
         	SmartDashboard.putString("AutoTurnPhase", "finishing");
         	SmartDashboard.putNumber("TurnMath", (turnDegrees - originalDegrees));
-    		return (RobotMap.driveTrainHeadingGyro.getAngle() >= (turnDegrees - originalDegrees));
+    		return (RobotMap.headingGyro.getAngle() >= (turnDegrees - originalDegrees));
     	} else if(turnDirection == "counterclockwise") {
         	SmartDashboard.putString("AutoTurnPhase", "finishing");
         	SmartDashboard.putNumber("TurnMath", ((turnDegrees * -1) - originalDegrees));
-    		return (RobotMap.driveTrainHeadingGyro.getAngle() <= ((turnDegrees * -1) - originalDegrees));
+    		return (RobotMap.headingGyro.getAngle() <= ((turnDegrees * -1) - originalDegrees));
     	} else {
     		return false;
     	}
