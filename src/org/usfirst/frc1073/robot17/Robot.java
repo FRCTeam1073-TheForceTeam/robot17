@@ -195,11 +195,8 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit() {
     	//Notify the Driver and operator that the match has finished
-    	for(int i = 0; i < 2; i++)
-    	{
     		Robot.oi.driverControl.rumbleTimeRep(1, 200, 2);
         	Robot.oi.operatorControl.rumbleTimeRep(1, 200, 2);
-    	}
     }
     
     public void disabledPeriodic() {
