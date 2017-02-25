@@ -11,8 +11,6 @@
 
 package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc1073.robot17.Robot;
@@ -54,9 +52,9 @@ public class AutoTurn extends Command {
     	} else if(turnDirection == "counterclockwise") {
     		Robot.bling.sendAutoTurnLeft();
     	}
-    	RobotMap.gyro.reset();
-    	originalDegrees = RobotMap.gyro.getAngle();
-    	SmartDashboard.putNumber("OrginalDegrees", RobotMap.gyro.getAngle());
+    	RobotMap.driveTrainHeadingGyro.reset();
+    	originalDegrees = RobotMap.driveTrainHeadingGyro.getAngle();
+    	SmartDashboard.putNumber("OrginalDegrees", RobotMap.driveTrainHeadingGyro.getAngle());
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -71,7 +69,7 @@ public class AutoTurn extends Command {
     		Robot.driveTrain.basicDrive(left, right);
     	}
     	SmartDashboard.putString("AutoTurnPhase", "execute");
-    	SmartDashboard.putNumber("ConstantDegrees", RobotMap.gyro.getAngle());
+    	SmartDashboard.putNumber("ConstantDegrees", RobotMap.driveTrainHeadingGyro.getAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -79,11 +77,11 @@ public class AutoTurn extends Command {
     	if(turnDirection == "clockwise") {
         	SmartDashboard.putString("AutoTurnPhase", "finishing");
         	SmartDashboard.putNumber("TurnMath", (turnDegrees - originalDegrees));
-    		return (RobotMap.gyro.getAngle() >= (turnDegrees - originalDegrees));
+    		return (RobotMap.driveTrainHeadingGyro.getAngle() >= (turnDegrees - originalDegrees));
     	} else if(turnDirection == "counterclockwise") {
         	SmartDashboard.putString("AutoTurnPhase", "finishing");
         	SmartDashboard.putNumber("TurnMath", ((turnDegrees * -1) - originalDegrees));
-    		return (RobotMap.gyro.getAngle() <= ((turnDegrees * -1) - originalDegrees));
+    		return (RobotMap.driveTrainHeadingGyro.getAngle() <= ((turnDegrees * -1) - originalDegrees));
     	} else {
     		return false;
     	}
