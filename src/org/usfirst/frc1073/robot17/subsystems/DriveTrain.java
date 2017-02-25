@@ -11,6 +11,7 @@
 
 package org.usfirst.frc1073.robot17.subsystems;
 
+import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
 import org.usfirst.frc1073.robot17.RobotMap;
 import org.usfirst.frc1073.robot17.commands.*;
@@ -21,7 +22,6 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -173,8 +173,8 @@ public class DriveTrain extends Subsystem {
     		tempRight = -1;
     	}
     	
-    	SmartDashboard.putNumber("tempLeft", tempLeft);
-    	SmartDashboard.putNumber("tempRight", tempRight);
+    	Logger.setLog("tempLeft: "+Double.toString(tempLeft));
+    	Logger.setLog("tempRight: "+Double.toString(tempRight));
     	
     	//Robot.oi.driverControl.rumble(Math.abs(tempLeft));
     	leftMotor3.set(-1*tempLeft);

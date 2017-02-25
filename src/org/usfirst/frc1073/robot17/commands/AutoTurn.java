@@ -11,7 +11,6 @@
 
 package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
@@ -47,7 +46,7 @@ public class AutoTurn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartDashboard.putString("AutoTurnPhase", "initialize");
+    	Logger.setLog("AutoTurnPhase: initialized");
     	if(turnDirection == "clockwise") {
     		Robot.bling.sendAutoTurnRight();
     	} else if(turnDirection == "counterclockwise") {
@@ -55,7 +54,6 @@ public class AutoTurn extends Command {
     	}
     	RobotMap.headingGyro.reset();
     	originalDegrees = RobotMap.headingGyro.getAngle();
-    	SmartDashboard.putNumber("OrginalDegrees", RobotMap.headingGyro.getAngle());
     	Logger.setLog("Original Degrees: "+Double.toString(RobotMap.headingGyro.getAngle()));
     }
 
@@ -70,18 +68,18 @@ public class AutoTurn extends Command {
     		double left = turnSpeed;
     		Robot.driveTrain.basicDrive(left, right);
     	}
-    	SmartDashboard.putString("AutoTurnPhase", "execute");
+    	Logger.setLog("AutoTurnPhase: execute");
     	Logger.setLog("Constant Degrees: "+Double.toString(RobotMap.headingGyro.getAngle()));
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(turnDirection == "clockwise") {
-        	SmartDashboard.putString("AutoTurnPhase", "finishing");
+        	Logger.setLog("AutoTurnPhase: finishing");
         	Logger.setLog("Turn Math: "+Double.toString(turnDegrees - originalDegrees));
     		return (RobotMap.headingGyro.getAngle() >= (turnDegrees - originalDegrees));
     	} else if(turnDirection == "counterclockwise") {
-        	SmartDashboard.putString("AutoTurnPhase", "finishing");
+        	Logger.setLog("AutoTurnPhase: finishing");
         	Logger.setLog("Turn Math: "+Double.toString(turnDegrees - originalDegrees));
     		return (RobotMap.headingGyro.getAngle() <= ((turnDegrees * -1) - originalDegrees));
     	} else {
@@ -91,8 +89,8 @@ public class AutoTurn extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.basicDrive(0, 0);
-    	SmartDashboard.putBoolean("AutoTurnFinished", true);
-    	SmartDashboard.putString("AutoTurnPhase", "end");
+    	Logger.setLog("AutoTurnFinnished: true");
+    	Logger.setLog("AutoTurnPhase: end");
     }
 
     // Called when another command which requires one or more of the same
