@@ -62,11 +62,11 @@ protected void initialize() {
     	RobotMap.driveTrainleftMotor3.setI(0); 
     	RobotMap.driveTrainleftMotor3.setD(0);
     	RobotMap.driveTrainleftMotor3.setAllowableClosedLoopErr(20);
-    	RobotMap.driveTrainleftMotor3.reverseOutput(true);
+    	RobotMap.driveTrainleftMotor3.reverseOutput(false);
 
     	RobotMap.driveTrainleftMotor3.configMaxOutputVoltage(4);
     	RobotMap.driveTrainleftMotor3.changeControlMode(TalonControlMode.Position);
-    	RobotMap.driveTrainleftMotor3.set(-(distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
+    	RobotMap.driveTrainleftMotor3.set((distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
     	
     	//setting PID for the right side
     	RobotMap.driveTrainrightMotor3.enable();
@@ -79,11 +79,11 @@ protected void initialize() {
     	RobotMap.driveTrainrightMotor3.setI(0); 
     	RobotMap.driveTrainrightMotor3.setD(0);
     	RobotMap.driveTrainrightMotor3.setAllowableClosedLoopErr(20);
-    	RobotMap.driveTrainrightMotor3.reverseOutput(true);
+    	RobotMap.driveTrainrightMotor3.reverseOutput(false);
 
     	RobotMap.driveTrainrightMotor3.configMaxOutputVoltage(4);
     	RobotMap.driveTrainrightMotor3.changeControlMode(TalonControlMode.Position);
-    	RobotMap.driveTrainrightMotor3.set((distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
+    	RobotMap.driveTrainrightMotor3.set(-(distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
     	
     	//waiting 60 milliseconds
     	try {

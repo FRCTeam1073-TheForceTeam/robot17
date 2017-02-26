@@ -58,6 +58,7 @@ public class AutonomousRedGear2 extends CommandGroup {
 			default:
 				break;
 		}
+    	addSequential(new AutoTurn(0, 0, "clockwise"));
     	//Drives near peg and auto-drives onto it
     } 
 }
