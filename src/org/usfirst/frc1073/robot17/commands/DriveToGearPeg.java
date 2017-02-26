@@ -72,14 +72,10 @@ public class DriveToGearPeg extends Command {
         //These are the variables for speed - start slow
         double driveMultiplier = 2;
         double changeMultiplier = 3.55;
-        double driveSpeed = 0.03;
-		double changeSpeed = 0.03;
+        double driveSpeed = 0.05;
+		double changeSpeed = 0.05;
 		double slowWidth = 15;
 		double side = 8;
-		
-		
-		
-		
 		
 		
 		//This is the width of the Pixy
@@ -99,7 +95,7 @@ public class DriveToGearPeg extends Command {
         						if (xWidth > slowWidth + 6) {
         							if (xWidth > slowWidth + 7) {
         								if (xWidth > slowWidth + 8) {
-        									if (xWidth > slowWidth + 9) {
+        									if (xWidth == slowWidth + 9) {
         					                	changeRight = changeSpeed + 0.005;
         					                	changeLeft = changeSpeed + 0.005;
         					                	forwardsRight = driveSpeed + 0.005;
@@ -112,46 +108,46 @@ public class DriveToGearPeg extends Command {
         					                	forwardsLeft = driveSpeed;
         									}}
         								else{	
-        									changeRight = changeSpeed + .05;
-        				                	changeLeft = changeSpeed + .05;
-        				                	forwardsRight = driveSpeed + .05;
-        				                	forwardsLeft = driveSpeed + .05;
+        									changeRight = changeSpeed + .01;
+        				                	changeLeft = changeSpeed + .01;
+        				                	forwardsRight = driveSpeed + .015;
+        				                	forwardsLeft = driveSpeed + .015;
         								}}
         							else{	
-        								changeRight = changeSpeed + .055;
-        			                	changeLeft = changeSpeed + .055;
-        			                	forwardsRight = driveSpeed + .055;
-        			                	forwardsLeft = driveSpeed + .055;
+        								changeRight = changeSpeed + .015;
+        			                	changeLeft = changeSpeed + .015;
+        			                	forwardsRight = driveSpeed + .025;
+        			                	forwardsLeft = driveSpeed + .025;
         							}}
         						else{		
-        							changeRight = changeSpeed  + .06;
-        		                	changeLeft = changeSpeed + .06;
-        		                	forwardsRight = driveSpeed + .06;
-        		                	forwardsLeft = driveSpeed + .06;
+        							changeRight = changeSpeed  + .02;
+        		                	changeLeft = changeSpeed + .02;
+        		                	forwardsRight = driveSpeed + .035;
+        		                	forwardsLeft = driveSpeed + .035;
         		        		}}
         					else{	
-        						changeRight = changeSpeed + .065;
-        	                	changeLeft = changeSpeed + .065;
-        	                	forwardsRight = driveSpeed + .065;
-        	                	forwardsLeft = driveSpeed + .065;
+        						changeRight = changeSpeed + .04;
+        	                	changeLeft = changeSpeed + .04;
+        	                	forwardsRight = driveSpeed + .05;
+        	                	forwardsLeft = driveSpeed + .05;
         	        		}}
         				else{			
-        					changeRight = changeSpeed + .075;
-                        	changeLeft = changeSpeed + .075;
+        					changeRight = changeSpeed + .05;
+                        	changeLeft = changeSpeed + .05;
                         	forwardsRight = driveSpeed + .075;
                         	forwardsLeft = driveSpeed + .075;
                 		}}
         			else{	
-        				changeRight = changeSpeed + .09;
-                    	changeLeft = changeSpeed + .09;
-                    	forwardsRight = driveSpeed + .09;
-                    	forwardsLeft = driveSpeed + .09;
+        				changeRight = changeSpeed + .06;
+                    	changeLeft = changeSpeed + .06;
+                    	forwardsRight = driveSpeed + .1;
+                    	forwardsLeft = driveSpeed + .1;
             		}}
         		else{				
         			changeRight = changeSpeed + .1;
                 	changeLeft = changeSpeed + .1;
-                	forwardsRight = driveSpeed + .1;
-                	forwardsLeft = driveSpeed + .1;
+                	forwardsRight = driveSpeed + .15;
+                	forwardsLeft = driveSpeed + .15;
         		}}
         	else{	
         		changeRight = changeSpeed + .15;
