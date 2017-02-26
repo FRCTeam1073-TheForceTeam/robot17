@@ -205,8 +205,8 @@ public class Robot extends IterativeRobot {
     
     public void autonomousInit() {
         // schedule the autonomous command (example)
-    	//autonomousCommand = autonomousChooser.getSelected();
-    	autonomousCommand = new AutonomousBlueGear3();
+    	autonomousCommand = autonomousChooser.getSelected();
+    	//autonomousCommand = new AutonomousBlueGear3();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
