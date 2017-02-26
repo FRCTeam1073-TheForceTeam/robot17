@@ -47,13 +47,13 @@ public class Bling {
 
         switch( pattern ) {
             case ROBOT_INIT:
-		        setPattern("RainbowHalves", "rainbow", "all", "medium", 0, 100);
+		        setPattern("RainbowHalves", "rainbow", "all", "medium", 0, 80);
                 break;
             case ROBOT_ERROR:
-		        setPattern("Alternates", "christmas", "all", "medium", 0, 100);
+		        setPattern("Alternates", "christmas", "all", "medium", 0, 80);
                 break;
             case CLIMBING:
-                setPattern("ColorFade", "teamcolors", "all", "fast", 0, 100);
+                setPattern("ColorFade", "teamcolors", "all", "fast", 0, 80);
                 break;
 
             // put all pattern specifiers above this point
@@ -61,7 +61,7 @@ public class Bling {
                 disableLeds();
                 break;
             default:
-                setPattern("Error", "red", "all", "fast", 0, 100);
+                setPattern("Error", "red", "all", "fast", 0, 80);
                 break;
         }
         
@@ -73,42 +73,42 @@ public class Bling {
     }
 
 	public void sendClimbing() {
-		setPattern("ColorFade", "teamcolors", "all", "fast", 0, 100);
+		setPattern("ColorFade", "teamcolors", "all", "fast", 0, 80);
 		send();
 	}
 
 	public void sendFinished() {
-		setPattern("RainbowHalves", "red", "all", "fast", 0, 100);
+		setPattern("RainbowHalves", "red", "all", "fast", 0, 80);
 		send();
 	}
 			
 	public void sendFinishedClimbing() {
-	    setPattern("Alternates", "teamcolors", "all", "medium", 0, 100);
+	    setPattern("Alternates", "teamcolors", "all", "medium", 0, 80);
 		send();
 	}
 			
 	public void sendLeftTurning() {
-		setPattern("ColorWipe", "green", "left", "fast", 0, 100);
+		setPattern("ColorWipe", "green", "left", "fast", 0, 80);
 	    send();
 	}
 			
 	public void sendRightTurning() {
-		setPattern("ColorWipe", "green", "right", "fast", 0, 100);
+		setPattern("ColorWipe", "green", "right", "fast", 0, 80);
 		send();
 	}
 	
 	public void sendDrive() {
-		setPattern("solid", "blue", "all", "medium", 0, 100);
+		setPattern("solid", "blue", "all", "medium", 0, 80);
 		send();
 	}
 	
 	public void sendBackup() {
-		setPattern("blinking", "yellow", "all", "medium", 0, 100);
+		setPattern("blinking", "yellow", "all", "medium", 0, 80);
 		send();
 	}
 	
 	public void sendEnd() {
-		setPattern("fireflies", "rainbow", "all", "medium", 0, 100);
+		setPattern("fireflies", "rainbow", "all", "medium", 0, 80);
 		send();
 	}
 	
@@ -118,50 +118,50 @@ public class Bling {
 	}
 	
 	public void sendRobotInit() {
-		setPattern("rainbowHalves", "rainbow", "all", "medium", 0, 100);
+		setPattern("rainbowHalves", "rainbow", "all", "medium", 0, 80);
 		send();
 	}
 	
 	public void sendAutoDrive() {
-		setPattern("wave", "green", "all", "slow", 0, 100);
+		setPattern("wave", "green", "all", "slow", 0, 80);
 		send();
 	}
 	
 	public void sendRemoveGear() {
-		setPattern("solid", "green", "all", "slow", 0, 100);
+		setPattern("solid", "green", "all", "slow", 0, 80);
 		send();
 	}
 	
 	public void sendAutoTurnRight() {
-		setPattern("blinking", "Green", "right", "medium", 0, 100);
+		setPattern("blinking", "Green", "right", "medium", 0, 80);
 		send();
 	}
 	public void sendAutoTurnLeft() {
-		setPattern("blinking", "Green", "left", "medium", 0, 100);
+		setPattern("blinking", "Green", "left", "medium", 0, 80);
 		send();
 	}
 	
 	public void sendPegTargeting() {
-		setPattern("scanner", "Green", "all", "medium", 0, 100);
+		setPattern("scanner", "Green", "all", "medium", 0, 80);
 		send();
 	}
 	
 	public void sendBoilerTargeting() {
-		setPattern("scanner", "Yellow", "all", "medium", 0, 100);
+		setPattern("scanner", "Yellow", "all", "medium", 0, 80);
 		send();
 	}
 	
 	public void sendFuelLaunchReady() {
-		setPattern("solid", "Green", "all", "medium", 0, 100);
+		setPattern("solid", "Green", "all", "medium", 0, 80);
 		send();
 	}
 	
 	public void sendFuelLaunching() {
-		setPattern("RainbowHalves", "rainbow", "all", "medium", 0, 100);
+		setPattern("RainbowHalves", "rainbow", "all", "medium", 0, 80);
 		send();
 	}
 	public void sendEndgame() {
-		setPattern("blinking", "yellow", "all", "fast", 0, 100);
+		setPattern("blinking", "yellow", "all", "fast", 0, 80);
 		send();
 	}
 }
