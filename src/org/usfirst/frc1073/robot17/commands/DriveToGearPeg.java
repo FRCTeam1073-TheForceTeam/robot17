@@ -32,7 +32,7 @@ public class DriveToGearPeg extends Command {
 	NetworkTable netTable;
     double xDelta;
     double xWidth;
-    Logger log = new Logger();
+    
     
     //Variable for button used in isFinished
     boolean isPressed = false;
@@ -71,10 +71,10 @@ public class DriveToGearPeg extends Command {
         
         //These are the variables for speed - start slow
         double driveMultiplier = 2;
-        double changeMultiplier = 1.5;
-        double driveSpeed = 0.15;
-		double changeSpeed = 0.1;
-		double slowWidth = 18;
+        double changeMultiplier = 3.55;
+        double driveSpeed = 0.03;
+		double changeSpeed = 0.03;
+		double slowWidth = 15;
 		double side = 8;
 		
 		
@@ -91,17 +91,75 @@ public class DriveToGearPeg extends Command {
 		
 		//This code modifies the speed based on how close you are to the peg
         if (xWidth > slowWidth) {
-        	changeRight = changeSpeed;
-        	changeLeft = changeSpeed;
-        	forwardsRight = driveSpeed;
-        	forwardsLeft = driveSpeed;
-        }
-        else {
-        	changeRight = changeMultiplier * changeSpeed;
-        	changeLeft = changeMultiplier * changeSpeed;
-        	forwardsRight = driveMultiplier * driveSpeed;
-        	forwardsLeft = driveMultiplier * driveSpeed;
-        }
+        	if (xWidth > slowWidth + 1) {
+        		if (xWidth > slowWidth + 2) {
+        			if (xWidth > slowWidth + 3) {
+        				if (xWidth > slowWidth + 4) {
+        					if (xWidth > slowWidth + 5) {
+        						if (xWidth > slowWidth + 6) {
+        							if (xWidth > slowWidth + 7) {
+        								if (xWidth > slowWidth + 8) {
+        									if (xWidth > slowWidth + 9) {
+        					                	changeRight = changeSpeed + 0.005;
+        					                	changeLeft = changeSpeed + 0.005;
+        					                	forwardsRight = driveSpeed + 0.005;
+        					                	forwardsLeft = driveSpeed + 0.005;
+        					        		}}
+        									else{
+        										changeRight = changeSpeed;
+        					                	changeLeft = changeSpeed;
+        					                	forwardsRight = driveSpeed;
+        					                	forwardsLeft = driveSpeed;
+        									}}
+        								else{	
+        									changeRight = changeSpeed + .05;
+        				                	changeLeft = changeSpeed + .05;
+        				                	forwardsRight = driveSpeed + .05;
+        				                	forwardsLeft = driveSpeed + .05;
+        								}}
+        							else{	
+        								changeRight = changeSpeed + .055;
+        			                	changeLeft = changeSpeed + .055;
+        			                	forwardsRight = driveSpeed + .055;
+        			                	forwardsLeft = driveSpeed + .055;
+        							}}
+        						else{		
+        							changeRight = changeSpeed  + .06;
+        		                	changeLeft = changeSpeed + .06;
+        		                	forwardsRight = driveSpeed + .06;
+        		                	forwardsLeft = driveSpeed + .06;
+        		        		}}
+        					else{	
+        						changeRight = changeSpeed + .065;
+        	                	changeLeft = changeSpeed + .065;
+        	                	forwardsRight = driveSpeed + .065;
+        	                	forwardsLeft = driveSpeed + .065;
+        	        		}}
+        				else{			
+        					changeRight = changeSpeed + .075;
+                        	changeLeft = changeSpeed + .075;
+                        	forwardsRight = driveSpeed + .075;
+                        	forwardsLeft = driveSpeed + .075;
+                		}}
+        			else{	
+        				changeRight = changeSpeed + .09;
+                    	changeLeft = changeSpeed + .09;
+                    	forwardsRight = driveSpeed + .09;
+                    	forwardsLeft = driveSpeed + .09;
+            		}}
+        		else{				
+        			changeRight = changeSpeed + .1;
+                	changeLeft = changeSpeed + .1;
+                	forwardsRight = driveSpeed + .1;
+                	forwardsLeft = driveSpeed + .1;
+        		}}
+        	else{	
+        		changeRight = changeSpeed + .15;
+            	changeLeft = changeSpeed + .15;
+            	forwardsRight = driveSpeed + .15;
+            	forwardsLeft = driveSpeed + .15;
+        	}
+        
         
         //This code handles the left and right vs forward motion of the robot
         //based on the Pixy's values
@@ -109,24 +167,20 @@ public class DriveToGearPeg extends Command {
         	finalRight = forwardsRight - changeRight;
         	finalLeft = forwardsLeft + changeLeft;
         	SmartDashboard.putString("Peg Direction", "Left");
-        	log.setLog("Peg Direction is Left");
         }
         else if (xDelta < -side) {
         	finalRight = forwardsRight + changeRight;
         	finalLeft = forwardsLeft - changeLeft;
         	SmartDashboard.putString("Peg Direction", "Right");
-        	log.setLog("Peg Direction is Right");
         }
         else {
         	finalRight = forwardsRight;
         	finalLeft = forwardsLeft;
         	SmartDashboard.putString("Peg Direction", "Center");
-        	log.setLog("Peg Direction is Center");
         }
         
         //This sends the final numbers to the drivetrain
         Robot.driveTrain.basicDrive(finalRight, finalLeft);
-        log.setLog("xWidth: "+ Double.toString(xWidth));
        
     }
     
@@ -145,7 +199,7 @@ public class DriveToGearPeg extends Command {
     	 *			|
     	 *		   \ /
     	 */
-    	if (xWidth > 27 || isPressed) {
+    	if (xWidth > 25 || isPressed) {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
     		return true;

@@ -11,6 +11,7 @@
 
 package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
@@ -47,11 +48,12 @@ public class SpinConveyor extends Command {
     	//Sets up the Operator Controller axis to a usable varible
     	double leftTriggerAxis = Robot.oi.operatorControl.getRawAxis(2);
     	
-    	//Checks Axis and starts or stops the conveyor based on it
-    	if(leftTriggerAxis >= 0.25) {
+    	double encoderValue = RobotMap.launcherlauncherMotor1.getSpeed();
+    	SmartDashboard.putNumber("SPPPPPPPPPPPPPPPPPPPPPPPIN", -encoderValue);
+    	if(leftTriggerAxis >= 0.25 &&  -encoderValue > 2000){
     		
     		//Actually Doing The Spinning
-    		RobotMap.conveyorconveyorMotor.set(-15);
+    		RobotMap.conveyorconveyorMotor.set(15);
     	} 
     	else {
     		RobotMap.conveyorconveyorMotor.set(0);
