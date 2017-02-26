@@ -13,6 +13,7 @@ package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
 
 /**
@@ -55,8 +56,8 @@ public class DriveInches extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	currentLeft = Robot.driveTrain.getLeftPos()*Math.PI*3.9*isNeg;
-    	currentRight = Robot.driveTrain.getRightPos()*Math.PI*3.9*isNeg;
+    	currentLeft = Robot.driveTrain.getLeftPos()*Math.PI*3.9;
+    	currentRight = Robot.driveTrain.getRightPos()*Math.PI*3.9;
     	
     	currentAvg = (currentLeft+currentRight)/2;
     	
@@ -65,18 +66,18 @@ public class DriveInches extends Command {
     	
     	currentSpeed = isNeg*-1*Math.abs((currentAvg/destination)-SPEED) + SPEED;
     	
-    	if(isNeg < 0 && currentSpeed <= .25) currentSpeed = .25;
-    	if(isNeg > 0 && currentSpeed >= -.25) currentSpeed = -.25;
+    	if(isNeg > 0 && currentSpeed <= .25) currentSpeed = .25;
+    	if(isNeg < 0 && currentSpeed >= -.25) currentSpeed = -.25;
     	
-    	SmartDashboard.putNumber("Left pos ", Robot.driveTrain.getLeftPos());
-    	SmartDashboard.putNumber("Right pos ", Robot.driveTrain.getRightPos()*-1);
-    	SmartDashboard.putNumber("Robot heading ", Robot.driveTrain.getDegrees());
+    	Logger.setLog("Left pos: " + Double.toString(Robot.driveTrain.getLeftPos()));
+    	Logger.setLog("Right pos: " + Double.toString(Robot.driveTrain.getRightPos()*-1));
+    	Logger.setLog("Robot heading: " + Double.toString(Robot.driveTrain.getDegrees()));
     	
     	encDif = Robot.driveTrain.getLeftPos() - Robot.driveTrain.getRightPos();
     	encDif *= ENC_MOD_VAL;
     	
-    	Robot.driveTrain.basicDrive(-1*(currentSpeed-currentMod), -1*(currentSpeed+currentMod));
-    	//Robot.driveTrain.basicDrive(-1*(currentSpeed-encDif), -1*(currentSpeed+encDif));
+    	//Robot.driveTrain.basicDrive(-1*(currentSpeed-currentMod), -1*(currentSpeed+currentMod));
+    	Robot.driveTrain.basicDrive(-1*(currentSpeed-encDif), -1*(currentSpeed+encDif));
 
     }
 

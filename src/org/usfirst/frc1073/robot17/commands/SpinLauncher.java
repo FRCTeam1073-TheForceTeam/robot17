@@ -66,7 +66,6 @@ public class SpinLauncher extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double rightTriggerAxis = Robot.oi.operatorControl.getRawAxis(3);
-    	double encoderValue = RobotMap.launcherlauncherMotor1.getSpeed();
     	
     	
     	//double leftTriggerAxis = Robot.oi.operatorControl.getRawAxis(2);
@@ -79,7 +78,8 @@ public class SpinLauncher extends Command {
     		}
     	}
     	*/
-    	
+    	double encoderRPM = RobotMap.launcherlauncherMotor1.getSpeed();
+    	SmartDashboard.putNumber("LauncherRPM", -encoderRPM);
     	if(rightTriggerAxis >= 0.25 && Robot.oi.operatorControl.getRawButton(1) == true){
     		
     		speed += 20;

@@ -50,13 +50,13 @@ public class AutonomousBlueGear1Fuel extends CommandGroup {
     	switch(Robot.driveMode)
 		{
 			case PID:
-				addSequential(new moveWithPID(97.4));
+				addSequential(new moveWithPID(58));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(97.4));
+				addSequential(new DriveInches(58));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(97.4, 0));
+				addSequential(new TimedDrive(58, 0));
 				break;
 			default:
 				break;
@@ -65,13 +65,13 @@ public class AutonomousBlueGear1Fuel extends CommandGroup {
 		switch(Robot.driveMode)
 		{
 			case PID:
-				addSequential(new moveWithPID(231.75));
+				addSequential(new moveWithPID(193));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(231.75));
+				addSequential(new DriveInches(193));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(231.75, 0));
+				addSequential(new TimedDrive(193, 0));
 				break;
 			default:
 				break;
@@ -79,6 +79,6 @@ public class AutonomousBlueGear1Fuel extends CommandGroup {
 		addSequential(new AutoTurn(.5, 57.3, "clockwise"));
 		addSequential(new DriveToBoiler());
 		//Drives near boiler and auto-drives into alignment
-		addSequential(new AutoLaunch(.5, .5));
+		//addSequential(new AutoLaunch(.5, .5));
     } 
 }

@@ -49,13 +49,13 @@ public class AutonomousCross extends CommandGroup {
     	switch(Robot.driveMode)
 		{
 			case PID:
-				addSequential(new moveWithPID(115));
+				addSequential(new moveWithPID(76));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(115));
+				addSequential(new DriveInches(76));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(115, 0));
+				addSequential(new TimedDrive(76, 0));
 				break;
 			default:
 				break;

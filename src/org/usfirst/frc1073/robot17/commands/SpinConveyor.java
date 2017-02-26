@@ -49,12 +49,12 @@ public class SpinConveyor extends Command {
     	double leftTriggerAxis = Robot.oi.operatorControl.getRawAxis(2);
     	
     	double encoderValue = RobotMap.launcherlauncherMotor1.getSpeed();
-    	SmartDashboard.putNumber("SPPPPPPPPPPPPPPPPPPPPPPPIN", -encoderValue);
+    	
     	if(leftTriggerAxis >= 0.25 &&  -encoderValue > 2000){
     		
     		//Actually Doing The Spinning
     		RobotMap.conveyorconveyorMotor.set(15);
-    	} 
+    	}
     	else {
     		RobotMap.conveyorconveyorMotor.set(0);
     	}	

@@ -48,13 +48,13 @@ public class AutonomousBlueGear3 extends CommandGroup {
     	switch(Robot.driveMode)
 		{
 			case PID:
-				addSequential(new moveWithPID(-55));
+				addSequential(new moveWithPID(-16));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(-86.425));
+				addSequential(new DriveInches(-16));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(-86.425, 0));
+				addSequential(new TimedDrive(-16, 0));
 				break;
 			default:
 				break;

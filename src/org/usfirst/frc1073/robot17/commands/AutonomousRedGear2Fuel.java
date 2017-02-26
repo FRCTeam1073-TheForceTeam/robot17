@@ -50,19 +50,19 @@ public class AutonomousRedGear2Fuel extends CommandGroup {
     	switch(Robot.driveMode)
 		{
 		case PID:
-			addSequential(new moveWithPID(50));
+			addSequential(new moveWithPID(11));
 			break;
 		case ROTATIONS:
-			addSequential(new DriveInches(50));
+			addSequential(new DriveInches(11));
 			break;
 		case TIME:
-			addSequential(new TimedDrive(50, 0));
+			addSequential(new TimedDrive(11, 0));
 		default:
 			break;
 	}
     	addSequential(new AutoTurn(.5, 90, "counterclockwise"));
     	addSequential(new DriveToBoiler());
 		//Drives near boiler and auto-drives into alignment
-    	addSequential(new AutoLaunch(0.5, 0.5));
+    	//addSequential(new AutoLaunch(0.5, 0.5));
     } 
 }
