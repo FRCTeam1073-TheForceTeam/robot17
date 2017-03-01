@@ -48,17 +48,17 @@ public class AutonomousRedGear1 extends CommandGroup {
     	switch(Robot.driveMode)
 		{
 			case PID:
-				addSequential(new moveWithPID(-16));
+				addSequential(new moveWithPID(-55));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(-16));
+				addSequential(new DriveInches(-55));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(-16, 0));
+				addSequential(new TimedDrive(-55, 0));
 			default:
 				break;
 		}
-		addSequential(new AutoTurn(.3, 42, "counterclockwise"));
+		addSequential(new AutoTurn(.3, 57, "counterclockwise"));
 		addSequential(new DriveToGearPeg());
 		//Drives near peg and auto-drives onto it
     } 
