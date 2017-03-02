@@ -241,7 +241,7 @@ public class DriveToGearPeg extends Command {
  * 
  * AAAWWWWWWTOEEEEEEEE!!!!! 
  * 
- * M'Boi is Jack, and he keeps getting gayer.
+ * M'Boi is Jack, and he keeps getting greater.
  * 
  * This meme's trash, calling out to the haters!
  * 
