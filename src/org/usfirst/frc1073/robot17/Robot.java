@@ -107,15 +107,16 @@ public class Robot extends IterativeRobot {
         autonomousChooser = new SendableChooser<CommandGroup>();
         autonomousChooser.addDefault("Do Nothing", null);
         autonomousChooser.addObject("Cross Only", new AutonomousCross());
-        autonomousChooser.addObject("Blue Gear Left", new AutonomousBlueGear1());
-        autonomousChooser.addObject("Blue Gear Middle", new AutonomousBlueGear2());
-        autonomousChooser.addObject("Blue Gear Right", new AutonomousBlueGear3());
+        autonomousChooser.addObject("Gear Left", new AutonomousBlueGear1());
+        autonomousChooser.addObject("Gear Middle", new AutonomousBlueGear2());
+        autonomousChooser.addObject("Gear Right", new AutonomousBlueGear3());
         //autonomousChooser.addObject("Blue Gear 1 Fuel", new AutonomousBlueGear1Fuel());
         //autonomousChooser.addObject("Blue Gear 2 Fuel", new AutonomousBlueGear2Fuel());
         //autonomousChooser.addObject("Blue Gear 3 Fuel", new AutonomousBlueGear3Fuel());
-        autonomousChooser.addObject("Red Gear Left", new AutonomousRedGear1());
-        autonomousChooser.addObject("Red Gear Middle", new AutonomousRedGear2());
-        autonomousChooser.addObject("Red Gear Right", new AutonomousRedGear3());
+     /*   autonomousChooser.addObject("Red Gear Left", new AutonomousRedGear1());
+          autonomousChooser.addObject("Red Gear Middle", new AutonomousRedGear2());
+          autonomousChooser.addObject("Red Gear Right", new AutonomousRedGear3());
+     */ 
         //autonomousChooser.addObject("Red Gear 1 Fuel", new AutonomousRedGear1Fuel());
         //autonomousChooser.addObject("Red Gear 2 Fuel", new AutonomousRedGear2Fuel());
         //autonomousChooser.addObject("Red Gear 3 Fuel", new AutonomousRedGear3Fuel());
