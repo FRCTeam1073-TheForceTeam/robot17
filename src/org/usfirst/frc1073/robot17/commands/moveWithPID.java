@@ -11,6 +11,7 @@
 
 package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
@@ -48,6 +49,9 @@ public class moveWithPID extends Command {
     // Called just before this Command runs the first time
 
 protected void initialize() {
+		
+	SmartDashboard.putString("done?", "no");
+
 	
 		Robot.bling.sendAutoDrive();
 		
@@ -108,6 +112,7 @@ protected void initialize() {
 		if(Math.abs(errorright) < 60){
     		System.out.println("Exiting");
     		Logger.setLog("-----END OF PROGRAM-----");
+    		SmartDashboard.putString("done?", "yes");
     		return true;
     	}
     	else

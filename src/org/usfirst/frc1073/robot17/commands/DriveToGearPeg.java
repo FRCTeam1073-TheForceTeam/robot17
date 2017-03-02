@@ -56,6 +56,8 @@ public class DriveToGearPeg extends Command {
 
     protected void initialize() {
     	
+    	SmartDashboard.putString("done?", "no");
+
     	Robot.bling.sendPegTargeting();
     }
 
@@ -72,8 +74,8 @@ public class DriveToGearPeg extends Command {
         //These are the variables for speed - start slow
         double driveMultiplier = 2;
         double changeMultiplier = 3.55;
-        double driveSpeed = 0.05;
-		double changeSpeed = 0.05;
+        double driveSpeed = 0.1;
+		double changeSpeed = 0.1;
 		double slowWidth = 15;
 		double side = 8;
 		
@@ -96,10 +98,10 @@ public class DriveToGearPeg extends Command {
         							if (xWidth > slowWidth + 7) {
         								if (xWidth > slowWidth + 8) {
         									if (xWidth == slowWidth + 9) {
-        					                	changeRight = changeSpeed + 0.005;
-        					                	changeLeft = changeSpeed + 0.005;
-        					                	forwardsRight = driveSpeed + 0.005;
-        					                	forwardsLeft = driveSpeed + 0.005;
+        					                	changeRight = changeSpeed + 0.01;
+        					                	changeLeft = changeSpeed + 0.01;
+        					                	forwardsRight = driveSpeed + 0.01;
+        					                	forwardsLeft = driveSpeed + 0.01;
         					        		}}
         									else{
         										changeRight = changeSpeed;
@@ -198,6 +200,13 @@ public class DriveToGearPeg extends Command {
     	if (xWidth > 25 || isPressed) {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
+    		SmartDashboard.putString("done?", "yes");
+    		try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     		return true;
     	}
     	else {
@@ -218,3 +227,22 @@ public class DriveToGearPeg extends Command {
     	Robot.bling.sendRemoveGear();
     }
 }
+
+
+
+
+
+
+
+
+
+
+/*
+ * 
+ * AAAWWWWWWTOEEEEEEEE!!!!! 
+ * 
+ * M'Boi is Jack, and he keeps getting gayer.
+ * 
+ * This meme's trash, calling out to the haters!
+ * 
+*/
