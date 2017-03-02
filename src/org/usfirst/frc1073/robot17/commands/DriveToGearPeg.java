@@ -227,22 +227,3 @@ public class DriveToGearPeg extends Command {
     	Robot.bling.sendRemoveGear();
     }
 }
-
-
-
-
-
-
-
-
-
-
-/*
- * 
- * AAAWWWWWWTOEEEEEEEE!!!!! 
- * 
- * M'Boi is Jack, and he keeps getting greater.
- * 
- * This meme's trash, calling out to the haters!
- * 
-*/
