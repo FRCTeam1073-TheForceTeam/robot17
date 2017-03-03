@@ -101,8 +101,8 @@ public class OI {
         //Use AutonomousBlueGear3() and AutomousBlueGear1() only!
         autonomousTestButton.whenPressed(new AutonomousBlueGear3());
         
-        gearAlignBut = driverControl.b;
-        driverControl.y.whenPressed(new DriveInches(50));
+        //gearAlignBut = driverControl.b;
+        //driverControl.y.whenPressed(new DriveInches(50));
         gearAlignBut.whenPressed(new DriveToGearPeg());
         cameraSwitchBut = driverControl.rightJoyButton;
         cameraSwitchBut.whenPressed(new CameraSwitch());
