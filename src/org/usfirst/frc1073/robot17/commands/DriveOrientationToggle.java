@@ -11,6 +11,8 @@
 
 package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
 
 /**
@@ -38,6 +40,7 @@ public class DriveOrientationToggle extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.isOrientationSwitched = !Robot.isOrientationSwitched;
+    	Logger.setLog("Orientation is Switched");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -46,7 +49,7 @@ public class DriveOrientationToggle extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
