@@ -59,7 +59,7 @@ public class AutonomousRedGear2 extends CommandGroup {
 				break;
 		}
     	addSequential(new DriveToGearPeg());
-    	addSequential(new moveWithPID(9));
+    	addSequential(new moveWithPID(5));
     	//Drives near peg and auto-drives onto it
     } 
 }
