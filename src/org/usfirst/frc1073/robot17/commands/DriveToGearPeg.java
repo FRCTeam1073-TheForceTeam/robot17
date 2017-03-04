@@ -201,12 +201,6 @@ public class DriveToGearPeg extends Command {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
     		SmartDashboard.putString("done?", "yes");
-    		try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
     		return true;
     	}
     	else {
