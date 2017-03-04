@@ -61,7 +61,7 @@ public class AutonomousBlueGear3 extends CommandGroup {
 		}
 		addSequential(new AutoTurn(.3, 57, "counterclockwise"));
 		addSequential(new DriveToGearPeg());
-		addSequential(new moveWithPID(-4));
+		addSequential(new moveWithPID(-13));
 		//Drives near peg and auto-drives onto it
     } 
 }
