@@ -44,6 +44,9 @@ public class Robot extends IterativeRobot {
     boolean redAlliance = false;
     public static DriveModes driveMode = DriveModes.PID;
     
+    
+    public static boolean isOrientationSwitched = false;
+    
     public static boolean selectedCamera = false;
     
     public static OI oi;

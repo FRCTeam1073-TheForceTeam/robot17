@@ -49,7 +49,7 @@ public class AutonomousCross extends CommandGroup {
     	switch(Robot.driveMode)
 		{
 			case PID:
-				addSequential(new moveWithPID(76));
+				addSequential(new moveWithPID(-76));
 				break;
 			case ROTATIONS:
 				addSequential(new DriveInches(76));
@@ -60,5 +60,6 @@ public class AutonomousCross extends CommandGroup {
 			default:
 				break;
 		}
+    	addSequential(new AutoTurn(0, 0, "clockwise"));
     } 
 }
