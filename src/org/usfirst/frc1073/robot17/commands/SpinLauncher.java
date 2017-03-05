@@ -57,7 +57,7 @@ public class SpinLauncher extends Command {
     	
     	RobotMap.launcherlauncherMotor1.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
     	RobotMap.launcherlauncherMotor1.changeControlMode(TalonControlMode.Speed);
-    	RobotMap.launcherlauncherMotor1.reverseOutput(true);
+    	RobotMap.launcherlauncherMotor1.reverseOutput(false);
     	RobotMap.launcherlauncherMotor1.setP(0.22);
     	RobotMap.launcherlauncherMotor1.setI(0);
     	RobotMap.launcherlauncherMotor1.setD(0.1);
@@ -79,7 +79,7 @@ public class SpinLauncher extends Command {
         	if(rightTriggerAxis >= 0.25) {
         		
         		RobotMap.launcherlauncherMotor1.enable();
-        		RobotMap.launcherlauncherMotor1.set(OI.speed);
+        		RobotMap.launcherlauncherMotor1.set(-OI.speed);
         		
         	} 
         	else {

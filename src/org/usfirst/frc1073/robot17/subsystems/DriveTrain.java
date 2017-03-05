@@ -186,13 +186,16 @@ public class DriveTrain extends Subsystem {
     		rightMotor3.set(tempLeft);
     		leftMotor3.set(tempRight);
     	}
+    	else 
+    	{
+    		rightMotor3.set(tempRight*-1);
+    		leftMotor3.set(tempLeft*-1);
+    	}
     	
     	Logger.setLog("tempLeft: "+Double.toString(tempLeft));
     	Logger.setLog("tempRight: "+Double.toString(tempRight));
     	
     	//Robot.oi.driverControl.rumble(Math.abs(tempLeft));
-    	leftMotor3.set(-1*tempLeft);
-    	rightMotor3.set(-1*tempRight);
     }
     
     /**Left/right raw speed, distance, etc.:

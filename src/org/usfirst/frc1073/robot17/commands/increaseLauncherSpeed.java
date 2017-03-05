@@ -52,8 +52,8 @@ public class increaseLauncherSpeed extends Command {
     	
     	if (OI.speed >= 3200)
     		OI.speed = 3200;
-    	if (OI.speed <= 2000)
-    		OI.speed = 2000;
+    	if (OI.speed <= 1000)
+    		OI.speed = 1000;
     	
     	
     	
