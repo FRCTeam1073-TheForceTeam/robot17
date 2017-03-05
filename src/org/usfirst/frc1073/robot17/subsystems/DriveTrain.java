@@ -73,13 +73,6 @@ public class DriveTrain extends Subsystem {
     **/
     
     public DriveTrain() {
-    	if(Robot.isOrientationSwitched == true) {
-    		leftInverted = false;
-    		rightInverted = true;
-    	} else if(Robot.isOrientationSwitched == false) {
-    		leftInverted = true;
-    		rightInverted = false;
-    	}
     	
     	leftMotor1.setInverted(leftInverted);
     	leftMotor2.setInverted(leftInverted);
@@ -186,6 +179,12 @@ public class DriveTrain extends Subsystem {
     		difR = tempRight+1;
     		tempLeft -= difR;
     		tempRight = -1;
+    	}
+    	
+    	/**Inversion for orientation switch**/
+    	if(Robot.isOrientationSwitched == true) {
+    		rightMotor3.set(tempLeft);
+    		leftMotor3.set(tempRight);
     	}
     	
     	Logger.setLog("tempLeft: "+Double.toString(tempLeft));
