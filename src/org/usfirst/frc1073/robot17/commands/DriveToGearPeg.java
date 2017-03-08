@@ -74,7 +74,7 @@ public class DriveToGearPeg extends Command {
         //These are the variables for speed - start slow
         double driveMultiplier = 2;
         double changeMultiplier = 3.55;
-        double driveSpeed = 0.1;
+        double driveSpeed = 0.175;
 		double changeSpeed = 0.1;
 		double slowWidth = 15;
 		double side = 8;
@@ -177,6 +177,13 @@ public class DriveToGearPeg extends Command {
         	SmartDashboard.putString("Peg Direction", "Center");
         }
         
+//        //Makes it so the drive command cannot send a lower value than .1
+//        /*
+//          Resolves problem that GearToPeg wasn't able to overcome friction 
+//          when close to peg 
+//        */
+//        if(finalRight <= .075) finalRight = .075;
+//        if(finalLeft <= .075) finalLeft = .075;
         //This sends the final numbers to the drivetrain
         Robot.driveTrain.basicDrive(finalRight, finalLeft);
        
