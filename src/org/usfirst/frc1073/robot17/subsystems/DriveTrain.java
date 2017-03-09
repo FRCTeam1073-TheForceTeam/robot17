@@ -183,7 +183,7 @@ public class DriveTrain extends Subsystem {
     		tempRight = -1;
     	}
     	
-    	if(Robot.oi.driverControl.x.get())
+    	if(Robot.oi.driverControl.leftBumper.get())
     	{
     		isPrecision = !isPrecision;
     		Logger.setLog("Precision Drive has changed to: " + Boolean.toString(isPrecision));
