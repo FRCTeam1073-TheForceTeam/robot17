@@ -62,6 +62,8 @@ public class DriveTrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
+    private boolean isPrecision = false;
+    
     private final double DEADZONE_VALUE = .05;
     private final double WHEEL_DIA = 3.9;
     private final double CUBIC_SCALE = .02;
@@ -179,6 +181,19 @@ public class DriveTrain extends Subsystem {
     		difR = tempRight+1;
     		tempLeft -= difR;
     		tempRight = -1;
+    	}
+    	
+    	if(Robot.oi.driverControl.x.get())
+    	{
+    		isPrecision = !isPrecision;
+    		Logger.setLog("Precision Drive has changed to: " + Boolean.toString(isPrecision));
+    	}
+    	
+    	if(isPrecision)
+    	{
+    		//Should change when testing for max ease for driver to line up
+    		tempLeft /= 2;
+    		tempRight /= 2;
     	}
     	
     	/**Inversion for orientation switch**/
