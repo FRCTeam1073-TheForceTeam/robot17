@@ -33,9 +33,6 @@ public class moveWithPID extends Command {
     double distinInches;
     double errorleft;
     double errorright;
-    boolean isPressed = false;
-    private boolean leftInverted = true;
-    private boolean rightInverted = false;
     
 	public moveWithPID(double distInInches) {
 		distinInches = distInInches;
@@ -52,7 +49,8 @@ public class moveWithPID extends Command {
     // Called just before this Command runs the first time
 
 protected void initialize() {
-	    SmartDashboard.putString("done?", "no");
+		
+	SmartDashboard.putString("done?", "no");
 
 	
 		Robot.bling.sendAutoDrive();
@@ -68,25 +66,11 @@ protected void initialize() {
     	RobotMap.driveTrainleftMotor3.setI(0); 
     	RobotMap.driveTrainleftMotor3.setD(0);
     	RobotMap.driveTrainleftMotor3.setAllowableClosedLoopErr(20);
-    	if(Robot.robotName.equals("pb")){
-    		RobotMap.driveTrainleftMotor3.reverseOutput(true);
-    		Logger.setLog("pb");
-    	}
-    	else{
-    		RobotMap.driveTrainleftMotor3.reverseOutput(false);
-    		Logger.setLog("zepplin");
-    	}
+    	RobotMap.driveTrainleftMotor3.reverseOutput(false);
 
-
-    	RobotMap.driveTrainleftMotor3.configMaxOutputVoltage(8);
+    	RobotMap.driveTrainleftMotor3.configMaxOutputVoltage(4);
     	RobotMap.driveTrainleftMotor3.changeControlMode(TalonControlMode.Position);
-    	if(Robot.robotName.equals("pb")){
-    		RobotMap.driveTrainleftMotor3.set(-(distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
-    	}
-    	else{
-    		RobotMap.driveTrainleftMotor3.set((distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
-    	}
-
+    	RobotMap.driveTrainleftMotor3.set((distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
     	
     	//setting PID for the right side
     	RobotMap.driveTrainrightMotor3.enable();
@@ -99,23 +83,11 @@ protected void initialize() {
     	RobotMap.driveTrainrightMotor3.setI(0); 
     	RobotMap.driveTrainrightMotor3.setD(0);
     	RobotMap.driveTrainrightMotor3.setAllowableClosedLoopErr(20);
-    	if(Robot.robotName.equals("pb")){
-    		RobotMap.driveTrainrightMotor3.reverseOutput(true);
-    	}
-    	else{
-    		RobotMap.driveTrainrightMotor3.reverseOutput(false);
-    	}
+    	RobotMap.driveTrainrightMotor3.reverseOutput(false);
 
-
-    	RobotMap.driveTrainrightMotor3.configMaxOutputVoltage(8);
+    	RobotMap.driveTrainrightMotor3.configMaxOutputVoltage(4);
     	RobotMap.driveTrainrightMotor3.changeControlMode(TalonControlMode.Position);
-    	if(Robot.robotName.equals("pb")){
-    		RobotMap.driveTrainrightMotor3.set((distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
-    	}
-    	else{
-    		RobotMap.driveTrainrightMotor3.set(-(distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
-    	}
-
+    	RobotMap.driveTrainrightMotor3.set(-(distinInches/(3.9*Math.PI))); /* one rotation is 12.566 inches */
     	
     	//waiting 60 milliseconds
     	try {
@@ -137,9 +109,7 @@ protected void initialize() {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	isPressed = Robot.oi.cancelAny.get();
-    	
-		if(Math.abs(errorleft) < 100 || isPressed){
+		if(Math.abs(errorright) < 60){
     		System.out.println("Exiting");
     		Logger.setLog("-----END OF PROGRAM-----");
     		SmartDashboard.putString("done?", "yes");
@@ -147,7 +117,6 @@ protected void initialize() {
     	}
     	else
     		return false;
-		
     }
 
     // Called once after isFinished returns true
