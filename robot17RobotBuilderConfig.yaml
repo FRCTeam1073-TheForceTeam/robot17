@@ -74,18 +74,6 @@ Children:
       Name: rightEnc
     - Children: []
       Properties:
-        Sensitivity: !!robotbuilder.data.properties.DoubleProperty {default: 0.007,
-          name: Sensitivity, validators: null, value: 0.007}
-        Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['0', '1']
-          default: '0'
-          name: Input Channel (Analog)
-          validators: [AnalogInput]
-          value: '0'
-      Base: AnalogGyro
-      Name: HeadingGyro
-    - Children: []
-      Properties:
         Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
           choices: &id007 ['0', '1', '2', '3', '4', '5', '6', '7']
           default: '0'
@@ -966,15 +954,15 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id016 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id016
+        value: []
       Commands: !!robotbuilder.data.properties.ListProperty
-        default: &id017 []
+        default: []
         name: Commands
         validators: *id015
-        value: *id017
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
@@ -983,7 +971,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\ksthilaire\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Errica\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\FRCWorkspace'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
@@ -1002,7 +990,7 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\ksthilaire\',
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Errica\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\FRCWorkspace'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: None}
