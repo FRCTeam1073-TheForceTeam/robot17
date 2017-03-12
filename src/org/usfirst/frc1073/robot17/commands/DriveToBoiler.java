@@ -46,163 +46,70 @@ public class DriveToBoiler extends Command {
     protected void initialize() {
     	SmartDashboard.putString("done with boiler?", "no");
 
-    	Robot.bling.sendBoilerTargeting();  
+    	  
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.bling.sendBoilerTargeting();
     	//These are the variables that get manipulated in the code
-        double forwardsRight = 0;
-        double forwardsLeft = 0;
-        double changeRight = 0;
-        double changeLeft = 0;
-        double finalRight = 0;
-        double finalLeft = 0;
+        
         
         //These are the variables for speed - start slow
-        double driveMultiplier = 2;
-        double changeMultiplier = 3.55;
-        double driveSpeed = 0.175;
+        
+        double driveSpeed = 0.3;
 		double changeSpeed = 0.1;
-		double slowWidth = 15;
-		double side = 12;
-		
-		
+		double maxWidth = 48;
+		//sets the maximum number of pixels that the pixy can see before it stops
+		double positiveError = 12;
+		double negativeError = -12;
+		//sets the number of pixels of error on either side of center
+		double zero = 0;
 		
 		//This is the width of the Pixy
 		double imageWidth = 320;
 		
 		//These are what the Pixy send us
 		xDeltaHG =  netTable.getNumber("centerDistHG", 0);
+		//distance from center
         xWidthHG =  netTable.getNumber("AverageWidthHG", 0);
-		
-		//This code modifies the speed based on how close you are to the boiler
-        if (xWidthHG > slowWidth) {
-        	if (xWidthHG > slowWidth + 1) {
-        		if (xWidthHG > slowWidth + 2) {
-        			if (xWidthHG > slowWidth + 3) {
-        				if (xWidthHG > slowWidth + 4) {
-        					if (xWidthHG > slowWidth + 5) {
-        						if (xWidthHG > slowWidth + 6) {
-        							if (xWidthHG > slowWidth + 7) {
-        								if (xWidthHG > slowWidth + 8) {
-        									if (xWidthHG == slowWidth + 9) {
-        					                	changeRight = changeSpeed + 0.01;
-        					                	changeLeft = changeSpeed + 0.01;
-        					                	forwardsRight = driveSpeed + 0.01;
-        					                	forwardsLeft = driveSpeed + 0.01;
-        					        		}}
-        									else{
-        										changeRight = changeSpeed;
-        					                	changeLeft = changeSpeed;
-        					                	forwardsRight = driveSpeed;
-        					                	forwardsLeft = driveSpeed;
-        									}}
-        								else{	
-        									changeRight = changeSpeed + .01;
-        				                	changeLeft = changeSpeed + .01;
-        				                	forwardsRight = driveSpeed + .015;
-        				                	forwardsLeft = driveSpeed + .015;
-        								}}
-        							else{	
-        								changeRight = changeSpeed + .015;
-        			                	changeLeft = changeSpeed + .015;
-        			                	forwardsRight = driveSpeed + .025;
-        			                	forwardsLeft = driveSpeed + .025;
-        							}}
-        						else{		
-        							changeRight = changeSpeed  + .02;
-        		                	changeLeft = changeSpeed + .02;
-        		                	forwardsRight = driveSpeed + .035;
-        		                	forwardsLeft = driveSpeed + .035;
-        		        		}}
-        					else{	
-        						changeRight = changeSpeed + .04;
-        	                	changeLeft = changeSpeed + .04;
-        	                	forwardsRight = driveSpeed + .05;
-        	                	forwardsLeft = driveSpeed + .05;
-        	        		}}
-        				else{			
-        					changeRight = changeSpeed + .05;
-                        	changeLeft = changeSpeed + .05;
-                        	forwardsRight = driveSpeed + .075;
-                        	forwardsLeft = driveSpeed + .075;
-                		}}
-        			else{	
-        				changeRight = changeSpeed + .06;
-                    	changeLeft = changeSpeed + .06;
-                    	forwardsRight = driveSpeed + .1;
-                    	forwardsLeft = driveSpeed + .1;
-            		}}
-        		else{				
-        			changeRight = changeSpeed + .1;
-                	changeLeft = changeSpeed + .1;
-                	forwardsRight = driveSpeed + .15;
-                	forwardsLeft = driveSpeed + .15;
-        		}}
-        	else{	
-        		changeRight = changeSpeed + .15;
-            	changeLeft = changeSpeed + .15;
-            	forwardsRight = driveSpeed + .15;
-            	forwardsLeft = driveSpeed + .15;
+        //width of the block that they Pixy sees
+        if (xWidthHG > maxWidth)
+        {
+        	if (xDeltaHG< negativeError) {
+        		Robot.driveTrain.basicDrive(driveSpeed, zero);
+        		SmartDashboard.putString("direction to boiler", "left");
         	}
-        
-        
-        //This code handles the left and right vs forward motion of the robot
-        //based on the Pixy's values
-        if (xDeltaHG > side) {
-        	finalRight = forwardsRight - changeRight;
-        	finalLeft = forwardsLeft + changeLeft;
-        	SmartDashboard.putString("Boiler Direction", "Left");
-        }
-        else if (xDeltaHG < -side) {
-        	finalRight = forwardsRight + changeRight;
-        	finalLeft = forwardsLeft - changeLeft;
-        	SmartDashboard.putString("boiler Direction", "Right");
-        }
-        else {
-        	finalRight = forwardsRight;
-        	finalLeft = forwardsLeft;
-        	SmartDashboard.putString("boiler Direction", "Center");
+        	else if (xDeltaHG > positiveError ){
+        		Robot.driveTrain.basicDrive(zero, driveSpeed);
+        		SmartDashboard.putString("direction to boiler", "right");
+        	}
+        	else
+        	{
+        		Robot.driveTrain.basicDrive(driveSpeed, driveSpeed);
+        		SmartDashboard.putString("direction to boiler", "center");
+        	}
+        		
         }
         
-//        //Makes it so the drive command cannot send a lower value than .1
-//        /*
-//          Resolves problem that GearToboiler wasn't able to overcome friction 
-//          when close to boiler 
-//        */
-//        if(finalRight <= .075) finalRight = .075;
-//        if(finalLeft <= .075) finalLeft = .075;
-        //This sends the final numbers to the drivetrain
-        Robot.driveTrain.basicDrive(finalRight, finalLeft);
-       
-    }
+        }
+		
+    
     
     protected boolean isFinished() {
     	
-    	//Checks the cancel button for its state
-    	isPressed = Robot.oi.cancelAny.get();
-    	
-    	//Stops the robot if:
-    	/*
-    	 * Change this to affect how close the robot gets. Bigger means closer and smaller means farther.
-    	 * 27 should be ok to start.
-    	 * 			|
-    	 * 			|
-    	 * 			|
-    	 *			|
-    	 *		   \ /
-    	 */
-    	if (xWidthHG > 48 || isPressed) {
+    	double maxWidth = 48;
+		if (xWidthHG >= maxWidth  || isPressed){
     		Robot.driveTrain.basicDrive(0, 0);
-    		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
-    		SmartDashboard.putString("done?", "yes");
+    		Robot.oi.driverControl.rumbleTimeRep(1,150,2);
+    		SmartDashboard.putString("done with boiler?", "YES!!! :)");
     		return true;
+    		
     	}
-    	else {
-    		return false;
-    	}
+		else {
+			return false;
+					
+		}
     	
     }
     
@@ -211,10 +118,14 @@ public class DriveToBoiler extends Command {
     
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.basicDrive(0, 0);
+    	Robot.bling.sendFuelLaunchReady();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.driveTrain.basicDrive(0, 0);
+    	Robot.bling.sendFuelLaunchReady();
     }
 }
