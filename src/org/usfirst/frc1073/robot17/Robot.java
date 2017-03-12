@@ -143,25 +143,31 @@ public class Robot extends IterativeRobot {
         	blueAlliance = false;
         }
 
-//        Thread proxThread = new Thread(() -> {        	
+        Thread proxThread = new Thread(() -> {        	
 //            // 640, 480
 //            // 320, 240
 //            // 160, 120
-//            //boolean currentCamera = selectedCamera;
-//        	while( !Thread.interrupted() ) {
-//        		double voltage;
-//        		try {
-//					Thread.sleep(20);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//        		voltage = RobotMap.driveTrainProximitySensorBack.getVoltage();
-//        		SmartDashboard.putNumber("proxVoltage", voltage);
-//            	}
-//        });
-//        proxThread.start();
-//    }
+            //boolean currentCamera = selectedCamera;
+        	while( !Thread.interrupted() ) {
+        		double voltage;
+        		double reciprocal;
+        		double backProximit;
+        		try {
+					Thread.sleep(20);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+        		voltage = RobotMap.driveTrainProximitySensorBack.getVoltage();
+            	reciprocal = 0.00126675995064 * voltage * voltage * voltage * voltage + -0.00823083172345 * voltage * voltage * voltage + 0.02292474310105 * voltage * voltage + 0.01747977657017 * voltage + 0.00285999025946;
+            	backProximit = 1 / reciprocal; 
+            	backProximit = backProximit / 2.54;
+            	SmartDashboard.putNumber("BackDistance", backProximit);
+        		SmartDashboard.putNumber("proxVoltage", voltage);
+            	}
+        });
+        proxThread.start();
+    }
         /** Instantiate a the camera server for both USB webcams in a separate thread **/
         Thread cameraThread = new Thread(() -> {        	
             // 640, 480
@@ -209,9 +215,8 @@ public class Robot extends IterativeRobot {
             }
         });
         
-        cameraThread.start();
+        //cameraThread.start();
         
-    }
 
     /**
      * This function is called when the disabled button is hit.
