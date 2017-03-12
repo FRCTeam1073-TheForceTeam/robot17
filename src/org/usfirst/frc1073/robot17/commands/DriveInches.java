@@ -49,7 +49,7 @@ public class DriveInches extends Command {
     protected void initialize() {
     	Robot.driveTrain.setLeftPos(0);
     	Robot.driveTrain.setRightPos(0);
-    	Robot.driveTrain.resetGyro();
+    	//Robot.driveTrain.resetGyro();
     	if(destination < 0) isNeg = -1;
     	else isNeg = 1;
     }
@@ -61,7 +61,7 @@ public class DriveInches extends Command {
     	
     	currentAvg = (currentLeft+currentRight)/2;
     	
-    	currentAng = Robot.driveTrain.getDegrees();
+    	//currentAng = Robot.driveTrain.getDegrees();
     	currentMod = currentAng/ANG_MOD_VAL;
     	
     	currentSpeed = isNeg*-1*Math.abs((currentAvg/destination)-SPEED) + SPEED;
@@ -71,7 +71,7 @@ public class DriveInches extends Command {
     	
     	Logger.setLog("Left pos: " + Double.toString(Robot.driveTrain.getLeftPos()));
     	Logger.setLog("Right pos: " + Double.toString(Robot.driveTrain.getRightPos()*-1));
-    	Logger.setLog("Robot heading: " + Double.toString(Robot.driveTrain.getDegrees()));
+    	//Logger.setLog("Robot heading: " + Double.toString(Robot.driveTrain.getDegrees()));
     	
     	encDif = Robot.driveTrain.getLeftPos() - Robot.driveTrain.getRightPos();
     	encDif *= ENC_MOD_VAL;

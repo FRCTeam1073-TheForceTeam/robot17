@@ -57,7 +57,7 @@ public class DriveToBoiler extends Command {
         
         //These are the variables for speed - start slow
         
-        double driveSpeed = 0.3;
+        double driveSpeed = -0.3;
 		double changeSpeed = 0.1;
 		double maxWidth = 48;
 		//sets the maximum number of pixels that the pixy can see before it stops
