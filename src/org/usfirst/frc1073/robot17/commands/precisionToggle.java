@@ -40,7 +40,7 @@ public class precisionToggle extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.isPrecision = !Robot.driveTrain.isPrecision;
-    	Robot.oi.driverControl.rumbleTime(1, 500);
+    	Robot.oi.driverControl.rumbleTime(1, 150);
     	Logger.setLog("isPrecision has changed to: " + Boolean.toString(Robot.driveTrain.isPrecision));
     }
 
