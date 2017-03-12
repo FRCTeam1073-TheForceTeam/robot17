@@ -58,6 +58,7 @@ public class DriveToBoiler extends Command {
         //These are the variables for speed - start slow
         
         double driveSpeed = 0.3;
+        double negativeDriveSpeed = -0.3;
 		double changeSpeed = 0.1;
 		double maxWidth = 48;
 		//sets the maximum number of pixels that the pixy can see before it stops
@@ -77,11 +78,11 @@ public class DriveToBoiler extends Command {
         if (xWidthHG > maxWidth)
         {
         	if (xDeltaHG < negativeError) {
-        		Robot.driveTrain.basicDrive(driveSpeed, zero);
+        		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
         	else if (xDeltaHG > positiveError ){
-        		Robot.driveTrain.basicDrive(zero, driveSpeed);
+        		Robot.driveTrain.basicDrive(zero, negativeDriveSpeed);
         		SmartDashboard.putString("direction to boiler", "right");
         	}
         	else
@@ -108,6 +109,7 @@ public class DriveToBoiler extends Command {
         	}
         		
         }
+        
         }
 		
     
