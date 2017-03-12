@@ -142,7 +142,26 @@ public class Robot extends IterativeRobot {
         	SmartDashboard.putString("Left Side", "Human Player Station");
         	blueAlliance = false;
         }
-        
+
+//        Thread proxThread = new Thread(() -> {        	
+//            // 640, 480
+//            // 320, 240
+//            // 160, 120
+//            //boolean currentCamera = selectedCamera;
+//        	while( !Thread.interrupted() ) {
+//        		double voltage;
+//        		try {
+//					Thread.sleep(20);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//        		voltage = RobotMap.driveTrainProximitySensorBack.getVoltage();
+//        		SmartDashboard.putNumber("proxVoltage", voltage);
+//            	}
+//        });
+//        proxThread.start();
+//    }
         /** Instantiate a the camera server for both USB webcams in a separate thread **/
         Thread cameraThread = new Thread(() -> {        	
             // 640, 480
