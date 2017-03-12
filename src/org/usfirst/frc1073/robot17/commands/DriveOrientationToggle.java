@@ -40,6 +40,7 @@ public class DriveOrientationToggle extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.isOrientationSwitched = !Robot.isOrientationSwitched;
+    	Robot.oi.driverControl.rumbleTimeRep(1, 250, 3);
     	Logger.setLog("Orientation is Switched");
     }
 
