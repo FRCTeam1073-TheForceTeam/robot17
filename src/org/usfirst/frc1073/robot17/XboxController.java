@@ -114,6 +114,7 @@ public class XboxController extends Joystick {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Thread.sleep(30000);
 		}
 		setRumble(RumbleType.kLeftRumble,0);
 		setRumble(RumbleType.kRightRumble,0);
@@ -137,6 +138,7 @@ public class XboxController extends Joystick {
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				Thread.sleep(30000);
 			}
 			setRumble(RumbleType.kLeftRumble,0);
 			setRumble(RumbleType.kRightRumble,0);
