@@ -65,7 +65,7 @@ public class DriveToBoiler extends Command {
 		double positiveError = 12;
 		double negativeError = -12;
 		//sets the number of pixels of error on either side of center
-		double zero = 0;
+		double zero = -0.2;
 		
 		//This is the width of the Pixy
 		double imageWidth = 320;
@@ -87,7 +87,7 @@ public class DriveToBoiler extends Command {
         	}
         	else
         	{
-        		Robot.driveTrain.basicDrive(driveSpeed, driveSpeed);
+        		Robot.driveTrain.basicDrive(negativeDriveSpeed, negativeDriveSpeed);
         		SmartDashboard.putString("direction to boiler", "center");
         	}
         		
@@ -95,16 +95,16 @@ public class DriveToBoiler extends Command {
         if (xWidthHG < maxWidth)
         {
         	if (xDeltaHG < negativeError) {
-        		Robot.driveTrain.basicDrive(driveSpeed, zero);
+        		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
         	else if (xDeltaHG > positiveError ){
-        		Robot.driveTrain.basicDrive(zero, driveSpeed);
+        		Robot.driveTrain.basicDrive(zero, negativeDriveSpeed);
         		SmartDashboard.putString("direction to boiler", "right");
         	}
         	else
         	{
-        		Robot.driveTrain.basicDrive(driveSpeed, driveSpeed);
+        		Robot.driveTrain.basicDrive(negativeDriveSpeed, negativeDriveSpeed);
         		SmartDashboard.putString("direction to boiler", "center");
         	}
         		
