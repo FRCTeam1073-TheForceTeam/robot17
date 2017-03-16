@@ -77,11 +77,11 @@ public class DriveToBoiler extends Command {
         //width of the block that they Pixy sees
         if (xWidthHG > maxWidth)
         {
-        	if (xDeltaHG < negativeError) {
+        	if (xDeltaHG < maxWidth - negativeError) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > positiveError ){
+        	else if (xDeltaHG > maxWidth + positiveError ){
         		Robot.driveTrain.basicDrive(zero, negativeDriveSpeed);
         		SmartDashboard.putString("direction to boiler", "right");
         	}
@@ -94,11 +94,11 @@ public class DriveToBoiler extends Command {
         }
         if (xWidthHG < maxWidth)
         {
-        	if (xDeltaHG < negativeError) {
+        	if (xDeltaHG < maxWidth  - negativeError) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > positiveError ){
+        	else if (xDeltaHG > maxWidth + positiveError ){
         		Robot.driveTrain.basicDrive(zero, negativeDriveSpeed);
         		SmartDashboard.putString("direction to boiler", "right");
         	}
