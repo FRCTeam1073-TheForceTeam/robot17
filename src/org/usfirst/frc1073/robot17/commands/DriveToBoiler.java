@@ -92,7 +92,7 @@ public class DriveToBoiler extends Command {
         	}
         		
         }
-        if (xWidthHG < maxWidth)
+        if (xWidthHG < maxWidth - negativeError)
         {
         	if (xDeltaHG < maxWidth  - negativeError) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
