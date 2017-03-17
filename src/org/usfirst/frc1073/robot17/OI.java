@@ -103,7 +103,7 @@ public class OI {
         
         //driverControl.y.whenPressed(new DriveInches(50));
         gearAlignBut = driverControl.b;
-        gearAlignBut.whenPressed(new DriveToGearPegPlusNine());
+        gearAlignBut.whenPressed(new DriveToGearPeg());
         cameraSwitchBut = driverControl.rightJoyButton;
         cameraSwitchBut.whenPressed(new CameraSwitch());
         driveOrientationToggleBut = driverControl.leftJoyButton;
