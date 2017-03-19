@@ -81,21 +81,20 @@ public class DriveToBoiler extends Command {
         //width of the block that they Pixy sees
         if (xWidthHG > maxWidth)
         {
-<<<<<<< HEAD
-        	if (xDeltaHG < maxWidth - negativeError) {
+        	if (xDeltaHG < maxWidth) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > maxWidth + positiveError ){
+        	else if (xDeltaHG > maxWidth){
         		Robot.driveTrain.basicDrive(zero, negativeDriveSpeed);
-=======
-        	if (xDeltaHG > positiveError) {
+
+        	if (xDeltaHG > maxWidth) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, 0.2);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > positiveError ){
+        	else if (xDeltaHG > maxWidth){
         		Robot.driveTrain.basicDrive(0.2, negativeDriveSpeed);
->>>>>>> origin/boiler
+
         		SmartDashboard.putString("direction to boiler", "right");
         	}
         	else
@@ -105,25 +104,25 @@ public class DriveToBoiler extends Command {
         	}
         		
         }
-<<<<<<< HEAD
-        if (xWidthHG < maxWidth - negativeError)
+
+        if (xWidthHG < maxWidth)
         {
-        	if (xDeltaHG < maxWidth  - negativeError) {
+        	if (xDeltaHG < maxWidth) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > maxWidth + positiveError ){
+        	else if (xDeltaHG > maxWidth){
         		Robot.driveTrain.basicDrive(zero, negativeDriveSpeed);
-=======
+        	}
         else if (xWidthHG < maxWidth)
         {
-        	if (xDeltaHG < negativeError) {
+        	if (xDeltaHG < maxWidth) {
         		Robot.driveTrain.basicDrive(0.2, driveSpeed);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > positiveError ){
+        	else if (xDeltaHG > maxWidth ){
         		Robot.driveTrain.basicDrive(driveSpeed, .2);
->>>>>>> origin/boiler
+
         		SmartDashboard.putString("direction to boiler", "right");
         	}
         	else
@@ -132,6 +131,9 @@ public class DriveToBoiler extends Command {
         		SmartDashboard.putString("direction to boiler", "center");
         	}
         		
+        }
+        }
+        
         }
         
         
