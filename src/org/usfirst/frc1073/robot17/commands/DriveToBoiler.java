@@ -50,7 +50,7 @@ protected void initialize() {
     	
     	SmartDashboard.putString("done?", "no");
 
-    	Robot.bling.sendPegTargeting();
+    	Robot.bling.sendBoilerTargeting();
     }
 
     protected void execute() {

@@ -76,7 +76,7 @@ public class DriveToGearPeg extends Command {
         double changeMultiplier = 3.55;
         double driveSpeed = 0.16;
 		double changeSpeed = 0.15;
-		double slowWidth = 16;
+		double slowWidth = 14;
 		double side = 8;
 		
 		
@@ -213,7 +213,7 @@ public class DriveToGearPeg extends Command {
     	 *			|
     	 *		   \ /
     	 */
-    	if (xWidth > 28 || isPressed) {
+    	if (xWidth > 27 || isPressed) {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
     		SmartDashboard.putString("done?", "yes");
