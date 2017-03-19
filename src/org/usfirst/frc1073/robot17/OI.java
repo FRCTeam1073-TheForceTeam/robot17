@@ -88,9 +88,9 @@ public class OI {
         unwindBut = operatorControl.start;
         unwindBut.whileHeld(new Unclimb());
         increaseLauncher = operatorControl.y;
-        increaseLauncher.whenPressed(new IncreaseLauncherSpeed(50));
+        increaseLauncher.whenPressed(new increaseLauncherSpeed(50));
         decreaseLauncher = operatorControl.a;
-        decreaseLauncher.whenPressed(new IncreaseLauncherSpeed(-50));
+        decreaseLauncher.whenPressed(new increaseLauncherSpeed(-50));
         
         
         driverControl = new XboxController(0);
