@@ -307,6 +307,8 @@ public class Robot extends IterativeRobot {
          });
          timerThread.start();
 
+     	isOrientationSwitched = false;
+    	Robot.driveTrain.isPrecision = false;
 
     }
 

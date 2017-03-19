@@ -72,7 +72,7 @@ public class OI {
     public JoystickButton unwindBut;
     public JoystickButton increaseLauncher;
     public JoystickButton decreaseLauncher;
-    
+    public JoystickButton precisionToggleBut;
     
     public OI() {
     	
@@ -109,7 +109,8 @@ public class OI {
         driveOrientationToggleBut = driverControl.leftJoyButton;
         driveOrientationToggleBut.whenPressed(new DriveOrientationToggle());
         cancelAny = driverControl.a;
-        driverControl.leftBumper.whenPressed(new precisionToggle());
+        precisionToggleBut = driverControl.leftBumper;
+        precisionToggleBut.whenPressed(new precisionToggle());
         
         
 
