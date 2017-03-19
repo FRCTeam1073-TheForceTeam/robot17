@@ -58,7 +58,7 @@ public class AutonomousBlueGear2 extends CommandGroup {
 				break;
 		}
     	addSequential(new DriveToGearPeg());
-		addSequential(new moveWithPID(-9));
+		addSequential(new moveWithPID(-5));
     	//Drives to peg
     } 
 }
