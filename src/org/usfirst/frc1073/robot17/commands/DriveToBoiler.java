@@ -79,7 +79,7 @@ public class DriveToBoiler extends Command {
 		//distance from center
         xWidthHG =  netTable.getNumber("AverageWidthHG", 0);
         //width of the block that they Pixy sees
-        if (xWidthHG > positiveError)
+        if (xWidthHG > maxWidth)
         {
         	if (xDeltaHG < negativeError) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
@@ -105,7 +105,7 @@ public class DriveToBoiler extends Command {
         		
         }
 
-        if (xWidthHG < negativeError)
+        if (xWidthHG < maxWidth)
         {
         	if (xDeltaHG < negativeError) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
