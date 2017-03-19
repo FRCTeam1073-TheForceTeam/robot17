@@ -61,15 +61,15 @@ public class DriveToBoiler extends Command {
         
         //These are the variables for speed - start slow
         
-        double driveSpeed = 0.3;
-        double negativeDriveSpeed = -0.3;
+        double driveSpeed = xDeltaHG/320 - xDeltaHG*0.066;
+        double negativeDriveSpeed = -1 * (xDeltaHG/320 - xDeltaHG*0.066);
 		double changeSpeed = 0.1;
 		double maxWidth = 48;
 		//sets the maximum number of pixels that the pixy can see before it stops
 		double positiveError = 12;
 		double negativeError = -12;
 		//sets the number of pixels of error on either side of center
-		double zero = -0.2;
+		double zero = driveSpeed * .66;
 		
 		//This is the width of the Pixy
 		double imageWidth = 320;
@@ -79,20 +79,20 @@ public class DriveToBoiler extends Command {
 		//distance from center
         xWidthHG =  netTable.getNumber("AverageWidthHG", 0);
         //width of the block that they Pixy sees
-        if (xWidthHG > maxWidth)
+        if (xWidthHG > positiveError)
         {
-        	if (xDeltaHG < maxWidth) {
+        	if (xDeltaHG < negativeError) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > maxWidth){
+        	else if (xDeltaHG > positiveError){
         		Robot.driveTrain.basicDrive(zero, negativeDriveSpeed);
 
-        	if (xDeltaHG > maxWidth) {
+        	if (xDeltaHG > positiveError) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, 0.2);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > maxWidth){
+        	else if (xDeltaHG > positiveError){
         		Robot.driveTrain.basicDrive(0.2, negativeDriveSpeed);
 
         		SmartDashboard.putString("direction to boiler", "right");
@@ -105,22 +105,22 @@ public class DriveToBoiler extends Command {
         		
         }
 
-        if (xWidthHG < maxWidth)
+        if (xWidthHG < negativeError)
         {
-        	if (xDeltaHG < maxWidth) {
+        	if (xDeltaHG < negativeError) {
         		Robot.driveTrain.basicDrive(negativeDriveSpeed, zero);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > maxWidth){
+        	else if (xDeltaHG > positiveError){
         		Robot.driveTrain.basicDrive(zero, negativeDriveSpeed);
         	}
-        else if (xWidthHG < maxWidth)
+        else if (xWidthHG < negativeError)
         {
-        	if (xDeltaHG < maxWidth) {
+        	if (xDeltaHG < negativeError) {
         		Robot.driveTrain.basicDrive(0.2, driveSpeed);
         		SmartDashboard.putString("direction to boiler", "left");
         	}
-        	else if (xDeltaHG > maxWidth ){
+        	else if (xDeltaHG > positiveError ){
         		Robot.driveTrain.basicDrive(driveSpeed, .2);
 
         		SmartDashboard.putString("direction to boiler", "right");
@@ -163,6 +163,13 @@ public class DriveToBoiler extends Command {
     
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.bling.sendOff();
+    	try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	Robot.driveTrain.basicDrive(0, 0);
     	Robot.bling.sendFuelLaunchReady();
     }
