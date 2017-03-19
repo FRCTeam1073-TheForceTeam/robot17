@@ -284,7 +284,7 @@ public class Robot extends IterativeRobot {
         Thread timerThread = new Thread(() -> {
          	//HardwareTimer matchTimer = new HardwareTimer();
          	//matchTimer.delay(120);
-    		 System.out.println("PrintRRRRRRRRRRRR");
+    		 System.out.println("PrintR");
          	try {
  				Thread.sleep(120000);
  			} catch (InterruptedException e) {
@@ -292,7 +292,7 @@ public class Robot extends IterativeRobot {
  				e.printStackTrace();
  			}
          	//}catch(InterruptedException e)
-         	System.out.println("PrintYYYYYYYYYYYYYYYYYY");
+         	System.out.println("PrintY");
          	bling.sendEndgame();
          	try {
 				Thread.sleep(3000);
@@ -300,7 +300,7 @@ public class Robot extends IterativeRobot {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-         	System.out.println("PrintXXXXXXXXXXX");
+         	System.out.println("PrintX");
          	
          	//matchTimer.delay(3);
          	bling.sendOff();
