@@ -60,9 +60,9 @@ public class MoveAway extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
 		if(count  < 40)
-			return true;
-		else
 			return false;
+		else
+			return true;
     }
 
     // Called once after isFinished returns true
