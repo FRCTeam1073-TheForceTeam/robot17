@@ -184,7 +184,7 @@ protected void initialize() {
     	//Stops the robot if:
     	/*
     	 * Change this to affect how close the robot gets. Bigger means closer and smaller means farther.
-    	 * 27 should be ok to start.
+    	 * 40 should be ok to start.
     	 * 			|
     	 * 			|
     	 * 			|
