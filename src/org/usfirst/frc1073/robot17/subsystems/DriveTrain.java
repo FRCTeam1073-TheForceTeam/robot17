@@ -217,6 +217,9 @@ public class DriveTrain extends Subsystem {
     	Logger.setLog("tempLeft: "+Double.toString(tempLeft));
     	Logger.setLog("tempRight: "+Double.toString(tempRight));
     	
+    	//Rumble Demo
+    	Robot.oi.demoControl.rumble(Math.abs(Robot.oi.demoControl.getRawAxis(1)));
+    	
     	//Robot.oi.driverControl.rumble(Math.abs(tempLeft));
     }
     
