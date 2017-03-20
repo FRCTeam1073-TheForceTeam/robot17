@@ -122,7 +122,6 @@ public class Robot extends IterativeRobot {
         autonomousChooser.addObject("Gear Middle", new AutonomousBlueGear2());
         autonomousChooser.addObject("Gear Right", new AutonomousBlueGear3());
         autonomousChooser.addObject("Gear Left + Boiler", new AutonomousBlueGear1Fuel());
-        autonomousChooser.addObject("Gear Middle + Boiler", new AutonomousBlueGear2Fuel());
         autonomousChooser.addObject("Gear Right + Boiler", new AutonomousBlueGear3Fuel());
      /*   autonomousChooser.addObject("Red Gear Left", new AutonomousRedGear1());
           autonomousChooser.addObject("Red Gear Middle", new AutonomousRedGear2());

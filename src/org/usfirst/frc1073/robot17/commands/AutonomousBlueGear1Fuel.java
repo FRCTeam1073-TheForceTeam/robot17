@@ -60,7 +60,7 @@ public class AutonomousBlueGear1Fuel extends CommandGroup {
 			break;
 		default:
 			break;
-	}
+    	}
 		addSequential(new AlignAndLaunch());
 		//Drives near boiler and auto-drives into alignment
     } 
