@@ -147,7 +147,7 @@ public class Bling {
 	}
 	
 	public void sendBoilerTargeting() {
-		setPattern("scanner", "Yellow", "all", "medium", 0, 100);
+		setPattern("scanner", "purple", "all", "medium", 0, 100);
 		send();
 	}
 	
@@ -158,6 +158,16 @@ public class Bling {
 	
 	public void sendFuelLaunching() {
 		setPattern("RainbowHalves", "rainbow", "all", "medium", 0, 100);
+		send();
+	}
+	public void sendCollectBall()
+	{
+		setPattern("blinking", "green", "all", "medium", 0, 100);
+		send();
+	}
+	public void sendPurgeBall()
+	{
+		setPattern("blinking", "orange", "all", "medium", 0, 100);
 		send();
 	}
 	public void sendEndgame() {

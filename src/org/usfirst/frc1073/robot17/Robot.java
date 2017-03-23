@@ -274,6 +274,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
+    	Robot.bling.disableLeds();
         if (autonomousCommand != null) autonomousCommand.cancel();
         Robot.oi.driverControl.rumbleTimeRep(1, 100, 3);
         Robot.oi.operatorControl.rumbleTimeRep(1, 100, 3);
