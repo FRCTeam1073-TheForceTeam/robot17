@@ -136,6 +136,7 @@ protected void initialize() {
     		System.out.println("Exiting");
     		Logger.setLog("-----END OF PROGRAM-----");
     		SmartDashboard.putString("done?", "yes");
+    		Robot.bling.sendEndMovePID();
     		return true;
     	}
     	else

@@ -181,6 +181,16 @@ protected void initialize() {
     	//Checks the cancel button for its state
     	isPressed = Robot.oi.cancelAny.get();
     	
+    	double stopWidthBoiler = 30;
+    	stopWidthBoiler = Robot.robotPreferences.getDouble("stopWidthBoiler", 30);
+    	boolean stopBool = false;
+    	
+    	if (xWidth > stopWidthBoiler){
+    		stopBool = true;
+    	}
+    	else {
+    		stopBool = false;
+    	}
     	//Stops the robot if:
     	/*
     	 * Change this to affect how close the robot gets. Bigger means closer and smaller means farther.
@@ -191,7 +201,7 @@ protected void initialize() {
     	 *			|
     	 *		   \ /
     	 */
-    	if (xWidth > 40 || isPressed) {
+    	if (stopBool == true || isPressed) {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
     		SmartDashboard.putString("done?", "yes");

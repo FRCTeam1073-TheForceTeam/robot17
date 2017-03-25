@@ -229,13 +229,13 @@ public class Robot extends IterativeRobot {
             	
  
             	//Grab image from the source camera
-            	cvSink.grabFrame(source);
+           // 	cvSink.grabFrame(source);
             	
             	// if there was an image collected, then send it to the dashboard via
             	// the output stream
             	if ( source.empty() == false ) {
-                	Core.flip(source, flipped, 0);
-            		outputStream.putFrame(flipped);
+                //	Core.flip(source.t(), source, 0);
+            		outputStream.putFrame(source);
             		//outputStream.putFrame(source);
             	}
             }

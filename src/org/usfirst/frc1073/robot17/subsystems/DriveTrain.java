@@ -22,7 +22,8 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Preferences;
 
 /**
  *
@@ -106,6 +107,8 @@ public class DriveTrain extends Subsystem {
         
         leftMotor3.configEncoderCodesPerRev(360);
         rightMotor3.configEncoderCodesPerRev(360);
+        
+        
     }
     
     public double deadzone(double input,double deadzoneVal)
@@ -204,14 +207,21 @@ public class DriveTrain extends Subsystem {
         		leftMotor3.set(tempLeft*-1);
     		}
     	}
-    	
+    	SmartDashboard.putNumber("Voltage", RobotMap.driveTrainGearSensor.getVoltage());
     	Logger.setLog("tempLeft: "+Double.toString(tempLeft));
     	Logger.setLog("tempRight: "+Double.toString(tempRight));
     	
     	//Rumble Demo
     	Robot.oi.demoControl.rumble(Math.abs(Robot.oi.demoControl.getRawAxis(1)));
     	
-    	//Robot.oi.driverControl.rumble(Math.abs(tempLeft));
+    	
+    	double motorRampRate = 0;
+        motorRampRate = Robot.robotPreferences.getDouble("motorRampRate", 0);
+        leftMotor3.setVoltageRampRate(motorRampRate);
+        rightMotor3.setVoltageRampRate(motorRampRate);
+    	
+        
+        //Robot.oi.driverControl.rumble(Math.abs(tempLeft));
     }
     
     /**Left/right raw speed, distance, etc.:

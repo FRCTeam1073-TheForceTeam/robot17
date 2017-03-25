@@ -43,6 +43,7 @@ public class MoveAway extends Command {
     protected void initialize() {
     	gearOut = true;
     	SmartDashboard.putBoolean("GearIn", gearOut);
+    	Robot.bling.sendMoveAway();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -63,6 +64,7 @@ public class MoveAway extends Command {
 		if(count < 40)
 			return false;
 		else
+			Robot.bling.sendEndMoveAway();
 			return true;
     }
 

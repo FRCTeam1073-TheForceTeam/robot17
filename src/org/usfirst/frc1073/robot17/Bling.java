@@ -123,7 +123,7 @@ public class Bling {
 	}
 	
 	public void sendAutoDrive() {
-		setPattern("ColorChase", "green", "all", "slow", 0, 100);
+		setPattern("ColorChase", "red", "all", "slow", 0, 100);
 		send();
 	}
 	
@@ -132,10 +132,21 @@ public class Bling {
 		send();
 	}
 	
+	public void sendEndMovePID() {
+		setPattern("solid", "red", "right", "medium", 0, 100);
+		send();
+	}
+	
+	public void sendEndMoveAway() {
+		setPattern("solid", "purple", "right", "medium", 0, 100);
+		send();
+	}
+	
 	public void sendAutoTurnRight() {
 		setPattern("blinking", "Green", "right", "medium", 0, 100);
 		send();
 	}
+	
 	public void sendAutoTurnLeft() {
 		setPattern("blinking", "Green", "left", "medium", 0, 100);
 		send();
@@ -143,6 +154,11 @@ public class Bling {
 	
 	public void sendPegTargeting() {
 		setPattern("scanner", "Green", "all", "medium", 0, 100);
+		send();
+	}
+	
+	public void sendMoveAway() {
+		setPattern("solid", "purple", "all", "medium", 0, 100);
 		send();
 	}
 	

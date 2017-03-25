@@ -53,7 +53,7 @@ public class SpinConveyor extends Command {
     	if(leftTriggerAxis >= 0.25 &&  -encoderValue > 200){
     		
     		//Actually Doing The Spinning
-    		RobotMap.conveyorconveyorMotor.set(15);
+    		RobotMap.conveyorconveyorMotor.set(12);
     	}
     	else {
     		RobotMap.conveyorconveyorMotor.set(0);

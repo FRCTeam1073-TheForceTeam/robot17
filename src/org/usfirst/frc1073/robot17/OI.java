@@ -64,6 +64,7 @@ public class OI {
     public XboxController driverControl;
     public JoystickButton agitateBut;
     public JoystickButton climbBut;
+    public JoystickButton backupClimbBut;
     public JoystickButton purgeBut;
     public JoystickButton collectBut;
     public XboxController operatorControl;
@@ -110,6 +111,8 @@ public class OI {
         cancelAny = driverControl.a;
         precisionToggleBut = driverControl.leftBumper;
         precisionToggleBut.whenPressed(new precisionToggle());
+        backupClimbBut = driverControl.select;
+        backupClimbBut.whileHeld(new Climb(0));        
         
         
 
