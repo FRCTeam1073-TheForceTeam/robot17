@@ -11,6 +11,7 @@
 
 package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc1073.robot17.Robot;
 import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.OI;
@@ -18,6 +19,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.Preferences;
 
 /**
  *
@@ -74,10 +76,14 @@ public class DriveToGearPeg extends Command {
         //These are the variables for speed - start slow
         double driveMultiplier = 2;
         double changeMultiplier = 3.55;
-        double driveSpeed = 0.16;
+        double driveSpeed = 0.2;
 		double changeSpeed = 0.15;
-		double slowWidth = 14;
+		double slowWidth = 16;
 		double side = 8;
+		driveSpeed = Robot.robotPreferences.getDouble("driveSpeed", 0.2);
+		changeSpeed = Robot.robotPreferences.getDouble("changeSpeed", 0.15);
+		slowWidth = Robot.robotPreferences.getDouble("slowWidth", 16);
+		side = Robot.robotPreferences.getDouble("side", 8);
 		
 		
 		//This is the width of the Pixy
@@ -94,38 +100,14 @@ public class DriveToGearPeg extends Command {
         			if (xWidth > slowWidth + 3) {
         				if (xWidth > slowWidth + 4) {
         					if (xWidth > slowWidth + 5) {
-        						if (xWidth > slowWidth + 6) {
-        							if (xWidth > slowWidth + 7) {
-        								if (xWidth > slowWidth + 8) {
-        									if (xWidth == slowWidth + 9) {
-        					                	forwardsRight = driveSpeed + 0.01;
-        					                	forwardsLeft = driveSpeed + 0.01;
-        					                	changeRight = changeSpeed - .075;
-        					                	changeLeft = changeSpeed - .075;
-        					        		}}
-        									else{
-        					                	forwardsRight = driveSpeed;
-        					                	forwardsLeft = driveSpeed;
-        					                	changeRight = changeSpeed - .075;
-        					                	changeLeft = changeSpeed - .075;
-        									}}
-        								else{
-        				                	forwardsRight = driveSpeed + .015;
-        				                	forwardsLeft = driveSpeed + .015;
-        				                	changeRight = changeSpeed - .075;
-        				                	changeLeft = changeSpeed - .075;
-        								}}
-        							else{
-        			                	forwardsRight = driveSpeed + .025;
-        			                	forwardsLeft = driveSpeed + .025;
-        			                	changeRight = changeSpeed - .075;
-        			                	changeLeft = changeSpeed - .075;
-        							}}
-        						else{
-        		                	forwardsRight = driveSpeed + .035;
-        		                	forwardsLeft = driveSpeed + .035;
-        		                	changeRight = changeSpeed - .075;
-        		                	changeLeft = changeSpeed - .075;
+        						if (xWidth == slowWidth + 6) {
+        							forwardsRight = driveSpeed + .04;
+        		                	forwardsLeft = driveSpeed + .04;
+        						}}
+           						else{
+        		                	forwardsRight = driveSpeed + .03;
+        		                	forwardsLeft = driveSpeed + .03;
+        		                	
         		        		}}
         					else{
         	                	forwardsRight = driveSpeed + .05;
@@ -192,7 +174,7 @@ public class DriveToGearPeg extends Command {
 //          when close to peg 
 //        */
 //        if(finalRight <= .075) finalRight = .075;
-//        if(finalLeft <= .075) finalLeft = .075;
+//      if(finalLeft <= .075) finalLeft = .075;
         //This sends the final numbers to the drivetrain
         Robot.driveTrain.basicDrive(finalRight, finalLeft);
        
@@ -202,6 +184,16 @@ public class DriveToGearPeg extends Command {
     	
     	//Checks the cancel button for its state
     	isPressed = Robot.oi.cancelAny.get();
+    	double stopWidth = 25;
+    	stopWidth = Robot.robotPreferences.getDouble("stopWidth", 25);
+    	boolean stopBool = false;
+    	
+    	if (xWidth > stopWidth){
+    		stopBool = true;
+    	}
+    	else {
+    		stopBool = false;
+    	}
     	
     	//Stops the robot if:
     	/*
@@ -213,7 +205,7 @@ public class DriveToGearPeg extends Command {
     	 *			|
     	 *		   \ /
     	 */
-    	if (xWidth > 27 || isPressed) {
+    	if (stopBool == true || isPressed) {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
     		SmartDashboard.putString("done?", "yes");

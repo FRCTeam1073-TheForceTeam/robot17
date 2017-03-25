@@ -49,7 +49,7 @@ public class AlignAndLaunch extends CommandGroup {
     	
     	SmartDashboard.putString("AutoRunning", "True");
     	addSequential(new DriveToBoiler());
-    	addSequential(new moveWithPID(12));
+    	addSequential(new moveWithPID(20));
     	SmartDashboard.putString("Collect", "False");
     	addParallel (new CollectFuel());
     	SmartDashboard.putString("Collect", "True");

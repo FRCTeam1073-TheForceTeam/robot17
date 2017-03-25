@@ -27,6 +27,8 @@ import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import org.opencv.core.Mat;
+import org.opencv.core.Core;
+
 
 import org.usfirst.frc1073.robot17.commands.*;
 import org.usfirst.frc1073.robot17.subsystems.*;
@@ -41,7 +43,7 @@ import org.usfirst.frc1073.robot17.subsystems.*;
 public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
-    Preferences robotPreferences;
+    public static Preferences robotPreferences;
     boolean blueAlliance = false;
     boolean redAlliance = false;
     public static DriveModes driveMode = DriveModes.PID;
@@ -204,7 +206,8 @@ public class Robot extends IterativeRobot {
             
             CvSink cvSink = CameraServer.getInstance().getVideo(camera1);
             CvSource outputStream = CameraServer.getInstance().putVideo("Video", 320, 240);
-            Mat source = new Mat();     
+            Mat source = new Mat();
+            Mat flipped = new Mat();
 
             boolean currentCamera = selectedCamera;
             while( !Thread.interrupted() ) {
@@ -231,7 +234,9 @@ public class Robot extends IterativeRobot {
             	// if there was an image collected, then send it to the dashboard via
             	// the output stream
             	if ( source.empty() == false ) {
-            		outputStream.putFrame(source);
+                	Core.flip(source, flipped, 0);
+            		outputStream.putFrame(flipped);
+            		//outputStream.putFrame(source);
             	}
             }
         });

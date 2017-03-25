@@ -131,15 +131,6 @@ public class DriveTrain extends Subsystem {
      **/
     
     public void basicDrive(double left, double right) {
-    	
-        leftMotor3.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-        rightMotor3.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-        	
-        leftMotor3.configNominalOutputVoltage(+0f, -0f);
-        rightMotor3.configNominalOutputVoltage(+0f, -0f);
-        	
-        leftMotor3.configPeakOutputVoltage(+12.0f, -12.0f);
-        rightMotor3.configPeakOutputVoltage(+12.0f, -12.0f);
             	
     	rightMotor3.set(right);
     	leftMotor3.set(left);

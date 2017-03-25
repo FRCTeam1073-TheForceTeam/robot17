@@ -191,7 +191,7 @@ protected void initialize() {
     	 *			|
     	 *		   \ /
     	 */
-    	if (xWidth > 45 || isPressed) {
+    	if (xWidth > 40 || isPressed) {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
     		SmartDashboard.putString("done?", "yes");
