@@ -124,6 +124,8 @@ public class Robot extends IterativeRobot {
         autonomousChooser.addObject("Gear Middle", new AutonomousBlueGear2());
         autonomousChooser.addObject("Gear Right", new AutonomousBlueGear3());
         autonomousChooser.addObject("Gear Left + Boiler", new AutonomousBlueGear1Fuel());
+        autonomousChooser.addObject("Gear Middle + Blue Boiler", new AutonomousBlueGear2Fuel());
+        autonomousChooser.addObject("Gear Middle + Red Boiler", new AutonomousRedGear2Fuel());
         autonomousChooser.addObject("Gear Right + Boiler", new AutonomousBlueGear3Fuel());
      /*   autonomousChooser.addObject("Red Gear Left", new AutonomousRedGear1());
           autonomousChooser.addObject("Red Gear Middle", new AutonomousRedGear2());
@@ -254,6 +256,11 @@ public class Robot extends IterativeRobot {
     	//Notify the Driver and operator that the match has finished
     		Robot.oi.driverControl.rumbleTimeRep(1, 200, 2);
         	Robot.oi.operatorControl.rumbleTimeRep(1, 200, 2);
+        	
+        	double motorRampRate = 0;
+            
+            RobotMap.driveTrainleftMotor3.setVoltageRampRate(motorRampRate);
+            RobotMap.driveTrainrightMotor3.setVoltageRampRate(motorRampRate);
     }
     
     public void disabledPeriodic() {
@@ -279,6 +286,12 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
+    	
+    	double motorRampRate = 0;
+        motorRampRate = Robot.robotPreferences.getDouble("motorRampRate", 0);
+        RobotMap.driveTrainleftMotor3.setVoltageRampRate(motorRampRate);
+        RobotMap.driveTrainrightMotor3.setVoltageRampRate(motorRampRate);
+    	
     	Robot.bling.disableLeds();
         if (autonomousCommand != null) autonomousCommand.cancel();
         Robot.oi.driverControl.rumbleTimeRep(1, 100, 3);

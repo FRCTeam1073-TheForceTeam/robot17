@@ -215,11 +215,6 @@ public class DriveTrain extends Subsystem {
     	Robot.oi.demoControl.rumble(Math.abs(Robot.oi.demoControl.getRawAxis(1)));
     	
     	
-    	double motorRampRate = 0;
-        motorRampRate = Robot.robotPreferences.getDouble("motorRampRate", 0);
-        leftMotor3.setVoltageRampRate(motorRampRate);
-        rightMotor3.setVoltageRampRate(motorRampRate);
-    	
         
         //Robot.oi.driverControl.rumble(Math.abs(tempLeft));
     }

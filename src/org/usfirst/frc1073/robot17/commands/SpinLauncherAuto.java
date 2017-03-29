@@ -68,7 +68,7 @@ public class SpinLauncherAuto extends Command {
     protected void execute() {
 
         		RobotMap.launcherlauncherMotor1.enable();
-        		RobotMap.launcherlauncherMotor1.set(-1750);
+        		RobotMap.launcherlauncherMotor1.set(-1650);
         		  	
     	}	
     

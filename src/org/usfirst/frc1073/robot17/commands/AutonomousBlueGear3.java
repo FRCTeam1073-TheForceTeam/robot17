@@ -58,9 +58,15 @@ public class AutonomousBlueGear3 extends CommandGroup {
 			default:
 				break;
 		}
+    	try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		addSequential(new AutoTurn(.5, 45, "counterclockwise"));
 		addSequential(new DriveToGearPeg());
-		addSequential(new moveWithPID(-5));
+		addSequential(new moveWithPID(-3));
 		//Drives near peg and auto-drives onto it
     } 
 }

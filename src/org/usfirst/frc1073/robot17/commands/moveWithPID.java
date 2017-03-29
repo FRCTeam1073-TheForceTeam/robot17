@@ -132,7 +132,7 @@ protected void initialize() {
     protected boolean isFinished() {
     	isPressed = Robot.oi.cancelAny.get();
     	
-		if(Math.abs(errorright) < 100 || isPressed){
+		if(Math.abs(errorright) < 100 || Math.abs(errorleft) < 100 || isPressed){
     		System.out.println("Exiting");
     		Logger.setLog("-----END OF PROGRAM-----");
     		SmartDashboard.putString("done?", "yes");
