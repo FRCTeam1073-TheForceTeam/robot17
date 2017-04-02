@@ -71,11 +71,14 @@ protected void initialize() {
         //These are the variables for speed - start slow
         double driveMultiplier = 2;
         double changeMultiplier = 3.55;
-        double driveSpeed = 0.3;
-		double changeSpeed = 0.1;
+        double driveSpeed = 0.2;
+		double changeSpeed = 0.2;
 		double slowWidth = 25;
 		double side = 10;
-		
+		driveSpeed = Robot.robotPreferences.getDouble("driveSpeedHG", 0.2);
+		changeSpeed = Robot.robotPreferences.getDouble("changeSpeedHG", 0.2);
+		slowWidth = Robot.robotPreferences.getDouble("slowWidthHG", 25);
+		side = Robot.robotPreferences.getDouble("sideHG", 10);
 		
 		//This is the width of the Pixy
 		double imageWidth = 320;
