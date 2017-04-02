@@ -47,10 +47,11 @@ public class SpinConveyor extends Command {
     protected void execute() {
     	//Sets up the Operator Controller axis to a usable varible
     	double leftTriggerAxis = Robot.oi.operatorControl.getRawAxis(2);
-    	
+    	double spinLock = 1200;
+    	spinLock = Robot.robotPreferences.getDouble("spinLock", 1200);
     	double encoderValue = RobotMap.launcherlauncherMotor1.getSpeed();
     	
-    	if(leftTriggerAxis >= 0.25 &&  -encoderValue > 200){
+    	if(leftTriggerAxis >= 0.25 &&  -encoderValue < -spinLock){
     		
     		//Actually Doing The Spinning
     		RobotMap.conveyorconveyorMotor.set(12);
