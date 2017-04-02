@@ -52,8 +52,16 @@ public class SpinConveyorAuto extends Command {
     
     
     protected boolean isFinished() {
-        return false;
+    	 
+    	    	if (Robot.endAll  = true){
+    	    		RobotMap.conveyorconveyorMotor.set(0);
+    	    		return true;		
+    	    	}
+    	    	else{
+    	        return false;
+    	    	}
     }
+    
 
     
     protected void end() {

@@ -69,6 +69,7 @@ public class SpinLauncherAuto extends Command {
 
         		RobotMap.launcherlauncherMotor1.enable();
         		RobotMap.launcherlauncherMotor1.set(-1650);
+        		
         		  	
     	}	
     
@@ -76,7 +77,13 @@ public class SpinLauncherAuto extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if (Robot.endAll  = true){
+    		RobotMap.launcherlauncherMotor1.set(0);
+    		return true;		
+    	}
+    	else{
         return false;
+    	}
     }
 
     // Called once after isFinished returns true

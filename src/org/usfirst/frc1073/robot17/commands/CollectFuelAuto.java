@@ -11,7 +11,10 @@
 
 package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc1073.robot17.Robot;
+import org.usfirst.frc1073.robot17.RobotMap;
 
 /**
  *
@@ -49,7 +52,13 @@ public class CollectFuelAuto extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if (Robot.endAll  = true){
+    		Robot.collector.collectorSpin(0);
+    		return true;		
+    	}
+    	else{
         return false;
+    	}
     }
 
     // Called once after isFinished returns true

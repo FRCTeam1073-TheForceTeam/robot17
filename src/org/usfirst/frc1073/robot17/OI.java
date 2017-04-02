@@ -73,6 +73,7 @@ public class OI {
     public JoystickButton increaseLauncher;
     public JoystickButton decreaseLauncher;
     public JoystickButton precisionToggleBut;
+    public JoystickButton alignAndLaunch;
     
     public XboxController demoControl;
     
@@ -113,6 +114,8 @@ public class OI {
         precisionToggleBut.whenPressed(new precisionToggle());
         backupClimbBut = driverControl.select;
         backupClimbBut.whileHeld(new Climb(0));        
+        alignAndLaunch = driverControl.x;
+        alignAndLaunch.whenPressed(new AlignAndLaunch());
         
         
 

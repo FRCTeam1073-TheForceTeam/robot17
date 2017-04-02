@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc1073.robot17.Robot;
+import org.usfirst.frc1073.robot17.RobotMap;
 
 /**
  *
@@ -204,9 +205,15 @@ protected void initialize() {
     		SmartDashboard.putString("done?", "yes");
     		return true;
     	}
-    	else {
-    		return false;
+    	if (Robot.endAll  = true){
+    		Robot.driveTrain.basicDrive(0, 0);
+    		SmartDashboard.putString("done?", "yes");
+    	    return true;		
     	}
+    	    else{
+    	    return false;
+    	}
+    	
     	
     }
     

@@ -47,6 +47,7 @@ public class Robot extends IterativeRobot {
     boolean blueAlliance = false;
     boolean redAlliance = false;
     public static DriveModes driveMode = DriveModes.PID;
+    public static boolean endAll = false;
     
     
     public static boolean isOrientationSwitched = false;
@@ -127,6 +128,7 @@ public class Robot extends IterativeRobot {
         autonomousChooser.addObject("Gear Middle + Blue Boiler", new AutonomousBlueGear2Fuel());
         autonomousChooser.addObject("Gear Middle + Red Boiler", new AutonomousRedGear2Fuel());
         autonomousChooser.addObject("Gear Right + Boiler", new AutonomousBlueGear3Fuel());
+        autonomousChooser.addObject("DO NOT USE IN COMPETITION (FOR TESTING ONLY) - AlignAndLaunch", new AlignAndLaunch());
      /*   autonomousChooser.addObject("Red Gear Left", new AutonomousRedGear1());
           autonomousChooser.addObject("Red Gear Middle", new AutonomousRedGear2());
           autonomousChooser.addObject("Red Gear Right", new AutonomousRedGear3());
