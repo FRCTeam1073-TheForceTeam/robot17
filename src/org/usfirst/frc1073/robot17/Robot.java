@@ -254,7 +254,7 @@ public class Robot extends IterativeRobot {
             }
         });
         
-        cameraThread.start();
+        //cameraThread.start();
         proxThread.start();
         
     }
