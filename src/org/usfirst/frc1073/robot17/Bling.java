@@ -86,21 +86,6 @@ public class Bling {
 	    setPattern("Alternates", "teamcolors", "all", "medium", 0, 100);
 		send();
 	}
-			
-	public void sendLeftTurning() {
-		setPattern("ColorWipe", "green", "left", "fast", 0, 100);
-	    send();
-	}
-			
-	public void sendRightTurning() {
-		setPattern("ColorWipe", "green", "right", "fast", 0, 100);
-		send();
-	}
-	
-	public void sendDrive() {
-		setPattern("solid", "blue", "all", "medium", 0, 100);
-		send();
-	}
 	
 	public void sendBackup() {
 		setPattern("blinking", "yellow", "all", "medium", 0, 100);
@@ -122,10 +107,16 @@ public class Bling {
 		send();
 	}
 	
-	public void sendAutoDrive() {
+	/*public void sendAutoDrive() {
 		setPattern("ColorChase", "red", "all", "slow", 0, 100);
 		send();
 	}
+	
+	public void sendAutoDone()
+	{
+		setPattern("solid", "red", "all", "medium", 0, 100);
+		send();
+	}*/
 	
 	public void sendRemoveGear() {
 		setPattern("solid", "green", "all", "slow", 0, 100);
@@ -167,25 +158,23 @@ public class Bling {
 		send();
 	}
 	
-	public void sendFuelLaunchReady() {
-		setPattern("solid", "Green", "all", "medium", 0, 100);
+	public void sendFuelLaunching() {
+		setPattern("RainbowHalves", "rainbow", "all", "fast", 0, 100);
 		send();
 	}
 	
-	public void sendFuelLaunching() {
-		setPattern("RainbowHalves", "rainbow", "all", "medium", 0, 100);
-		send();
-	}
 	public void sendCollectBall()
 	{
-		setPattern("blinking", "green", "all", "medium", 0, 100);
+		setPattern("solid", "blue", "all", "medium", 0, 100);
 		send();
 	}
+	
 	public void sendPurgeBall()
 	{
-		setPattern("blinking", "orange", "all", "medium", 0, 100);
+		setPattern("solid", "orange", "all", "medium", 0, 100);
 		send();
 	}
+	
 	public void sendEndgame() {
 		setPattern("blinking", "yellow", "all", "fast", 0, 100);
 		send();

@@ -62,7 +62,7 @@ public class AutoTurn extends Command {
     	if(turnDirection == "clockwise") {
     		double right = turnSpeed;
     		double left = turnSpeed * -1;
-    		Robot.driveTrain.basicDrive(left, right);
+    		Robot.driveTrain.basicDrive(left, right);	
     	} else if(turnDirection == "counterclockwise") {
     		double right = turnSpeed * -1;
     		double left = turnSpeed;

@@ -54,7 +54,7 @@ protected void initialize() {
 	SmartDashboard.putString("done?", "no");
 
 	
-		Robot.bling.sendAutoDrive();
+		//Robot.bling.sendAutoDrive();
 		
 		//setting PID for the left side
 		RobotMap.driveTrainleftMotor3.enable();
@@ -147,6 +147,7 @@ protected void initialize() {
     protected void end() {    	
     	RobotMap.driveTrainleftMotor3.changeControlMode(TalonControlMode.PercentVbus);
     	RobotMap.driveTrainrightMotor3.changeControlMode(TalonControlMode.PercentVbus);
+    	//Robot.bling.sendAutoDone();
     }
 
     // Called when another command which requires one or more of the same

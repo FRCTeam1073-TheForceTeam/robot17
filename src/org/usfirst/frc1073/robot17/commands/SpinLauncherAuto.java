@@ -83,6 +83,7 @@ public class SpinLauncherAuto extends Command {
     protected void end() {
     	RobotMap.launcherlauncherMotor1.set(0);
 		RobotMap.launcherlauncherMotor1.disable();
+		Robot.bling.disableLeds();
     }
 
     // Called when another command which requires one or more of the same
