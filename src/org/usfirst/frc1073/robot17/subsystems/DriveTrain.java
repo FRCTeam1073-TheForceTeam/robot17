@@ -199,8 +199,8 @@ public class DriveTrain extends Subsystem {
     	{
     		if(isPrecision)
     		{
-    			rightMotor3.set((tempRight*-1)/3);
-        		leftMotor3.set((tempLeft*-1)/3);
+    			rightMotor3.set((tempRight*-1)/2);
+        		leftMotor3.set((tempLeft*-1)/2);
     		} else
     		{
     			rightMotor3.set(tempRight*-1);

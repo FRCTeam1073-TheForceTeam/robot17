@@ -42,7 +42,7 @@ public class MoveAway extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	gearOut = true;
-    	SmartDashboard.putBoolean("GearIn", gearOut);
+    	//SmartDashboard.putBoolean("GearIn", gearOut);
     	Robot.bling.sendMoveAway();
     }
 
@@ -55,7 +55,7 @@ public class MoveAway extends Command {
     	{
     		count = 0;
     	}
-    	SmartDashboard.putNumber("Voltage", RobotMap.driveTrainGearSensor.getVoltage());
+    	//SmartDashboard.putNumber("Voltage", RobotMap.driveTrainGearSensor.getVoltage());
     	
     }
 
@@ -71,7 +71,7 @@ public class MoveAway extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	gearOut = false;
-    	SmartDashboard.putBoolean("GearIn", gearOut);
+    	//SmartDashboard.putBoolean("GearIn", gearOut);
     }
 
     // Called when another command which requires one or more of the same

@@ -166,7 +166,7 @@ public class Robot extends IterativeRobot {
         	SmartDashboard.putNumber("BackDistance", 0);
         	while( !Thread.interrupted() ) {
         		try {
-					Thread.sleep(5);
+					Thread.sleep(20);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -187,6 +187,12 @@ public class Robot extends IterativeRobot {
             	backProximity = backProximity / 2.54;
             	backProximity = Math.round(backProximity);
             	SmartDashboard.putNumber("BackDistance", backProximity);
+            	//Gear sensor
+            	if(RobotMap.driveTrainGearSensor.getVoltage() < 1.0){
+            		SmartDashboard.putString("GearIn", "Out");
+            	}else{
+            		SmartDashboard.putString("GearIn", "In");
+            	}
             }
         	
         });
@@ -205,7 +211,12 @@ public class Robot extends IterativeRobot {
             UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
             camera2.setResolution(320, 240);
             camera2.setFPS(20);
-            
+            try {
+				Thread.sleep(20);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             CvSink cvSink = CameraServer.getInstance().getVideo(camera1);
             CvSource outputStream = CameraServer.getInstance().putVideo("Video", 320, 240);
             Mat source = new Mat();
