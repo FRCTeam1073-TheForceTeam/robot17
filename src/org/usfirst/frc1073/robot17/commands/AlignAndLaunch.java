@@ -78,8 +78,5 @@ public class AlignAndLaunch extends CommandGroup {
     	SmartDashboard.putString("AutoRunning", "False");
     }
 
-	private void addSequential(Object enable) {
-		// TODO Auto-generated method stub
-		
-	} 
+	
 }
