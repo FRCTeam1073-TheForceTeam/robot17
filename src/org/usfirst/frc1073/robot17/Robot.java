@@ -27,6 +27,8 @@ import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.core.Core;
 
 
@@ -239,18 +241,29 @@ public class Robot extends IterativeRobot {
 	            	}
             	}
             	
-            	
- 
             	//Grab image from the source camera
-           // 	cvSink.grabFrame(source);
+            	cvSink.grabFrame(source);
             	
             	// if there was an image collected, then send it to the dashboard via
             	// the output stream
             	if ( source.empty() == false ) {
-                //	Core.flip(source.t(), source, 0);
+            		/*
+            		Point center = new Point(source.rows(), source.cols());
+            		Mat mapMatrix = Imgproc.getRotationMatrix2D(center, 180, 1.0);
+            		Imgproc.warpAffine(source,  flipped,  mapMatrix, source.size(), Imgproc.INTER_LINEAR);
+            		outputStream.putFrame(flipped);
+            		*/
+
+            		//Core.flip(source.t(), source, 0);
             		outputStream.putFrame(source);
-            		//outputStream.putFrame(source);
             	}
+            	
+            	try{
+            		// slight pause to make sure that the thread yields CPU
+            		Thread.sleep(5);
+            	} catch(Exception e) {           		
+            	}
+            	
             }
         });
         
