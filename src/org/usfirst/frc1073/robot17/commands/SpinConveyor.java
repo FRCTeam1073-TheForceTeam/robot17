@@ -51,7 +51,7 @@ public class SpinConveyor extends Command {
     	spinLock = Robot.robotPreferences.getDouble("spinLock", 1200);
     	double encoderValue = RobotMap.launcherlauncherMotor1.getSpeed();
     	
-    	if(leftTriggerAxis >= 0.25 &&  -encoderValue < -spinLock){
+    	if(leftTriggerAxis >= 0.25 &&  Math.abs(encoderValue) > spinLock){
     		
     		//Actually Doing The Spinning
     		RobotMap.conveyorconveyorMotor.set(12);
