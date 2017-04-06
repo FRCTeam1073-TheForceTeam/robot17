@@ -41,20 +41,20 @@ public class HopperAndShootAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new moveWithPID(78.5));
+    	addSequential(new moveWithPID(82));
     	addSequential(new AutoTurn(.5, 90, "clockwise"));
     	//This value needs to be changed with testing: 
-    	addSequential(new moveWithPID(50));
+    	addSequential(new moveWithPID(35));
     	try {
-			Thread.sleep(1500);
+			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	//This value needs to be changed with testing: 
-    	addSequential(new moveWithPID(-50));
+    	addSequential(new moveWithPID(-35));
     	addSequential(new AutoTurn(.5, 90, "clockwise"));
-    	addSequential(new moveWithPID(39.3));
+    	addSequential(new moveWithPID(41));
     	addSequential(new AutoTurn(.5, 45, "counterclockwise"));
     	addSequential(new AlignAndLaunch());
     	
