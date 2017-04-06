@@ -182,7 +182,7 @@ public class DriveToGearPeg extends Command {
     
     protected boolean isFinished() {
     	
-    	Robot.bling.sendRemoveGear();
+    	
     	
     	//Checks the cancel button for its state
     	isPressed = Robot.oi.cancelAny.get();

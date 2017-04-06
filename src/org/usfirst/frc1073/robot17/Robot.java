@@ -28,6 +28,7 @@ import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
+import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.core.Core;
 
@@ -81,6 +82,7 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	SmartDashboard.putString("RobotInitBegin", "true");
     	RobotMap.init();
     	Logger.clear();
     	robotPreferences = Preferences.getInstance();
@@ -129,6 +131,7 @@ public class Robot extends IterativeRobot {
         autonomousChooser.addObject("Gear Middle + Blue Boiler", new AutonomousBlueGear2Fuel());
         autonomousChooser.addObject("Gear Middle + Red Boiler", new AutonomousRedGear2Fuel());
         autonomousChooser.addObject("Gear Right + Boiler", new AutonomousBlueGear3Fuel());
+       
      /*   autonomousChooser.addObject("Red Gear Left", new AutonomousRedGear1());
           autonomousChooser.addObject("Red Gear Middle", new AutonomousRedGear2());
           autonomousChooser.addObject("Red Gear Right", new AutonomousRedGear3());
@@ -136,7 +139,7 @@ public class Robot extends IterativeRobot {
         //autonomousChooser.addObject("Red Gear 1 Fuel", new AutonomousRedGear1Fuel());
         //autonomousChooser.addObject("Red Gear 2 Fuel", new AutonomousRedGear2Fuel());
         //autonomousChooser.addObject("Red Gear 3 Fuel", new AutonomousRedGear3Fuel());
-        SmartDashboard.putData("Autonomous Chooser", autonomousChooser);
+        SmartDashboard.putData("Autonomous Chooser#", autonomousChooser);
         
         /**Alliance chooser**/
         allianceChooser = new SendableChooser<Boolean>();
@@ -144,6 +147,7 @@ public class Robot extends IterativeRobot {
         allianceChooser.addObject("Blue Alliance", blueAlliance = true);
         allianceChooser.addObject("Red Alliance", redAlliance = true);
         SmartDashboard.putData("Alliance Chooser", allianceChooser);
+        SmartDashboard.putString("RobotInitAFTER AUTO", "true");
         
         /**Display what's on which side**/
         if (blueAlliance == true) {
@@ -188,13 +192,18 @@ public class Robot extends IterativeRobot {
             	backProximity = 1 / reciprocal;
             	backProximity = backProximity / 2.54;
             	backProximity = Math.round(backProximity);
-            	SmartDashboard.putNumber("BackDistance", backProximity);
+            	SmartDashboard.putNumber("BackDistance", -backProximity);
+            	SmartDashboard.putNumber("BackDistance#", backProximity);
             	//Gear sensor
             	if(RobotMap.driveTrainGearSensor.getVoltage() < 1.0){
             		SmartDashboard.putString("GearIn", "Out");
             	}else{
             		SmartDashboard.putString("GearIn", "In");
             	}
+            	
+            	SmartDashboard.putNumber("Right Encoder", RobotMap.driveTrainrightMotor3.getEncPosition());
+            	SmartDashboard.putNumber("Left Encoder", RobotMap.driveTrainleftMotor3.getEncPosition());
+            	
             }
         	
         });
@@ -222,7 +231,7 @@ public class Robot extends IterativeRobot {
             CvSink cvSink = CameraServer.getInstance().getVideo(camera1);
             CvSource outputStream = CameraServer.getInstance().putVideo("Video", 320, 240);
             Mat source = new Mat();
-            Mat flipped = new Mat();
+            //Mat flipped = new Mat();
 
             boolean currentCamera = selectedCamera;
             while( !Thread.interrupted() ) {
@@ -247,14 +256,24 @@ public class Robot extends IterativeRobot {
             	// if there was an image collected, then send it to the dashboard via
             	// the output stream
             	if ( source.empty() == false ) {
-            		/*
-            		Point center = new Point(source.rows(), source.cols());
-            		Mat mapMatrix = Imgproc.getRotationMatrix2D(center, 180, 1.0);
-            		Imgproc.warpAffine(source,  flipped,  mapMatrix, source.size(), Imgproc.INTER_LINEAR);
-            		outputStream.putFrame(flipped);
-            		*/
-
-            		//Core.flip(source.t(), source, 0);
+            		int rows = source.rows();
+            		int columns = source.cols();
+            		
+            		// flip the image 180 degrees around the center of the image
+            		//Point center = new Point(rows/2, columns/2);
+            		//Mat mapMatrix = Imgproc.getRotationMatrix2D(center, 180, 1.0);
+            		//Imgproc.warpAffine(source,  flipped,  mapMatrix, source.size(), Imgproc.INTER_LINEAR);
+            		
+            		// draw red cross-hairs on the image to help the drive team
+            		// line up with the center of the image
+            		Point lineStart = new Point(columns/2, 0);
+            		Point lineEnd = new Point(columns/2, rows);
+            		Imgproc.line(source, lineStart, lineEnd, new Scalar(0,0,255), 1);
+            		
+            		lineStart = new Point(0,rows/2);
+            		lineEnd = new Point(columns, rows/2);
+            		Imgproc.line(source, lineStart, lineEnd, new Scalar(0,0,255), 1);
+            		
             		outputStream.putFrame(source);
             	}
             	
@@ -267,14 +286,15 @@ public class Robot extends IterativeRobot {
             }
         });
         
-        //cameraThread.start();
+        cameraThread.start();
         proxThread.start();
-        
+        SmartDashboard.putString("RobotInitFINISH", "true");
     }
 
     /**
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
+     * 
      */
     public void disabledInit() {
     	//Notify the Driver and operator that the match has finished

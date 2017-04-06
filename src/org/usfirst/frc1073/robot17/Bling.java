@@ -107,16 +107,17 @@ public class Bling {
 		send();
 	}
 	
-	/*public void sendAutoDrive() {
+	public void sendAutoDrive() {
 		setPattern("ColorChase", "red", "all", "slow", 0, 100);
 		send();
 	}
+	
 	
 	public void sendAutoDone()
 	{
 		setPattern("solid", "red", "all", "medium", 0, 100);
 		send();
-	}*/
+	}
 	
 	public void sendRemoveGear() {
 		setPattern("solid", "green", "all", "slow", 0, 100);
