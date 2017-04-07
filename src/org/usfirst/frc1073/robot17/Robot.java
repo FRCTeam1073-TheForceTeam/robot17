@@ -134,6 +134,8 @@ public class Robot extends IterativeRobot {
         autonomousChooser.addObject("DO NOT USE IN COMPETITION", new AlignAndLaunch());
         autonomousChooser.addObject("HopperToBoilerRED", new HopperAndShootAuto());
         autonomousChooser.addObject("HopperToBoilerBLUE", new HopperAndShootAutoBlue());
+        autonomousChooser.addObject("GearLeftPlusDownField", new AutonomousBlueGear1PlusFlee());
+        autonomousChooser.addObject("GearRightPlusDownField", new AutonomousBlueGear3PlusFlee());
        
      /*   autonomousChooser.addObject("Red Gear Left", new AutonomousRedGear1());
           autonomousChooser.addObject("Red Gear Middle", new AutonomousRedGear2());
