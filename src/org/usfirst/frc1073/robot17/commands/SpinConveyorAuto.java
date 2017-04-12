@@ -46,7 +46,7 @@ public class SpinConveyorAuto extends Command {
     
     protected void execute() {
     	
-    		RobotMap.conveyorconveyorMotor.set(3);
+    		RobotMap.conveyorconveyorMotor.set(8);
     			
     }
     

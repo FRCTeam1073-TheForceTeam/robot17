@@ -130,12 +130,15 @@ public class Robot extends IterativeRobot {
         autonomousChooser.addObject("Gear Left + Boiler", new AutonomousBlueGear1Fuel());
         autonomousChooser.addObject("Gear Middle + Blue Boiler", new AutonomousBlueGear2Fuel());
         autonomousChooser.addObject("Gear Middle + Red Boiler", new AutonomousRedGear2Fuel());
+        autonomousChooser.addObject("Gear Middle + Red Boiler (No Vision)", new AutonomousRedGear2FuelPID());
         autonomousChooser.addObject("Gear Right + Boiler", new AutonomousBlueGear3Fuel());
-        autonomousChooser.addObject("DO NOT USE IN COMPETITION", new AlignAndLaunch());
-        autonomousChooser.addObject("HopperToBoilerRED", new HopperAndShootAuto());
-        autonomousChooser.addObject("HopperToBoilerBLUE", new HopperAndShootAutoBlue());
-        autonomousChooser.addObject("GearLeftPlusDownField", new AutonomousBlueGear1PlusFlee());
-        autonomousChooser.addObject("GearRightPlusDownField", new AutonomousBlueGear3PlusFlee());
+        autonomousChooser.addObject("TEST FOR BOILER", new AlignAndLaunch());
+        autonomousChooser.addObject("Hopper Red + Boiler", new HopperAndShootAuto());
+        autonomousChooser.addObject("Hopper Blue + Boiler", new HopperAndShootAutoBlue());
+        autonomousChooser.addObject("Gear Left + Neutral", new AutonomousBlueGear1PlusFlee());
+        autonomousChooser.addObject("Gear Middle Red + Neutral", new AutonomousRedGear2Neutral());
+        autonomousChooser.addObject("Gear Middle Blue + Neutral", new AutonomousBlueGear2Neutral());
+        autonomousChooser.addObject("Gear Right + Neutral", new AutonomousBlueGear3PlusFlee());
        
      /*   autonomousChooser.addObject("Red Gear Left", new AutonomousRedGear1());
           autonomousChooser.addObject("Red Gear Middle", new AutonomousRedGear2());

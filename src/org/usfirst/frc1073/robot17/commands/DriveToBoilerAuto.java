@@ -51,8 +51,8 @@ protected void initialize() {
     	
 		myTimer = 0;
 		
-	
-    	SmartDashboard.putString("done?", "no");
+		netTable.putNumber("xDelta", 0);
+		SmartDashboard.putString("done?", "no");
 
     	Robot.bling.sendBoilerTargeting();
     }
@@ -201,7 +201,7 @@ protected void initialize() {
     	 *		   \ /
     	 */
     	
-    	if (myTimer >= 90 || isPressed) {
+    	if (myTimer >= 110 || isPressed) {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
     		SmartDashboard.putString("done?", "yes");
