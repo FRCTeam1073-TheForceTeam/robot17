@@ -13,6 +13,7 @@ package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc1073.robot17.Robot;
+import org.usfirst.frc1073.robot17.RobotMap;
 import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.OI;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -92,6 +93,9 @@ public class DriveToGearPeg extends Command {
 		//These are what the Pixy send us
 		xDelta =  netTable.getNumber("centerDist", 0);
         xWidth =  netTable.getNumber("AverageWidth", 0);
+        
+        Logger.setLog(Double.toString(xDelta));
+        Logger.setLog(Double.toString(xWidth));
 		
 		//This code modifies the speed based on how close you are to the peg
         if (xWidth > slowWidth) {
@@ -156,16 +160,19 @@ public class DriveToGearPeg extends Command {
         	finalRight = forwardsRight - changeRight;
         	finalLeft = forwardsLeft + changeLeft;
         	SmartDashboard.putString("Peg Direction", "Left");
+        	Logger.setLog("Peg Direction is Left");
         }
         else if (xDelta < -side) {
         	finalRight = forwardsRight + changeRight;
         	finalLeft = forwardsLeft - changeLeft;
         	SmartDashboard.putString("Peg Direction", "Right");
+        	Logger.setLog("Peg Direction is Right");
         }
         else {
         	finalRight = forwardsRight;
         	finalLeft = forwardsLeft;
         	SmartDashboard.putString("Peg Direction", "Center");
+        	Logger.setLog("Peg Direction is Center");
         }
         
 //        //Makes it so the drive command cannot send a lower value than .1
@@ -176,6 +183,10 @@ public class DriveToGearPeg extends Command {
 //        if(finalRight <= .075) finalRight = .075;
 //      if(finalLeft <= .075) finalLeft = .075;
         //This sends the final numbers to the drivetrain
+        
+        Logger.setLog(Double.toString(finalRight));
+        Logger.setLog(Double.toString(finalLeft));
+        
         Robot.driveTrain.basicDrive(finalRight, finalLeft);
        
     }
@@ -211,6 +222,7 @@ public class DriveToGearPeg extends Command {
     		Robot.driveTrain.basicDrive(0, 0);
     		Robot.oi.driverControl.rumbleTimeRep(1, 150, 2);
     		SmartDashboard.putString("done?", "yes");
+    		Logger.setLog("Gear Peg is Finished");
     		return true;
     	}
     	else {

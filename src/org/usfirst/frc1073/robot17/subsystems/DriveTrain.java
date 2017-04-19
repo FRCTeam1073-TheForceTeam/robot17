@@ -208,8 +208,6 @@ public class DriveTrain extends Subsystem {
     		}
     	}
     	SmartDashboard.putNumber("Voltage", RobotMap.driveTrainGearSensor.getVoltage());
-    	Logger.setLog("tempLeft: "+Double.toString(tempLeft));
-    	Logger.setLog("tempRight: "+Double.toString(tempRight));
     	
     	//Rumble Demo
     	Robot.oi.demoControl.rumble(Math.abs(Robot.oi.demoControl.getRawAxis(1)));

@@ -13,6 +13,7 @@ package org.usfirst.frc1073.robot17.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
 import org.usfirst.frc1073.robot17.RobotMap;
 
@@ -48,6 +49,7 @@ public class MoveAway extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Logger.setLog(Double.toString(RobotMap.driveTrainGearSensor.getVoltage()));
     	if(RobotMap.driveTrainGearSensor.getVoltage() < 1.0)
     	{
     		count++;
@@ -55,8 +57,7 @@ public class MoveAway extends Command {
     	{
     		count = 0;
     	}
-    	//SmartDashboard.putNumber("Voltage", RobotMap.driveTrainGearSensor.getVoltage());
-    	
+    	Logger.setLog(Double.toString(count));
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -64,6 +65,7 @@ public class MoveAway extends Command {
 		if(count < 40)
 			return false;
 		else
+			Logger.setLog("Move Away is Finished");
 			Robot.bling.sendEndMoveAway();
 			return true;
     }
