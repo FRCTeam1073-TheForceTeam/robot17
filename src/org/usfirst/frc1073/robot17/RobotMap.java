@@ -55,6 +55,7 @@ public class RobotMap {
     public static CANTalon driveTrainrightMotor3;
     public static CANTalon launcherlauncherMotor1;
     public static CANTalon climberclimber;
+    public static CANTalon climberclimber2;
     
     //TODO actually add this in RobotBuilder when it actually gets added to the robot
     public static AnalogInput driveTrainGearSensor;
@@ -113,6 +114,9 @@ public class RobotMap {
         
         climberclimber = new CANTalon(3);
         LiveWindow.addActuator("Climber", "climber2", climberclimber);
+        
+        climberclimber2 = new CANTalon(9);
+        LiveWindow.addActuator("Climber2", "climber3", climberclimber2);
         
         launcherlauncherMotor1 = new CANTalon(4);
         LiveWindow.addActuator("Launcher", "launcherMotor1", launcherlauncherMotor1);

@@ -37,23 +37,39 @@ public class Climber extends Subsystem {
 
 	/**Manually adding CANTalons**/
     private final CANTalon climber = RobotMap.climberclimber;
+    private final CANTalon climber2 = RobotMap.climberclimber2;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    
+    /*public Climber() {
+    	climber2.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	
+    	climber2.set(climber.getDeviceID());
+    }*/
 
     private final double CLIMB_SPEED = .8;
     private final double UNCLIMB_SPEED = -.8;
     
     public void basicClimb() {
-    	climber.set(CLIMB_SPEED);
+    	climber2.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	
+    	climber2.set(climber.getDeviceID());
+    	climber.set(CLIMB_SPEED*-1);
     }
     
     public void stopClimb() {
+    	climber2.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	
+    	climber2.set(climber.getDeviceID());
     	climber.set(0.0);
     }
     
     public void reverseClimb() {
-    	climber.set(UNCLIMB_SPEED);
+    	climber2.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	
+    	climber2.set(climber.getDeviceID());
+    	climber.set(UNCLIMB_SPEED*-1);
     }
     
     public void initDefaultCommand() {
