@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc1073.robot17.Logger;
 import org.usfirst.frc1073.robot17.Robot;
 
 /**
@@ -180,6 +181,7 @@ protected void initialize() {
 //        if(finalRight <= .075) finalRight = .075;
 //        if(finalLeft <= .075) finalLeft = .075;
         //This sends the final numbers to the drivetrain
+        Logger.setLog("xWidth:"+xWidth+" xDelta:"+xDelta+" finalRight:"+finalRight+" finalLeft:"+finalLeft);
         Robot.driveTrain.basicDrive(-finalLeft, -finalRight);
        
     }

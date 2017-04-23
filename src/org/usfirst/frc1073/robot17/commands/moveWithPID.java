@@ -124,8 +124,7 @@ protected void initialize() {
     protected void execute() {
     	errorleft = Math.abs(RobotMap.driveTrainleftMotor3.getClosedLoopError());
     	errorright = Math.abs(RobotMap.driveTrainrightMotor3.getClosedLoopError());
-    	Logger.setLog("RIGHT ERROR:   "+ Double.toString(errorright));
-    	Logger.setLog("LEFT ERROR:   "+ Double.toString(errorleft));
+    	Logger.setLog("RIGHT ERROR: "+ Double.toString(errorright)+"LEFT ERROR: "+ Double.toString(errorleft));
     }
 
     // Make this return true when this Command no longer needs to run execute()

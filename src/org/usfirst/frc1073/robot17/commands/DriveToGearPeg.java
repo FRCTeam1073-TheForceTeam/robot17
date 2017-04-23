@@ -186,6 +186,8 @@ public class DriveToGearPeg extends Command {
         
         Logger.setLog(Double.toString(finalRight));
         Logger.setLog(Double.toString(finalLeft));
+
+        Logger.setLog("xWidth:"+xWidth+" xDelta:"+xDelta+" finalRight:"+finalRight+" finalLeft:"+finalLeft);
         
         Robot.driveTrain.basicDrive(finalRight, finalLeft);
        
