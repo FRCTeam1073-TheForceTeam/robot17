@@ -54,7 +54,7 @@ public class SpinConveyor extends Command {
     	if(leftTriggerAxis >= 0.25 &&  Math.abs(encoderValue) > spinLock){
     		
     		//Actually Doing The Spinning
-    		RobotMap.conveyorconveyorMotor.set(20);
+    		RobotMap.conveyorconveyorMotor.set(-1*20);
     	}
     	else {
     		RobotMap.conveyorconveyorMotor.set(0);

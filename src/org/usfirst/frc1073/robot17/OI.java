@@ -110,7 +110,9 @@ public class OI {
         precisionToggleBut = driverControl.leftBumper;
         precisionToggleBut.whenPressed(new precisionToggle());
         backupClimbBut = driverControl.select;
-        backupClimbBut.whileHeld(new Climb(0));        
+        backupClimbBut.whileHeld(new Climb(0));
+        
+        driverControl.start.whenPressed(new MoveAway());
         
         
 
