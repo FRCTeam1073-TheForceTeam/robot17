@@ -50,10 +50,10 @@ public class Coopertition extends CommandGroup {
 				addSequential(new moveWithPID(554));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(-55));
+				addSequential(new DriveInches(554));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(-55, 0));
+				addSequential(new TimedDrive(554, 0));
 				break;
 			default:
 				break;
