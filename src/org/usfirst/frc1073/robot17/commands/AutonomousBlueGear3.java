@@ -64,7 +64,7 @@ public class AutonomousBlueGear3 extends CommandGroup {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		addSequential(new AutoTurn(.5, 40, "counterclockwise"));
+		addSequential(new AutoTurn(.25, 40, "counterclockwise"));
 		addSequential(new moveWithPID(-10));
 		addSequential(new DriveToGearPeg());
 		//addSequential(new moveWithPID(-4));
