@@ -47,7 +47,7 @@ public class wait extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	try {
-			Thread.sleep(30000);
+			Thread.sleep(1500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
