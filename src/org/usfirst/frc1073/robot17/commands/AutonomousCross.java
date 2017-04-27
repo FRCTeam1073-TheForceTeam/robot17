@@ -56,10 +56,10 @@ public class AutonomousCross extends CommandGroup {
 				addSequential(new moveWithPID(-95));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(95));
+				addSequential(new DriveInches(-95));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(95, 0));
+				addSequential(new TimedDrive(-95, 0));
 				break;
 			default:
 				break;

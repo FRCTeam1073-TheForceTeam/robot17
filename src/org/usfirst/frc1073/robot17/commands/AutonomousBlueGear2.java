@@ -50,15 +50,15 @@ public class AutonomousBlueGear2 extends CommandGroup {
 				addSequential(new moveWithPID(-30));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(-55));
+				addSequential(new DriveInches(-30));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(-55, 0));
+				addSequential(new TimedDrive(-30, 0));
 			default:
 				break;
 		}
     	addSequential(new DriveToGearPeg());
-		addSequential(new moveWithPID(-4));
+		//addSequential(new moveWithPID(-4));
     	//Drives to peg
     } 
 }

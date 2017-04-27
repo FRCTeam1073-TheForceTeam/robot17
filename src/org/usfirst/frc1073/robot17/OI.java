@@ -77,11 +77,11 @@ public class OI {
     public JoystickButton decreaseLauncher;
     public JoystickButton precisionToggleBut;
     
-    public XboxController demoControl;
+    //public XboxController demoControl;
     
     public OI() {
     	
-    	demoControl = new XboxController(2);
+    	//demoControl = new XboxController(2);
     	
     	operatorControl = new XboxController(1);
     	

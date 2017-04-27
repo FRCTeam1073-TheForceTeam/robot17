@@ -54,10 +54,10 @@ public class AutonomousRedGear2Neutral extends CommandGroup {
 			addSequential(new moveWithPID(22));
 			break;
 		case ROTATIONS:
-			addSequential(new DriveInches(11));
+			addSequential(new DriveInches(22));
 			break;
 		case TIME:
-			addSequential(new TimedDrive(11, 0));
+			addSequential(new TimedDrive(22, 0));
 		default:
 			break;
 		}
@@ -68,10 +68,10 @@ public class AutonomousRedGear2Neutral extends CommandGroup {
 				addSequential(new moveWithPID(58));
 				break;
 			case ROTATIONS:
-				addSequential(new DriveInches(61));
+				addSequential(new DriveInches(58));
 				break;
 			case TIME:
-				addSequential(new TimedDrive(61, 0));
+				addSequential(new TimedDrive(58, 0));
 			default:
 				break;
 		}
