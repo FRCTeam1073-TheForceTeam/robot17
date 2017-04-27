@@ -253,9 +253,10 @@ public class Robot extends IterativeRobot {
             camera1.setResolution(320, 240);
             camera1.setFPS(20);
             
-            UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
-            camera2.setResolution(320, 240);
-            camera2.setFPS(20);
+            // ksthilaire - 042717 - commented out declaration for camera 2 that has been removed
+            //UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+            //camera2.setResolution(320, 240);
+            //camera2.setFPS(20);
             try {
 				Thread.sleep(20);
 			} catch (Exception e) {
@@ -277,10 +278,11 @@ public class Robot extends IterativeRobot {
 	            		// Set the source to camera1
 	            		cvSink.setSource(camera1);            		
 	                	SmartDashboard.putString("Camera", "Camera 1");
-	            	} else {
-	            		// Set the source to camera2
-	            		cvSink.setSource(camera2);
-	                	SmartDashboard.putString("Camera", "Camera 2");
+// ksthilaire - 042717 - commented out reference to camera 2 that has been removed
+//	            	} else {
+//	            		// Set the source to camera2
+//	            		cvSink.setSource(camera2);
+//	                	SmartDashboard.putString("Camera", "Camera 2");
 	            	}
             	}
             	
@@ -312,8 +314,8 @@ public class Robot extends IterativeRobot {
             	}
             	
             	try{
-            		// slight pause to make sure that the thread yields CPU
-            		Thread.sleep(5);
+            		// pause for 50ms to make sure that the thread yields CPU
+            		Thread.sleep(50);
             	} catch(Exception e) {           		
             	}
             	
