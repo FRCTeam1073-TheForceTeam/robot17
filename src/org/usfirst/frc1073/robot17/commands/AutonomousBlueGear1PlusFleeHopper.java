@@ -48,9 +48,9 @@ public class AutonomousBlueGear1PlusFleeHopper extends CommandGroup {
     	addSequential(new AutonomousBlueGear1());
     	addSequential(new MoveAway());
 		addSequential(new moveWithPID(40));
-		addSequential(new AutoTurn(.25, 40, "counterclockwise"));
+		addSequential(new AutoTurn(.3, 60, "counterclockwise"));
 		//Change value based on measurements
-		addSequential(new moveWithPID(-190));
+		addSequential(new moveWithPID(-72));
 		//addSequential(new AutoTurn(.2,225,"counterclockwise"));
 		//addSequential(new moveWithPID(24));
     } 
