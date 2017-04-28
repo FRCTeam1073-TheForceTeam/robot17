@@ -61,7 +61,7 @@ public class AutonomousRedGear2Neutral extends CommandGroup {
 		default:
 			break;
 		}
-    	addSequential(new AutoTurn(.4, 60, "clockwise"));
+    	addSequential(new AutoTurn(.25, 60, "clockwise"));
     	switch(Robot.driveMode)
 		{
 			case PID:
@@ -75,7 +75,7 @@ public class AutonomousRedGear2Neutral extends CommandGroup {
 			default:
 				break;
 		}
-    	addSequential(new AutoTurn(.3, 40, "clockwise"));
+    	addSequential(new AutoTurn(.2, 40, "clockwise"));
     	addSequential(new moveWithPID(75));
     	
 		//Drives near boiler and auto-drives into alignment

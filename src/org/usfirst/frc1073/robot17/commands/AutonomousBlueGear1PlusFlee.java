@@ -48,7 +48,7 @@ public class AutonomousBlueGear1PlusFlee extends CommandGroup {
     	addSequential(new AutonomousBlueGear1());
     	addSequential(new MoveAway());
 		addSequential(new moveWithPID(40));
-		addSequential(new AutoTurn(.5, 40, "counterclockwise"));
+		addSequential(new AutoTurn(.25, 40, "counterclockwise"));
 		addSequential(new moveWithPID(-190));
 		//Drives near peg and auto-drives onto it
     } 
