@@ -51,7 +51,7 @@ public class AutonomousBlueGear3PlusFleeHopper extends CommandGroup {
 		addSequential(new AutoTurn(.3, 60, "clockwise"));
 		//Change value based on measurements
 		addSequential(new moveWithPID(-72));
-		//addSequential(new AutoTurn(.2,225,"clockwise"));
-		//addSequential(new moveWithPID(24));
+		addSequential(new AutoTurn(.2,90,"counterclockwise"));
+		addSequential(new moveWithPID(24));
     } 
 }
