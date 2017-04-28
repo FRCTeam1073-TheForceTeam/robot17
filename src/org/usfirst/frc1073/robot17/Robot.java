@@ -155,8 +155,8 @@ public class Robot extends IterativeRobot {
         autonomousChooser.addObject("Gear Middle Red + Neutral", new AutonomousRedGear2Neutral());
         autonomousChooser.addObject("Gear Middle Blue + Neutral", new AutonomousBlueGear2Neutral());
         autonomousChooser.addObject("Gear Right + Neutral", new AutonomousBlueGear3PlusFlee());
-        autonomousChooser.addObject("Gear Left + Neutral Hopper --NOT TESTED--", new AutonomousBlueGear1PlusFleeHopper());
-        autonomousChooser.addObject("Gear Right + Neutral Hopper --NOT TESTED--", new AutonomousBlueGear3PlusFleeHopper());
+        autonomousChooser.addObject("Gear Left + Neutral Hopper", new AutonomousBlueGear1PlusFleeHopper());
+        autonomousChooser.addObject("Gear Right + Neutral Hopper", new AutonomousBlueGear3PlusFleeHopper());
         
         //MatchType Chooser
         matchTypeChooser = new SendableChooser<Command>();
