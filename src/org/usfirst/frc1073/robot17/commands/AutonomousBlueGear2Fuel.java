@@ -61,11 +61,11 @@ public class AutonomousBlueGear2Fuel extends CommandGroup {
 			default:
 				break;
 		}
-    	addSequential(new AutoTurn(.4, 60, "clockwise"));
+    	addSequential(new AutoTurn(.4, 100, "clockwise"));
     	switch(Robot.driveMode)
 		{
 			case PID:
-				addSequential(new moveWithPID(58));
+				addSequential(new moveWithPID(50));
 				break;
 			case ROTATIONS:
 				addSequential(new DriveInches(61));
@@ -75,7 +75,7 @@ public class AutonomousBlueGear2Fuel extends CommandGroup {
 			default:
 				break;
 		}
-    	addSequential(new AutoTurn(.3, 40, "counterclockwise"));
+    	addSequential(new AutoTurn(.3, 75, "counterclockwise"));
     	addSequential(new AlignAndLaunch());
 		//Drives near boiler and auto-drives into alignment
     	//addSequential(new AutoLaunch(0.5, 0.5));
