@@ -66,6 +66,9 @@ public class OI {
     public JoystickButton boilerAlignBut;
     public XboxController driverControl;
     
+    public Joystick demoControlRight;
+    public Joystick demoControlLeft;
+    
     public JoystickButton climbBut;
     public JoystickButton backupClimbBut;
     public JoystickButton purgeBut;
@@ -84,6 +87,9 @@ public class OI {
     	//demoControl = new XboxController(2);
     	
     	operatorControl = new XboxController(1);
+    	
+    	demoControlRight = new Joystick(1);
+    	demoControlLeft = new Joystick(2);
     	
     	collectBut = operatorControl.rightBumper;
         collectBut.whileHeld(new CollectFuel());
