@@ -50,8 +50,21 @@ public class Drive extends Command {
     	 * 6 - DPad left/right
     	 **/
     	
-    	double left = Robot.oi.driverControl.getRawAxis(1);
-    	double right = Robot.oi.driverControl.getRawAxis(4);
+    	double left;
+    	double right;
+    	
+    	if (Robot.robotPreferences.getBoolean("Demo", false) == true)
+    	{
+    		//Sets right and left controllers to demo joysticks
+    		left = Robot.oi.demoControlLeft.getY();
+    		right = Robot.oi.demoControlRight.getY();
+    	}
+    	else
+    	{
+    		//Sets right and left controllers to normal xbox controllers
+        	left = Robot.oi.driverControl.getRawAxis(1);
+        	right = Robot.oi.driverControl.getRawAxis(4);
+    	}
     	//double left = Robot.oi.driverControl.getRawAxis(2);
     	//double right = Robot.oi.driverControl.getRawAxis(4);
     	

@@ -66,6 +66,9 @@ public class OI {
     public JoystickButton boilerAlignBut;
     public XboxController driverControl;
     
+    public Joystick demoControlRight;
+    public Joystick demoControlLeft;
+    
     public JoystickButton climbBut;
     public JoystickButton backupClimbBut;
     public JoystickButton purgeBut;
@@ -85,6 +88,12 @@ public class OI {
     	
     	operatorControl = new XboxController(1);
     	
+    	demoControlRight = new Joystick(1);
+    	demoControlLeft = new Joystick(0);
+    	
+    	driverControl = new XboxController(0);
+    	
+    	if (Robot.robotPreferences.getBoolean("Demo", false) == false){
     	collectBut = operatorControl.rightBumper;
         collectBut.whileHeld(new CollectFuel());
         purgeBut = operatorControl.leftBumper;
@@ -97,9 +106,6 @@ public class OI {
         increaseLauncher.whenPressed(new increaseLauncherSpeed(50));
         decreaseLauncher = operatorControl.a;
         decreaseLauncher.whenPressed(new increaseLauncherSpeed(-50));
-        
-        
-        driverControl = new XboxController(0);
         
         boilerAlignBut = driverControl.y;
         boilerAlignBut.whenPressed(new DriveToBoiler());
@@ -116,7 +122,7 @@ public class OI {
         backupClimbBut.whileHeld(new Climb(0));
         
         //driverControl.start.whenPressed(new Wiggle());
-        
+    	}
         
 
 
