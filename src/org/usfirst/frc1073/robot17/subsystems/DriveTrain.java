@@ -135,17 +135,8 @@ public class DriveTrain extends Subsystem {
     
     public void basicDrive(double left, double right) {
             	
-    	if (Robot.robotPreferences.getBoolean("Demo", false) == true)
-    	{
-    		rightMotor3.set(right * 0.3);
-        	leftMotor3.set(left * 0.3);
-    	}
-    	else 
-    	{
-    		rightMotor3.set(right);
-        	leftMotor3.set(left);
-    	}
-    	
+    	rightMotor3.set(right);
+    	leftMotor3.set(left);
     }
     
     public void cubicDrive(double left, double right) {

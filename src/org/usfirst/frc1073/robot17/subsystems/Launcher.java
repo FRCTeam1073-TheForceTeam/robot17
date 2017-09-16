@@ -11,7 +11,6 @@
 
 package org.usfirst.frc1073.robot17.subsystems;
 
-import org.usfirst.frc1073.robot17.Robot;
 import org.usfirst.frc1073.robot17.RobotMap;
 import org.usfirst.frc1073.robot17.commands.*;
 import com.ctre.CANTalon;
@@ -39,9 +38,8 @@ public class Launcher extends Subsystem {
     // here. Call these from Commands.
     
     public void startLauncher(double launcherSpeed, double conveyorSpeed) {
-    	if (Robot.robotPreferences.getBoolean("Demo", false) == false){
     	launcherMotor1.set(launcherSpeed);
-    }}
+    }
     
     public void stopLauncher() {
     	launcherMotor1.set(0.0);
