@@ -63,6 +63,8 @@ protected void initialize() {
 	
 		Robot.bling.sendAutoDrive();
 		
+		//OFFSEASON PROJECT: ADD I AND D, AND INTEGRATE IR/ULTRASONIC
+		
 		//setting PID for the left side
 		RobotMap.driveTrainleftMotor3.enable();
 		RobotMap.driveTrainleftMotor3.setEncPosition(0);
