@@ -66,7 +66,7 @@ public class AutoTurnWithPID extends Command {
     }
 
     protected boolean isFinished() {
-    	if(Math.abs(Robot.pidDrive.getPIDController().getError() ) < 20)
+    	if(Math.abs(Robot.pidDrive.getPIDController().getError() ) < 50)
     		return true;
     	else
     		return false;
