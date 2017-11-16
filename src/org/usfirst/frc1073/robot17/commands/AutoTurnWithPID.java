@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc1073.robot17.RobotMap;
+
+import com.ctre.CANTalon.TalonControlMode;
+
 import org.usfirst.frc1073.robot17.Robot;
 
 /**
@@ -41,7 +44,7 @@ public class AutoTurnWithPID extends Command {
     double angle;
     double p, i, d;
 
-
+    //test
     // Called just before this Command runs the first time
     protected void initialize() {    	
     	RobotMap.headingGyro.reset();
@@ -61,8 +64,10 @@ public class AutoTurnWithPID extends Command {
     	SmartDashboard.putNumber("Error",error );
     	angle = RobotMap.headingGyro.getAngle();
     	SmartDashboard.putNumber("Angle",angle );
-    	RobotMap.driveTrainleftMotor1.set(-0.3);
-    	RobotMap.driveTrainrightMotor1.set(0.3);
+    	RobotMap.driveTrainleftMotor1.changeControlMode(TalonControlMode.Position);
+    	RobotMap.driveTrainrightMotor1.changeControlMode(TalonControlMode.Position);
+    	RobotMap.driveTrainleftMotor1.set(45);
+    	RobotMap.driveTrainrightMotor1.set(45);
     }
 
     protected boolean isFinished() {
