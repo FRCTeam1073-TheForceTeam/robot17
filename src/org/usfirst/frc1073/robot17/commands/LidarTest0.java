@@ -33,8 +33,8 @@ public class LidarTest0 extends Command {
     
 	//Set up for the NetworkTable variables the Raspberry Pi sends
 	NetworkTable lidarSendTable;
-    double LidarDistance;
     double LidarDegrees;
+    double LidarDistance;
     
     
     //Variable for button used in isFinished
@@ -69,7 +69,7 @@ public class LidarTest0 extends Command {
     	
     	//These are the variables that get manipulated in the code
 
-        double mmToIn = 25.4;
+        double mmToIn = 2.54;
        
         //These are the variables for speed - start slow
 		
@@ -101,7 +101,7 @@ public class LidarTest0 extends Command {
     	   SmartDashboard.putString("lidar info", "closest object = <1ft and >.5ft");
     	   Robot.driveTrain.basicDrive(.1, .1);
        }
-       else if ((LidarDistance / mmToIn) < 6 && (LidarDistance / mmToIn) > 5.5) {
+       else if ((LidarDistance / mmToIn) < 6) {
     	   SmartDashboard.putString("lidar info", "STOP! :)");
     	   Robot.driveTrain.basicDrive(0, 0);
        }

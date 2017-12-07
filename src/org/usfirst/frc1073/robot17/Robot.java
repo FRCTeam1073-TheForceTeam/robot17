@@ -151,8 +151,8 @@ public class Robot extends IterativeRobot {
         autonomousChooserWorld.addObject("Gear Middle + Left Neutral", new AutonomousRedGear2Neutral());
         autonomousChooserWorld.addObject("Gear Middle + Right Neutral", new AutonomousBlueGear2Neutral());
         autonomousChooserWorld.addObject("Gear Right + Neutral", new AutonomousBlueGear3PlusFlee());
-        //autonomousChooserWorld.addObject("LidarTest", new LidarTestAuto0());
-        //autonomousChooserWorlds.addObject("TEST FOR BOILER", new AlignAndLaunch());
+        autonomousChooserWorld.addObject("LidarTest", new LidarTestAuto0());
+        //utonomousChooserWorlds.addObject("TEST FOR BOILER", new AlignAndLaunch());
         
         
         //MatchType Chooser
