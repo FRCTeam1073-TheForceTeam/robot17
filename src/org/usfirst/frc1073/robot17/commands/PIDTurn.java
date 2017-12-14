@@ -47,7 +47,7 @@ public class PIDTurn extends Command {
     protected void initialize() {
     	RobotMap.pIDDrivegyro.reset();
     	Robot.pIDDrive.getPIDController().reset();
-    	Robot.pIDDrive.setSetpoint(-50); // 50 degrees for now
+    	Robot.pIDDrive.setSetpoint(-90); // 90 degrees for now
 //    	SmartDashboard.getNumber("P", p);
 //    	SmartDashboard.getNumber("I", i);
 //    	SmartDashboard.getNumber("D", d);
@@ -60,18 +60,18 @@ public class PIDTurn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	error = Robot.pIDDrive.getPIDController().getError();
+    	error = Math.abs(Robot.pIDDrive.getPIDController().getError());
     	SmartDashboard.putNumber("Error",error );
     	angle = RobotMap.pIDDrivegyro.getAngle();
     	SmartDashboard.putNumber("Angle",angle );
-    	RobotMap.pIDDriveleftMotor1.set(-0.3);
-    	RobotMap.pIDDriverightMotor1.set(0.3);
+    	RobotMap.pIDDriveleftMotor3.set(0.2);
+    	RobotMap.pIDDriverightMotor3.set(-0.2);
     	//Robot.pIDDrive.basicDrive(-0.3, 0.3);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Math.abs(Robot.pIDDrive.getPIDController().getError() ) < 5)
+    	if(Math.abs(Robot.pIDDrive.getPIDController().getError() ) < 50)
     		return true;
     	else
     		return false;
