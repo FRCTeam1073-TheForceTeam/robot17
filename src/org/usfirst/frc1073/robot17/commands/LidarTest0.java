@@ -34,8 +34,8 @@ public class LidarTest0 extends Command {
 	//Set up for the NetworkTable variables the Raspberry Pi sends
 	NetworkTable lidarSendTable;
     double LidarDegrees;
-    double LidarDistance;
-    
+    double ultimateMeasurement;
+    double robotSpeed;
     
     //Variable for button used in isFinished
     boolean isPressed = false;
@@ -69,48 +69,47 @@ public class LidarTest0 extends Command {
     	
     	//These are the variables that get manipulated in the code
 
-        double mmToIn = 2.54;
+        double mmToIn = 1.0;
+        SmartDashboard.putNumber("ultimateMeasurement", ultimateMeasurement);
        
         //These are the variables for speed - start slow
 		
 		//These are what the Pixy send us
-		LidarDistance =  lidarSendTable.getNumber("LidarDistance", 0);
-        LidarDegrees =  lidarSendTable.getNumber("LidarDegrees", 0);
+        robotSpeed = lidarSendTable.getNumber("RobotSpeed", 0);
+        SmartDashboard.putNumber("Ultimate Lidar Measurement", ultimateMeasurement);
         
-        Logger.setLog(Double.toString(LidarDistance));
+        Logger.setLog(Double.toString(ultimateMeasurement));
         Logger.setLog(Double.toString(LidarDegrees));
 		
 		//This code modifies the speed based on how close you are to the peg
-        SmartDashboard.putNumber("Lidar Distance" , LidarDistance);
+        SmartDashboard.putNumber("Lidar Distance" , ultimateMeasurement);
         SmartDashboard.putNumber("Lidar Degrees" , LidarDegrees);
-        SmartDashboard.putNumber("Lidar To Inches", LidarDistance/mmToIn);
-       if ((LidarDistance / mmToIn) > 36 ) {
-    	   SmartDashboard.putString("lidar info", "closest object = >3ft");
-    	   Robot.driveTrain.basicDrive(.5, .5);
-       }
-       else if ((LidarDistance / mmToIn) > 24 && (LidarDistance / mmToIn) < 36 ) {
-    	   SmartDashboard.putString("lidar info", "closest object = <3ft and >2ft");
-    	   Robot.driveTrain.basicDrive(.25, .25);
-       
-       }
-       else if ((LidarDistance / mmToIn) > 12 && (LidarDistance / mmToIn) < 24 ) {
-    	   SmartDashboard.putString("lidar info", "closest object = <2ft and >1ft");
-    	   Robot.driveTrain.basicDrive(.15, .15);
-       }
-       else if ((LidarDistance / mmToIn) > 6 && (LidarDistance / mmToIn) <12) {
-    	   SmartDashboard.putString("lidar info", "closest object = <1ft and >.5ft");
-    	   Robot.driveTrain.basicDrive(.1, .1);
-       }
-       else if ((LidarDistance / mmToIn) < 6) {
-    	   SmartDashboard.putString("lidar info", "STOP! :)");
-    	   Robot.driveTrain.basicDrive(0, 0);
-       }
-       else {
-    	   SmartDashboard.putString("lidar info", "not moving in ELSE");
-    	   
-    	   Robot.driveTrain.basicDrive(.5,.5);
-    	   
-       }
+        SmartDashboard.putNumber("Lidar To Inches", ultimateMeasurement/mmToIn);
+        
+        if (robotSpeed == 0.5){
+        	SmartDashboard.putNumber("Robot Speed" , robotSpeed);
+        	Robot.driveTrain.basicDrive(0.5, 0.5);
+        }
+         
+        else if (robotSpeed == 0.25){
+        	SmartDashboard.putNumber("Robot Speed" , robotSpeed);
+        	Robot.driveTrain.basicDrive(0.25, 0.25);
+        }
+        
+        else if (robotSpeed == 0.15){
+        	SmartDashboard.putNumber("Robot Speed" , robotSpeed);
+        	Robot.driveTrain.basicDrive(0.15, 0.15);
+        }
+        
+        else if (robotSpeed == 0.1){
+        	SmartDashboard.putNumber("Robot Speed" , robotSpeed);
+        	Robot.driveTrain.basicDrive(0.1, 0.1);
+        }
+        
+        else if (robotSpeed == 0.0){
+        	SmartDashboard.putNumber("Robot Speed" , robotSpeed);
+        	Robot.driveTrain.basicDrive(0, 0);	
+        }
        }
     
     protected boolean isFinished() {
